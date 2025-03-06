@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->id('id_user');
-            $table->string('nama', 100)->nullable();
-            $table->string('nik', 20)->unique();
-            $table->string('tele_id', 20)->unique();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('upload_file', function (Blueprint $table) {
+            $table->id('file_id');
+            $table->unsignedBigInteger('user_id')->index();
+            $table->string('file_name');
+            $table->string('file_path');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('upload_file');
     }
 };
