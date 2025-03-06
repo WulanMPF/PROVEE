@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('upload_file', function (Blueprint $table) {
-            $table->id('file_id');
-            $table->unsignedBigInteger('user_id')->index();
-            $table->string('file_name');
-            $table->string('file_path');
+            $table->id('id_file');
+            $table->unsignedBigInteger('id_user')->index();
+            $table->string('nama_file');
+            $table->string('path_file');
             $table->timestamps();
-            
+
             // Foreign Key
-            $table->foreign('user_id')->references('user_id')->on('user');
+            $table->foreign('id_user')->references('id_user')->on('user');
         });
     }
 
