@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('file_name');
             $table->string('file_path');
             $table->timestamps();
+            
+            // Foreign Key
+            $table->foreign('user_id')->references('user_id')->on('user');
         });
     }
 
