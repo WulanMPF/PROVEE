@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('report_pivot_endstate', function (Blueprint $table) {
+            $table->dropColumn('ps/pi_total');
+            $table->dropColumn('cancel/pi_total');
+            $table->dropColumn('fallout/pi_total');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('report_pivot_endstate', function (Blueprint $table) {
+            $table->float('ps/pi_total')->default(0);
+            $table->float('cancel/pi_total')->default(0);
+            $table->float('fallout/pi_total')->default(0);
+        });
+    }
+};
