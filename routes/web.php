@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Login\LoginController;
 
 /*
@@ -22,3 +23,5 @@ Route::get('/dashboard', function () {
     return 'Welcome to Dashboard';
 })->middleware('auth')->name('dashboard');
 
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
