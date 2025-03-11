@@ -19,11 +19,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign Key
-<<<<<<< Updated upstream:database/migrations/2025_03_06_040737_create_upload_file_table.php
             $table->foreign('id_user')->references('id_user')->on('user');
-=======
-            $table->foreign('user_id')->references('user_id')->on('user');
->>>>>>> Stashed changes:database/migrations/2025_03_06_034011_create_upload_file_table.php
         });
     }
 

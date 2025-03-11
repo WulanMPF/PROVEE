@@ -18,6 +18,7 @@ class UserModel extends Authenticatable
         'nama',
         'nik',
         'password',
+        'tele_id',
     ];
 
     protected $hidden = [

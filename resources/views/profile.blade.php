@@ -1,25 +1,13 @@
-@extends('layouts.sidebar')
-@section('title', 'Profile')
+@extends('layouts.template')
 
 @section('content')
-<div style="flex: 1; margin-left: 5px; padding: 20px;">
-
-    <!-- Container Profil -->
-    <div style="
-        background-color: #FFFFFF;
-        padding: 1px;
-        border-radius: 19px;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-    ">
-        <h2 style="margin-left: 30px; font-size: 30px; font-weight: 800; color: #651313; line-height: 1;">Profile</h2>
-    </div>
+<div style="flex: 1; padding: 10px;">
 
     <!-- Container Isi Profil -->
     <div style="
         background-color: #fff; 
         padding: 50px; 
-        border-radius: 10px; 
+        border-radius: 19px; 
         box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
         height: 475px;
     ">

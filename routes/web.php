@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Login\LoginController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +16,16 @@ use App\Http\Controllers\Login\LoginController;
 |
 */
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+// Route Login Page
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', function () {
-    return 'Welcome to Dashboard';
-})->middleware('auth')->name('dashboard');
+// Route::get('/xpro', [XproController::class, 'index'])->middleware('auth')->name('xpro.index');
 
+// Route::get('/dashboard', function () {
+//     return 'Welcome to Dashboard';
+// })->middleware('auth')->name('dashboard');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/', [WelcomeController::class, 'index']);

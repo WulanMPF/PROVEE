@@ -1,78 +1,93 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Default Title')</title>
+ <!-- Sidebar -->
+ <div class="sidebar">
+     <!-- Sidebar Menu -->
+     <nav class="mt-2">
+         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+             <!-- Add icons to the links using the .nav-icon class
+            with font-awesome or any other icon font library -->
+             <li class="nav-item">
+                 <a href="{{ url('/xpro') }}" class="nav-link {{ $activeMenu == 'xpro' ? 'active' : '' }}">
+                     <img src="{{ asset('assets/Icon_XPRO.png') }}" alt="Xpro Icon" class="nav-icon">
+                     <p>Report Xpro</p>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a href="{{ url('/orbit') }}" class="nav-link {{ $activeMenu == 'orbit' ? 'active' : '' }}">
+                     <img src="{{ asset('assets/Icon_ORBIT.png') }}" alt="Orbit Icon" class="nav-icon">
+                     <p>Report Orbit</p>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a href="{{ url('/endstate') }}" class="nav-link {{ $activeMenu == 'endstate' ? 'active' : '' }}">
+                     <img src="{{ asset('assets/Icon_ENDSTATE.png') }}" alt="Endstate Icon" class="nav-icon">
+                     <p>Report Endstate</p>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a href="{{ url('/pivotEndstate') }}"
+                     class="nav-link {{ $activeMenu == 'pivotEndstate' ? 'active' : '' }}">
+                     <img src="{{ asset('assets/Icon_PIVOTENDSTATE.png') }}" alt="Pivot Endstate Icon"
+                         class="nav-icon">
+                     <p>Report Pivot Endstate</p>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a href="{{ url('/proviManja') }}"
+                     class="nav-link {{ $activeMenu == 'proviManja' ? 'active' : '' }}">
+                     <img src="{{ asset('assets/Icon_PROVIMANJA.png') }}" alt="Provi Manja Icon" class="nav-icon">
+                     <p>Report Provi Manja</p>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a href="{{ url('/proviKpro') }}" class="nav-link {{ $activeMenu == 'proviKpro' ? 'active' : '' }}">
+                     <img src="{{ asset('assets/Icon_PROVIKPRO.png') }}" alt="Provi Kpro Icon" class="nav-icon">
+                     <p>Report Provi Kpro</p>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a href="{{ url('/profile') }}" class="nav-link {{ $activeMenu == 'profile' ? 'active' : '' }}">
+                     <img src="{{ asset('assets/Icon_Profile.png') }}" alt="Profile Icon" class="nav-icon">
+                     <p>Profile</p>
+                 </a>
+             </li>
+         </ul>
+     </nav>
+     <!-- /.sidebar-menu -->
+ </div>
+ <!-- /.sidebar -->
 
-    <!-- Google Font Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body style="margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: #E5E5E8; display: flex;">
+ <style>
+     .nav-link {
+         display: flex;
+         align-items: center;
+         padding: 10px;
+         border-radius: 5px;
+         transition: background 0.3s ease, color 0.3s ease;
+     }
 
-    <!-- Sidebar -->
-    <div class="sidebar-container" style="
-        width: 90px; 
-        height: 90vh; 
-        background-color: #FFFFFF; 
-        border-radius: 19px; 
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-        padding-top: 20px; 
-        position: fixed; 
-        left: 30px; 
-        top: 25px;
-        justify-content: space-between;
-    ">
-        <ul style="list-style: none; padding: 0; margin: 0; width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <li style="margin-bottom: 30px;">
-                <a href="#"><img src="{{ asset('assets/Icon_SideBar.png') }}" alt="Sidebar" style="width: 30px;"></a>
-            </li>
-            <li style="margin-bottom: 15px;">
-                <a href="#"><img src="{{ asset('assets/Icon_XPRO.png') }}" alt="X" style="width: 55px;"></a>
-            </li>
-            <li style="margin-bottom: 15px;">
-                <a href="#"><img src="{{ asset('assets/Icon_ORBIT.png') }}" alt="O" style="width: 55px;"></a>
-            </li>
-            <li style="margin-bottom: 15px;">
-                <a href="#"><img src="{{ asset('assets/Icon_ENDSTATE.png') }}" alt="E" style="width: 55px;"></a>
-            </li>
-            <li style="margin-bottom: 15px;">
-                <a href="#"><img src="{{ asset('assets/Icon_PIVOTENDSTATE.png') }}" alt="PE" style="width: 55px;"></a>
-            </li>
-            <li style="margin-bottom: 15px;">
-                <a href="#"><img src="{{ asset('assets/Icon_PROVIMANJA.png') }}" alt="PM" style="width: 55px;"></a>
-            </li>
-            <li style="margin-bottom: 15px;">
-                <a href="#"><img src="{{ asset('assets/Icon_PROVIKPRO.png') }}" alt="PK" style="width: 55px;"></a>
-            </li>
-        </ul>
+     .nav-link:hover {
+         background: #C8170D !important;
+         color: white !important;
+     }
 
-        <!-- Garis Hitam Sebelum Icon Profile -->
-        <div style="width: 80%; height: 2px; background-color: black; margin: 90px 0 15px 0;"></div>
+     .nav-link:hover img {
+         filter: brightness(0) invert(1);
+         /* Mengubah ikon menjadi putih */
+     }
 
-        <!-- Profile Icon -->
-        <div style="margin-bottom: 20px;">
-            <a href="{{ route('profile') }}" class="active" style="
-                display: flex; 
-                justify-content: center; 
-                align-items: center; 
-                width: 50px; 
-                height: 50px; 
-                background-color: #C8170D; 
-                border-radius: 10px;
-            ">
-                <img src="{{ asset('assets/Icon_Profile.png') }}" alt="Profile" style="width: 45px; filter: invert(1);">
-            </a>
-        </div>
-    </div>
+     .nav-link:hover p {
+         color: white !important;
+     }
 
-    <!-- Konten Halaman -->
-    <div style="margin-left: 100px; margin-top: -15px; flex: 1; padding: 20px;">
-        @yield('content')
-    </div>
+     .nav-link img {
+         width: 30px;
+         height: 30px;
+         margin-right: 10px;
+         object-fit: contain;
+     }
 
-</body>
-</html>
+
+     .nav-link p {
+         margin: 0;
+     }
+ </style>
