@@ -5,9 +5,6 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-           <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
             <li class="nav-item">
                 <a href="{{ url('/xpro') }}" class="nav-link {{ $activeMenu == 'xpro' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_XPRO.png') }}" alt="Xpro Icon" class="nav-icon">

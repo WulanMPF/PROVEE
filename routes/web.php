@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\XproController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +17,17 @@ use App\Http\Controllers\WelcomeController;
 */
 
 // Route Login Page
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Route Xpro
+Route::group(['prefix' => 'xpro'], function () {
+    Route::get('/', [XproController::class, 'index']);                                  // Tampilkan halaman awal
+    Route::post('/list', [XproController::class, 'list'])->name('xpro.list');           // Tampilkan data dalam json untuk datatables
+    Route::get('/create', [XproController::class, 'create']);                           // Tampilkan form upload file (?)
+    Route::post('/', [XproController::class, 'store'])->name('xpro.store');             // Save data baru
+});
 
 // Route::get('/xpro', [XproController::class, 'index'])->middleware('auth')->name('xpro.index');
 
@@ -27,5 +35,5 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 //     return 'Welcome to Dashboard';
 // })->middleware('auth')->name('dashboard');
 
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'index']);
+// Route::get('/', [WelcomeController::class, 'index']);
