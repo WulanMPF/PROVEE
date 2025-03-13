@@ -9,7 +9,8 @@
         padding: 50px; 
         border-radius: 19px; 
         box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-        height: 475px;
+        height: 500px;
+        margin-top: -40px;
     ">
         <div style="
             border: 1px solid #EBEBEB;

@@ -21,7 +21,7 @@ class ProfileController extends Controller
             'title' => 'Profile',
         ];
 
-        $activeMenu = 'Profile';
+        $activeMenu = 'profile';
 
         return view('profile', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu
         ]);
