@@ -1,5 +1,5 @@
- <!-- Sidebar -->
- <div class="sidebar">
+<!-- Sidebar -->
+<div class="sidebar">
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -90,8 +90,8 @@
     }
 
     .nav-link img {
-        width: 30px;
-        height: 30px;
+        width: 40px !important;
+        height: 40px !important;
         margin-right: 10px;
         object-fit: contain;
     }
