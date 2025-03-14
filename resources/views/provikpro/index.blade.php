@@ -3,39 +3,33 @@
 @section('content')
     <div style="flex: 1; padding: 10px;">
         <div class="upload-container">
-            <h2 class="upload-title">Upload File</h2>
+            <h2 class="upload-title">REPORT PROVISIONING INDIHOME {{ date('d/m/Y') }}</h2>
             <div style="position: relative;">
                 <button type="submit" form="upload-form" class="btn send-button" id="send">Send</button>
             </div>
-            <form action="{{ route('xpro.store') }}" method="POST" enctype="multipart/form-data" class="upload-form">
-                @csrf
-                <input type="file" name="file" accept=".csv" required>
-            </form>
-
-            <h2 class="pivot-title">Pivot Table</h2>
-            <table class="table table-bordered table-hover table-sm" id="tabel_xpro">
+            <h2 class="upload-title">POSISI PUKUL {{ now()->format('H:i:s') }} <br><br></h2>
+            <table class="table table-bordered table-hover table-sm" id="tabel_provikpro">
                 <thead>
-                    <tr>
-                        <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
-                            REPORT INDIBIZ PERIODE {{ date('d/m/Y') }}
-                        </th>
-                    </tr>
                     <tr style="text-align: center;">
-                        <th style="vertical-align: middle;">WILAYAH</th>
-                        <th style="vertical-align: middle;">RE HI</th>
-                        <th style="vertical-align: middle;">PI HI</th>
-                        <th style="vertical-align: middle;">PS HI</th>
-                        <th style="vertical-align: middle;">ACCOMP</th>
-                        <th style="vertical-align: middle;">PS/RE HI</th>
-                        <th style="vertical-align: middle;">PS/PI HI</th>
-                        <th style="vertical-align: middle;">RE TOT</th>
-                        <th style="vertical-align: middle;">PI TOT</th>
-                        <th style="vertical-align: middle;">PS TOT</th>
-                        <th style="vertical-align: middle;">PS/RE TOT</th>
-                        <th style="vertical-align: middle;">PS/PI TOT</th>
+                        <th>NO</th>
+                        <th>WILAYAH</th>
+                        <th>PI TOTAL</th>
+                        <th>ACCOMP TOTAL</th>
+                        <th>PS + ACCOMP TOTAL</th>
+                        <th>PS/PI TOTAL</th>
+                        <th>SISA MANJA</th>
                     </tr>
                 </thead>
             </table>
+            <h2 class="upload-title"><br><br></h2>
+            <h2 class="upload-title">TARGET PS JATIM 3: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
+            <h2 class="upload-title">PI/TARGET: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
+            <h2 class="upload-title">RUN RATE PS: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
+            <h2 class="upload-title">ESTIMASI PS: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
+            <h2 class="upload-title">ESTIMASI PS/TARGET: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
+            <h2 class="upload-title"><br><br>KESIMPULAN: DIBUTUHKAN RUN RATE PS </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
+            <h2 class="upload-title">ESTIMASI PS HARI INI: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
+            <h2 class="upload-title">DEVIASI: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
         </div>
     </div>
 @endsection
@@ -93,26 +87,25 @@
             display: none;
         }
 
-        #tabel_xpro {
+        #tabel_provikpro {
             font-family: 'Poppins', sans-serif;
             text-align: center;
             border-collapse: separate;
             border-spacing: 0;
             border-radius: 10px;
             overflow: hidden;
-            /* Agar sudutnya ikut melengkung */
         }
 
-        #tabel_xpro th,
-        #tabel_xpro td {
+        #tabel_provikpro th,
+        #tabel_provikpro td {
             padding: 8px 15px;
         }
 
-        #tabel_xpro tbody tr:last-child td:first-child {
+        #tabel_provikpro tbody tr:last-child td:first-child {
             border-bottom-left-radius: 10px;
         }
 
-        #tabel_xpro tbody tr:last-child td:last-child {
+        #tabel_provikpro tbody tr:last-child td:last-child {
             border-bottom-right-radius: 10px;
         }
 
@@ -134,69 +127,46 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            if (!$.fn.DataTable.isDataTable('#tabel_xpro')) {
-                var dataUser = $('#tabel_xpro').DataTable({
+            if (!$.fn.DataTable.isDataTable('#tabel_provikpro')) {
+                var dataUser = $('#tabel_provikpro').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        "url": "{{ url('xpro/list') }}",
+                        "url": "{{ url('provikpro/list') }}",
                         "type": "POST",
                         "data": function(d) {
                             d.id_wilayah = $('#id_wilayah').val();
+                            d.id_endstate = $('#id_endstate').val();
+                            d.id_provi_manja = $('#id_provi_manja').val();
                         }
                     },
                     columns: [{
+                            data: "DT_RowIndex",
+                            className: "text-center",
+                            orderable: false,
+                            searchable: false
+                        }, {
                             data: "wilayah.nama_wilayah",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "re_hi",
+                            data: "endstate.pi_tot",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "pi_hi",
+                            data: "endstate.ps_tot",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "ps_hi",
+                            data: "endstate.accomp",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "accomp",
-                            orderable: false,
-                            searchable: false
-                        },
-                        {
-                            data: "ps_re_hi",
-                            orderable: false,
-                            searchable: false
-                        },
-                        {
-                            data: "ps_pi_hi",
-                            orderable: false,
-                            searchable: false
-                        },
-                        {
-                            data: "re_tot",
-                            orderable: false,
-                            searchable: false
-                        },
-                        {
-                            data: "pi_tot",
-                            orderable: false,
-                            searchable: false
-                        },
-                        {
-                            data: "ps_tot",
-                            orderable: false,
-                            searchable: false
-                        },
-                        {
-                            data: "ps_re_tot",
+                            data: "ps_accomp_tot",
                             orderable: false,
                             searchable: false
                         },
@@ -204,12 +174,25 @@
                             data: "ps_pi_tot",
                             orderable: false,
                             searchable: false
+                        },
+                        {
+                            data: "provimanja.total",
+                            orderable: false,
+                            searchable: false
                         }
                     ]
                 });
 
-                $('#id_wilayah').on('change', function() {
-                    dataWilayah.ajax.reload();
+                $('#id_sektor').on('change', function() {
+                    dataSektor.ajax.reload();
+                });
+
+                $('#id_endstate').on('change', function() {
+                    dataEndstate.ajax.reload();
+                });
+
+                $('#id_provi_manja').on('change', function() {
+                    dataProviManja.ajax.reload();
                 });
             }
         });
