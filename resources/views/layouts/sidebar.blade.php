@@ -1,13 +1,10 @@
- <!-- Sidebar -->
+  <!-- Sidebar -->
  <div class="sidebar">
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-           with font-awesome or any other icon font library -->
-           <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
+           with font-awesome or any other icon font library -->        
             <li class="nav-item">
                 <a href="{{ url('/xpro') }}" class="nav-link {{ $activeMenu == 'xpro' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_XPRO.png') }}" alt="Xpro Icon" class="nav-icon">
@@ -66,8 +63,9 @@
         padding: 10px;
         border-radius: 5px;
         transition: background 0.3s ease, color 0.3s ease;
+        margin-left: 5px;
     }
-
+    
     .nav-link:hover {
         background: #E5E5E8 !important;
         /* color: #84858C !important; */
@@ -93,8 +91,8 @@
     }
 
     .nav-link img {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         margin-right: 10px;
         object-fit: contain;
     }

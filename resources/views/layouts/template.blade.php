@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
     <!-- Site wrapper -->
     <div class="wrapper">
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-light elevation-4">
+        <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Sidebar -->
             @include('layouts.sidebar')
             <!-- /.sidebar -->
