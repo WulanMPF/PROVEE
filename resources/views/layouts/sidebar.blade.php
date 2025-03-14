@@ -24,22 +24,22 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/pivotEndstate') }}"
-                    class="nav-link {{ $activeMenu == 'pivotEndstate' ? 'active' : '' }}">
+                <a href="{{ url('/pivotendstate') }}"
+                    class="nav-link {{ $activeMenu == 'pivotendstate' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_PIVOTENDSTATE.png') }}" alt="Pivot Endstate Icon"
                         class="nav-icon">
                     <p>Report Pivot Endstate</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/proviManja') }}"
-                    class="nav-link {{ $activeMenu == 'proviManja' ? 'active' : '' }}">
+                <a href="{{ url('/provimanja') }}"
+                    class="nav-link {{ $activeMenu == 'provimanja' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_PROVIMANJA.png') }}" alt="Provi Manja Icon" class="nav-icon">
                     <p>Report Provi Manja</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/proviKpro') }}" class="nav-link {{ $activeMenu == 'proviKpro' ? 'active' : '' }}">
+                <a href="{{ url('/provikpro') }}" class="nav-link {{ $activeMenu == 'provikpro' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_PROVIKPRO.png') }}" alt="Provi Kpro Icon" class="nav-icon">
                     <p>Report Provi Kpro</p>
                 </a>
