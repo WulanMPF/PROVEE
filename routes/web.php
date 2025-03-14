@@ -24,8 +24,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Route Xpro
 Route::group(['prefix' => 'xpro'], function () {
     Route::get('/', [XproController::class, 'index']);                                  // Tampilkan halaman awal
-    Route::post('/list', [XproController::class, 'list'])->name('xpro.list');           // Tampilkan data dalam json untuk datatables
-    Route::get('/create', [XproController::class, 'create']);                           // Tampilkan form upload file (?)
+    Route::post('/list', [XproController::class, 'list'])->name('xpro.list');                          // Tampilkan form upload file (?)
     Route::post('/', [XproController::class, 'store'])->name('xpro.store');             // Save data baru
 });
 

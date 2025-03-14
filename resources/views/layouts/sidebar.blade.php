@@ -1,4 +1,4 @@
-  <!-- Sidebar -->
+ <!-- Sidebar -->
  <div class="sidebar">
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -63,9 +63,8 @@
         padding: 10px;
         border-radius: 5px;
         transition: background 0.3s ease, color 0.3s ease;
-        margin-left: 5px;
     }
-    
+
     .nav-link:hover {
         background: #E5E5E8 !important;
         /* color: #84858C !important; */
@@ -91,8 +90,8 @@
     }
 
     .nav-link img {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
         margin-right: 10px;
         object-fit: contain;
     }
