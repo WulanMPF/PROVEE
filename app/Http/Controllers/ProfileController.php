@@ -23,7 +23,6 @@ class ProfileController extends Controller
 
         $activeMenu = 'profile';
 
-        return view('profile', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu
-        ]);
+        return view('profile', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu]);
     }
 }

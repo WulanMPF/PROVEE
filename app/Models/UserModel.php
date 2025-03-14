@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UserModel extends Authenticatable
 {
@@ -25,4 +26,9 @@ class UserModel extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function file(): HasMany
+    {
+        return $this->hasMany(FileModel::class, 'id_user', 'id_user');
+    }
 }
