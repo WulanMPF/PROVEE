@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrbitController;
+use App\Http\Controllers\PivotEndstateController;
 use App\Http\Controllers\XproController;
 
 /*
@@ -28,11 +30,19 @@ Route::group(['prefix' => 'xpro'], function () {
     Route::post('/', [XproController::class, 'store'])->name('xpro.store');             // Save data baru
 });
 
-// Route::get('/xpro', [XproController::class, 'index'])->middleware('auth')->name('xpro.index');
+// Route Orbit
+Route::group(['prefix' => 'orbit'], function () {
+    Route::get('/', [OrbitController::class, 'index']);                                  // Tampilkan halaman awal
+    Route::post('/list', [OrbitController::class, 'list'])->name('orbit.list');                          // Tampilkan form upload file (?)
+    Route::post('/', [OrbitController::class, 'store'])->name('orbit.store');             // Save data baru
+});
 
-// Route::get('/dashboard', function () {
-//     return 'Welcome to Dashboard';
-// })->middleware('auth')->name('dashboard');
+// Route Pivot Endstate
+Route::group(['prefix' => 'pivotendstate'], function () {
+    Route::get('/', [PivotEndstateController::class, 'index']);                                  // Tampilkan halaman awal
+    Route::post('/list', [PivotEndstateController::class, 'list'])->name('pivotendstate.list');                          // Tampilkan form upload file (?)
+    Route::post('/', [PivotEndstateController::class, 'store'])->name('pivotendstate.store');             // Save data baru
+});
 
 Route::get('/profile', [ProfileController::class, 'index']);
 // Route::get('/', [WelcomeController::class, 'index']);
