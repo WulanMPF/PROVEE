@@ -47,7 +47,7 @@
             padding: 20px;
             border-radius: 19px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            min-height: auto;
+            height: 500px;
             margin-top: -40px;
         }
 
@@ -127,6 +127,13 @@
             z-index: 10;
             border-radius: 10px;
             padding: 8px 20px;
+        }
+
+        .send-button:hover {
+            background-color: #ffffff;
+            color: #C8170D;
+            cursor: pointer;
+            border-color: #afafaf;
         }
     </style>
 @endpush

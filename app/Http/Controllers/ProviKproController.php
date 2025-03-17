@@ -31,7 +31,7 @@ class ProviKproController extends Controller
         return DataTables::of($provikpros)
             ->addIndexColumn()
             ->addColumn('ps_accomp_tot', function ($row) {
-                $endstate = DB::table('endstate')
+                $endstate = DB::table('report_endstate')
                     ->where('id_endstate', $row->id_endstate)
                     ->select('ps_tot', 'accomp')
                     ->first();
@@ -45,7 +45,7 @@ class ProviKproController extends Controller
                 return 'N/A';
             })
             ->addColumn('ps_pi_tot', function ($row) {
-                $endstate = DB::table('endstate')
+                $endstate = DB::table('report_endstate')
                     ->where('id_endstate', $row->id_endstate) 
                     ->select('ps_tot', 'pi_tot')
                     ->first();

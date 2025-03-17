@@ -125,6 +125,13 @@
             border-radius: 10px;
             padding: 8px 20px;
         }
+
+        .send-button:hover {
+            background-color: #ffffff;
+            color: #C8170D;
+            cursor: pointer;
+            border-color: #afafaf;
+        }
     </style>
 @endpush
 

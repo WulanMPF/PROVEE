@@ -11,13 +11,13 @@
             <table class="table table-bordered table-hover table-sm" id="tabel_provikpro">
                 <thead>
                     <tr style="text-align: center;">
-                        <th>NO</th>
-                        <th>WILAYAH</th>
-                        <th>PI TOTAL</th>
-                        <th>ACCOMP TOTAL</th>
-                        <th>PS + ACCOMP TOTAL</th>
-                        <th>PS/PI TOTAL</th>
-                        <th>SISA MANJA</th>
+                        <th style="vertical-align: middle;">NO</th>
+                        <th style="vertical-align: middle;">WILAYAH</th>
+                        <th style="vertical-align: middle;">PI TOTAL</th>
+                        <th style="vertical-align: middle;">ACCOMP TOTAL</th>
+                        <th style="vertical-align: middle;">PS + ACCOMP TOTAL</th>
+                        <th style="vertical-align: middle;">PS/PI TOTAL</th>
+                        <th style="vertical-align: middle;">SISA MANJA</th>
                     </tr>
                 </thead>
             </table>
@@ -120,6 +120,13 @@
             z-index: 10;
             border-radius: 10px;
             padding: 8px 20px;
+        }
+
+        .send-button:hover {
+            background-color: #ffffff;
+            color: #C8170D;
+            cursor: pointer;
+            border-color: #afafaf;
         }
     </style>
 @endpush

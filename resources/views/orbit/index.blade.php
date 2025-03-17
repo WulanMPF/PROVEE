@@ -7,27 +7,27 @@
             <div style="position: relative;">
                 <button type="submit" form="upload-form" class="btn send-button" id="send">Send</button>
             </div>
-            <form action="{{ route('provimanja.store') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+            <form action="{{ route('orbit.store') }}" method="POST" enctype="multipart/form-data" class="upload-form">
                 @csrf
                 <input type="file" name="file" accept=".csv" required>
             </form>
 
             <h2 class="pivot-title">Pivot Table</h2>
-            <table class="table table-bordered table-hover table-sm" id="tabel_provimanja">
+            <table class="table table-bordered table-hover table-sm" id="tabel_orbit">
                 <thead>
                     <tr>
                         <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
-                            REPORT PROVI MANJA PERIODE {{ date('d/m/Y') }}
+                            REPORT ORBIT PERIODE {{ date('d/m/Y') }}
                         </th>
                     </tr>
                     <tr style="text-align: center;">
-                        <th style="vertical-align: middle;">SEKTOR</th>
-                        <th style="vertical-align: middle;">MANJA EXPIRED <br> H-1</th>
-                        <th style="vertical-align: middle;">MANJA <br> HI</th>
-                        <th style="vertical-align: middle;">SALDO MANJA <br> H+1</th>
-                        <th style="vertical-align: middle;">SALDO MANJA <br> H+2</th>
-                        <th style="vertical-align: middle;">SALDO MANJA <br> H>2</th>
-                        <th style="vertical-align: middle;">TOTAL</th>
+                        <th style="vertical-align: middle;">WILAYAH</th>
+                        <th style="vertical-align: middle;">PI HI</th>
+                        <th style="vertical-align: middle;">PS HI</th>
+                        <th style="vertical-align: middle;">PS/PI HI</th>
+                        <th style="vertical-align: middle;">PI TOT</th>
+                        <th style="vertical-align: middle;">PS TOT</th>
+                        <th style="vertical-align: middle;">PS/PI TOT</th>
                     </tr>
                 </thead>
             </table>
@@ -43,7 +43,7 @@
             border-radius: 19px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             min-height: auto;
-            margin-top: -40px;
+            margin-top: -40px; 
         }
 
         .upload-title,
@@ -88,25 +88,26 @@
             display: none;
         }
 
-        #tabel_provimanja {
+        #tabel_orbit {
             font-family: 'Poppins', sans-serif;
             text-align: center;
             border-collapse: separate;
             border-spacing: 0;
             border-radius: 10px;
             overflow: hidden;
+            /* Agar sudutnya ikut melengkung */
         }
 
-        #tabel_provimanja th,
-        #tabel_provimanja td {
+        #tabel_orbit th,
+        #tabel_orbit td {
             padding: 8px 15px;
         }
 
-        #tabel_provimanja tbody tr:last-child td:first-child {
+        #tabel_orbit tbody tr:last-child td:first-child {
             border-bottom-left-radius: 10px;
         }
 
-        #tabel_provimanja tbody tr:last-child td:last-child {
+        #tabel_orbit tbody tr:last-child td:last-child {
             border-bottom-right-radius: 10px;
         }
 
@@ -129,64 +130,60 @@
             cursor: pointer;
             border-color: #afafaf;
         }
+
     </style>
 @endpush
 
 @push('js')
     <script>
         $(document).ready(function() {
-            if (!$.fn.DataTable.isDataTable('#tabel_provimanja')) {
-                var dataUser = $('#tabel_provimanja').DataTable({
+            if (!$.fn.DataTable.isDataTable('#tabel_orbit')) {
+                var dataUser = $('#tabel_orbit').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        "url": "{{ url('provimanja/list') }}",
+                        "url": "{{ url('orbit/list') }}",
                         "type": "POST",
                         "data": function(d) {
-                            d.id_sektor = $('#id_sektor').val();
                             d.id_wilayah = $('#id_wilayah').val();
                         }
                     },
                     columns: [{
-                            data: "sektor.nama_sektor",
+                            data: "wilayah.nama_wilayah",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "manja_expired_h-1",
+                            data: "pi_hi",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "manja_hi",
+                            data: "ps_hi",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "saldo_manja_h+1",
+                            data: "ps_pi_hi",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "saldo_manja_h+2",
+                            data: "pi_tot",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "saldo_manja_h>2",
+                            data: "ps_tot",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "total",
+                            data: "ps_pi_tot",
                             orderable: false,
                             searchable: false
                         }
                     ]
-                });
-
-                $('#id_sektor').on('change', function() {
-                    dataSektor.ajax.reload();
                 });
 
                 $('#id_wilayah').on('change', function() {

@@ -7,27 +7,28 @@
             <div style="position: relative;">
                 <button type="submit" form="upload-form" class="btn send-button" id="send">Send</button>
             </div>
-            <form action="{{ route('provimanja.store') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+            <form action="{{ route('pivotendstate.store') }}" method="POST" enctype="multipart/form-data" class="upload-form">
                 @csrf
                 <input type="file" name="file" accept=".csv" required>
             </form>
 
             <h2 class="pivot-title">Pivot Table</h2>
-            <table class="table table-bordered table-hover table-sm" id="tabel_provimanja">
+            <table class="table table-bordered table-hover table-sm" id="tabel_pivotendstate">
                 <thead>
                     <tr>
                         <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
-                            REPORT PROVI MANJA PERIODE {{ date('d/m/Y') }}
+                            REPORT PIVOT ENDSTATE PERIODE {{ date('d/m/Y') }}
                         </th>
                     </tr>
                     <tr style="text-align: center;">
                         <th style="vertical-align: middle;">SEKTOR</th>
-                        <th style="vertical-align: middle;">MANJA EXPIRED <br> H-1</th>
-                        <th style="vertical-align: middle;">MANJA <br> HI</th>
-                        <th style="vertical-align: middle;">SALDO MANJA <br> H+1</th>
-                        <th style="vertical-align: middle;">SALDO MANJA <br> H+2</th>
-                        <th style="vertical-align: middle;">SALDO MANJA <br> H>2</th>
-                        <th style="vertical-align: middle;">TOTAL</th>
+                        <th style="vertical-align: middle;">PI TOTAL</th>
+                        <th style="vertical-align: middle;">PS TOTAL</th>
+                        <th style="vertical-align: middle;">CANCEL TOTAL</th>
+                        <th style="vertical-align: middle;">FALLOUT TOTAL</th>
+                        <th style="vertical-align: middle;">PS/PI TOTAL</th>
+                        <th style="vertical-align: middle;">CANCEL/PI TOTAL</th>
+                        <th style="vertical-align: middle;">FALLOUT/PI TOTAL</th>
                     </tr>
                 </thead>
             </table>
@@ -88,25 +89,26 @@
             display: none;
         }
 
-        #tabel_provimanja {
+        #tabel_pivotendstate {
             font-family: 'Poppins', sans-serif;
             text-align: center;
             border-collapse: separate;
             border-spacing: 0;
             border-radius: 10px;
             overflow: hidden;
+            /* Agar sudutnya ikut melengkung */
         }
 
-        #tabel_provimanja th,
-        #tabel_provimanja td {
+        #tabel_pivotendstate th,
+        #tabel_pivotendstate td {
             padding: 8px 15px;
         }
 
-        #tabel_provimanja tbody tr:last-child td:first-child {
+        #tabel_pivotendstate tbody tr:last-child td:first-child {
             border-bottom-left-radius: 10px;
         }
 
-        #tabel_provimanja tbody tr:last-child td:last-child {
+        #tabel_pivotendstate tbody tr:last-child td:last-child {
             border-bottom-right-radius: 10px;
         }
 
@@ -129,22 +131,28 @@
             cursor: pointer;
             border-color: #afafaf;
         }
+
+        .send-button:hover {
+            background-color: #ffffff;
+            color: #C8170D;
+            cursor: pointer;
+            border-color: #afafaf;
+        }
     </style>
 @endpush
 
 @push('js')
     <script>
         $(document).ready(function() {
-            if (!$.fn.DataTable.isDataTable('#tabel_provimanja')) {
-                var dataUser = $('#tabel_provimanja').DataTable({
+            if (!$.fn.DataTable.isDataTable('#tabel_pivotendstate')) {
+                var dataUser = $('#tabel_pivotendstate').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        "url": "{{ url('provimanja/list') }}",
+                        "url": "{{ url('pivotendstate/list') }}",
                         "type": "POST",
                         "data": function(d) {
                             d.id_sektor = $('#id_sektor').val();
-                            d.id_wilayah = $('#id_wilayah').val();
                         }
                     },
                     columns: [{
@@ -153,43 +161,44 @@
                             searchable: false
                         },
                         {
-                            data: "manja_expired_h-1",
+                            data: "pi_tot",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "manja_hi",
+                            data: "ps_tot",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "saldo_manja_h+1",
+                            data: "cancel_tot",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "saldo_manja_h+2",
+                            data: "pi_tot",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "saldo_manja_h>2",
+                            data: "ps_pi_tot",
                             orderable: false,
                             searchable: false
                         },
                         {
-                            data: "total",
+                            data: "cancel_pi_tot",
                             orderable: false,
                             searchable: false
-                        }
+                        },
+                        {
+                            data: "fallout_pi_tot",
+                            orderable: false,
+                            searchable: false
+                        },
                     ]
                 });
 
                 $('#id_sektor').on('change', function() {
-                    dataSektor.ajax.reload();
-                });
-
-                $('#id_wilayah').on('change', function() {
                     dataWilayah.ajax.reload();
                 });
             }
