@@ -39,4 +39,9 @@ class ProviKproModel extends Authenticatable
     {
         return $this->belongsTo(EndstateModel::class, 'id_endstate', 'id_endstate');
     }
+
+    public function provimanja()
+    {
+        return $this->belongsTo(ProviManjaModel::class, 'id_provi_manja', 'id_provi_manja');
+    }
 }
