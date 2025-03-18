@@ -6,46 +6,46 @@
             <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="{{ url('/xpro') }}" class="nav-link {{ $activeMenu == 'xpro' ? 'active' : '' }}">
+                <a href="{{ url('/user/xpro') }}" class="nav-link {{ $activeMenu == 'xpro' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_XPRO.png') }}" alt="Xpro Icon" class="nav-icon">
                     <p>Report Xpro</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/orbit') }}" class="nav-link {{ $activeMenu == 'orbit' ? 'active' : '' }}">
+                <a href="{{ url('/user/orbit') }}" class="nav-link {{ $activeMenu == 'orbit' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_ORBIT.png') }}" alt="Orbit Icon" class="nav-icon">
                     <p>Report Orbit</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/endstate') }}" class="nav-link {{ $activeMenu == 'endstate' ? 'active' : '' }}">
+                <a href="{{ url('/user/endstate') }}" class="nav-link {{ $activeMenu == 'endstate' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_ENDSTATE.png') }}" alt="Endstate Icon" class="nav-icon">
                     <p>Report Endstate</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/pivotendstate') }}"
+                <a href="{{ url('/user/pivotendstate') }}"
                     class="nav-link {{ $activeMenu == 'pivotendstate' ? 'active' : '' }}">
-                    <img src="{{ asset('assets/Icon_PIVOTENDSTATE.png') }}" alt="Pivot Endstate Icon"
-                        class="nav-icon">
+                    <img src="{{ asset('assets/Icon_PIVOTENDSTATE.png') }}" alt="Pivot Endstate Icon" class="nav-icon">
                     <p>Report Pivot Endstate</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/provimanja') }}"
+                <a href="{{ url('/user/provimanja') }}"
                     class="nav-link {{ $activeMenu == 'provimanja' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_PROVIMANJA.png') }}" alt="Provi Manja Icon" class="nav-icon">
                     <p>Report Provi Manja</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/provikpro') }}" class="nav-link {{ $activeMenu == 'provikpro' ? 'active' : '' }}">
+                <a href="{{ url('/user/provikpro') }}"
+                    class="nav-link {{ $activeMenu == 'provikpro' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_PROVIKPRO.png') }}" alt="Provi Kpro Icon" class="nav-icon">
                     <p>Report Provi Kpro</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/profile') }}" class="nav-link {{ $activeMenu == 'profile' ? 'active' : '' }}">
+                <a href="{{ url('/user/profile') }}" class="nav-link {{ $activeMenu == 'profile' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_Profile.png') }}" alt="Profile Icon" class="nav-icon">
                     <p>Profile</p>
                 </a>
@@ -69,6 +69,7 @@
         background: #E5E5E8 !important;
         /* color: #84858C !important; */
     }
+
     .nav-link.active {
         background: #C8170D !important;
         color: white !important;
@@ -77,6 +78,7 @@
     .nav-link:hover img {
         color: #696A71;
     }
+
     .nav-link.active img {
         filter: brightness(0) invert(1);
         /* Mengubah ikon menjadi putih */
@@ -85,6 +87,7 @@
     .nav-link:hover p {
         color: #696A71;
     }
+
     .nav-link.active p {
         color: white !important;
     }

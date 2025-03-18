@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\UserModel;
 use App\Models\WargaModel;
 use App\Models\PasswordResetToken;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class LoginController extends Controller
@@ -26,25 +27,21 @@ class LoginController extends Controller
         $request->validate([
             'nik' => 'required',
             'password' => 'required',
-        ], [
-            'nik.required' => 'Username tidak boleh kosong',
-            'password.required' => 'Password tidak boleh kosong',
         ]);
 
-        // Ambil data user berdasarkan NIK yang diberikan
-        $user = UserModel::whereHas('user', function ($query) use ($request) {
-            $query->where('nik', $request->nik);
-        })->first();
+        // Coba ambil user berdasarkan NIK
+        $user = UserModel::where('nik', $request->nik)->first();
 
-        // Jika user tidak ditemukan atau password salah, kembalikan ke halaman login
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return redirect()->route('login')->with('error', 'Username atau Password Salah');
+        if (!$user) {
+            return back()->withErrors(['login_gagal' => 'User tidak ditemukan']);
         }
 
-        // Authentikasi pengguna dengan menggunakan user yang ditemukan
+        // Authentikasi user
         Auth::login($user);
+        dd(Auth::check()); // Debugging untuk memastikan user terautentikasi
         return redirect()->route('xpro.index');
     }
+
 
     public function logout()
     {
