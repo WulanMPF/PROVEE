@@ -64,14 +64,11 @@
                 style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
                 <div style="background: #fff; padding: 20px; border-radius: 10px; width: 400px;">
                     <h3 style="margin-bottom: 15px;">Reset Password</h3>
-                    <form id="resetPasswordForm" action="{{ route('profile.reset-password') }}" method="POST">
+                    <form action="{{ route('profile.reset', ['id' => $user->id_user]) }}" method="POST">
                         @csrf
-                        <label>Password Lama</label>
-                        <input type="password" name="old_password" required
-                            style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
-
-                        <label>Password Baru</label>
-                        <input type="password" name="new_password" required
+                        {!! method_field('PUT') !!}
+                        <label>Masukkan Password Baru</label>
+                        <input type="text" name="password" required
                             style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
 
                         <label>Konfirmasi Password Baru</label>
@@ -80,9 +77,9 @@
 
                         <div style="display: flex; justify-content: space-between;">
                             <button type="button" onclick="closeModal()"
-                                style="background: gray; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Batal</button>
+                                style="background: gray; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Cancel</button>
                             <button type="submit"
-                                style="background: #C8170D; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Simpan</button>
+                                style="background: #C8170D; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Save</button>
                         </div>
                     </form>
                 </div>

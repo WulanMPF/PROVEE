@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\OrbitModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use App\Imports\OrbitImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrbitController extends Controller
 {
@@ -28,15 +30,23 @@ class OrbitController extends Controller
         return DataTables::of($orbits)
             ->addIndexColumn()
             ->addColumn('ps_pi_hi', function ($row) {
-                return $row->pi_hi != 0 ? round(($row->ps_hi / $row->pi_hi) * 100, 2) . '%' : 'N/A';
+                return $row->pi_hi != 0 ? round(($row->ps_hi / $row->pi_hi) * 100, 2) . '%' : '100%';
             })
             ->addColumn('ps_pi_tot', function ($row) {
-                return $row->pi_tot != 0 ? round(($row->ps_tot / $row->pi_tot) * 100, 2) . '%' : 'N/A';
+                return $row->pi_tot != 0 ? round(($row->ps_tot / $row->pi_tot) * 100, 2) . '%' : '100%';
             })
             ->make(true);
     }
 
-    // METHOD STORE BELUM
-    // STORE UNTUK SIMPAN FILE UPLOAD DAN MENGOLAH FILTERNYA
-    // LALU HASIL STORE DIMASUKKAN KE TABEL REPORT
+    public function import(Request $request)
+    {
+        return view('orbit.index');
+    }
+
+    public function import_proses(Request $request)
+    {
+        // dd($request->all());
+        Excel::import(new OrbitImport(), $request->file('file'));
+        return redirect()->back();
+    }
 }

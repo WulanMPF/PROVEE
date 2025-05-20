@@ -140,7 +140,7 @@
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        "url": "{{ url('provimanja/list') }}",
+                        "url": "{{ route('provimanja.list') }}",
                         "type": "POST",
                         "data": function(d) {
                             d.id_sektor = $('#id_sektor').val();

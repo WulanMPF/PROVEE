@@ -7,9 +7,11 @@
             <div style="position: relative;">
                 <button type="submit" form="upload-form" class="btn send-button" id="send">Send</button>
             </div>
-            <form action="{{ route('orbit.store') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+            <form id="upload-form" action="{{ route('orbit.import-proses') }}" method="POST" enctype="multipart/form-data"
+                class="upload-form">
                 @csrf
-                <input type="file" name="file" accept=".csv" required>
+                <input type="file" name="file" id="fileInput" required>
+                <button type="submit" class="btn upload-button" id="upload">Upload</button>
             </form>
 
             <h2 class="pivot-title">Pivot Table</h2>
@@ -43,7 +45,7 @@
             border-radius: 19px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             min-height: auto;
-            margin-top: -40px; 
+            margin-top: -40px;
         }
 
         .upload-title,
@@ -131,6 +133,24 @@
             border-color: #afafaf;
         }
 
+        .upload-button {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            background-color: #ffffff;
+            color: #881A14;
+            border-color: #afafaf;
+            right: 1px;
+            top: -30px;
+            z-index: 10;
+            border-radius: 10px;
+            padding: 8px 20px;
+        }
+
+        .upload-button:hover {
+            background-color: #C8170D;
+            color: #fff;
+            cursor: pointer;
+        }
     </style>
 @endpush
 
@@ -142,7 +162,7 @@
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        "url": "{{ url('orbit/list') }}",
+                        "url": "{{ route('orbit.list') }}",
                         "type": "POST",
                         "data": function(d) {
                             d.id_wilayah = $('#id_wilayah').val();

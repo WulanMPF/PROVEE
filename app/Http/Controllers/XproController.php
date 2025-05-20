@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Imports\XproImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\XproModel;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\DataTables;
+use Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
 
 class XproController extends Controller
 {
@@ -42,6 +45,18 @@ class XproController extends Controller
                 return $row->pi_tot != 0 ? round(($row->ps_tot / $row->pi_tot) * 100, 2) . '%' : 'N/A';
             })
             ->make(true);
+    }
+
+    public function import(Request $request)
+    {
+        return view('xpro.index');
+    }
+
+    public function import_proses(Request $request)
+    {
+        // dd($request->all());
+
+        Excel::import(new XproImport(), $request->file('file'));
     }
 
     // METHOD STORE BELUM

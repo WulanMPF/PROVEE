@@ -17,7 +17,6 @@ class EndstateModel extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
-        'id_periode',
         'id_wilayah',
         'pi_hi',
         'ps_hi',
@@ -25,22 +24,11 @@ class EndstateModel extends Authenticatable
         'pi_tot',
         'ps_tot',
         'target_tot',
-        'id_file',
     ];
-
-    public function periode(): BelongsTo
-    {
-        return $this->belongsTo(PeriodeModel::class, 'id_periode', 'id_periode');
-    }
 
     public function wilayah(): BelongsTo
     {
         return $this->belongsTo(WilayahModel::class, 'id_wilayah', 'id_wilayah');
-    }
-
-    public function file(): BelongsTo
-    {
-        return $this->belongsTo(FileModel::class, 'id_file', 'id_file');
     }
 
     public function pivotEndstate()

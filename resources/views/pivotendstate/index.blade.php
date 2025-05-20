@@ -149,7 +149,7 @@
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        "url": "{{ url('pivotendstate/list') }}",
+                        "url": "{{ route('pivotendstate.list') }}",
                         "type": "POST",
                         "data": function(d) {
                             d.id_sektor = $('#id_sektor').val();
@@ -176,7 +176,7 @@
                             searchable: false
                         },
                         {
-                            data: "pi_tot",
+                            data: "fallout_tot",
                             orderable: false,
                             searchable: false
                         },

@@ -17,18 +17,12 @@ class ProviKproModel extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
-        'id_periode',
         'id_wilayah',
         'id_endstate',
         'target_per_hari',
         'deviasi',
         'perhitungan_hari',
     ];
-
-    public function periode(): BelongsTo
-    {
-        return $this->belongsTo(PeriodeModel::class, 'id_periode', 'id_periode');
-    }
 
     public function wilayah(): BelongsTo
     {
