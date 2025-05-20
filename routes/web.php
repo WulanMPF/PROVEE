@@ -32,37 +32,39 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //     Route::post('/reset-password', [ProfileController::class, 'reset_password'])->name('profile.reset-password');
 // });
 
-// Route dengan middleware auth untuk pengguna yang terautentikasi
-Route::group(['middleware' => ['auth']], function () {
-    Route::group(['prefix' => 'user'], function () {
-        Route::group(['middleware' => ['cek_login']], function () {
-            // Route Xpro
-            Route::group(['prefix' => 'xpro'], function () {
-                Route::get('/', [XproController::class, 'index'])->name('xpro.index');
-                Route::post('/list', [XproController::class, 'list'])->name('xpro.list');
-                Route::post('/', [XproController::class, 'store'])->name('xpro.store');
-            });
+Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['cek_login']], function () {
+        // Route Xpro
+        Route::group(['prefix' => 'xpro'], function () {
+            Route::get('/', [XproController::class, 'index'])->name('xpro.index');
+            Route::post('/list', [XproController::class, 'list'])->name('xpro.list');
+            Route::get('/import', [XproController::class, 'import'])->name('xpro.import');
+            Route::post('/import-proses', [XproController::class, 'import_proses'])->name('xpro.import-proses');
+        });
 
-            // Route Orbit
-            Route::group(['prefix' => 'orbit'], function () {
-                Route::get('/', [OrbitController::class, 'index'])->name('orbit.index');
-                Route::post('/list', [OrbitController::class, 'list'])->name('orbit.list');
-                Route::post('/', [OrbitController::class, 'store'])->name('orbit.store');
-            });
+        // Route Orbit
+        Route::group(['prefix' => 'orbit'], function () {
+            Route::get('/', [OrbitController::class, 'index'])->name('orbit.index');
+            Route::post('/list', [OrbitController::class, 'list'])->name('orbit.list');
+            Route::get('/import', [OrbitController::class, 'import'])->name('orbit.import');
+            Route::post('/import-proses', [OrbitController::class, 'import_proses'])->name('orbit.import-proses');
+        });
 
-            // Route Pivot Endstate
-            Route::group(['prefix' => 'pivotendstate'], function () {
-                Route::get('/', [PivotEndstateController::class, 'index'])->name('pivotendstate.index');
-                Route::post('/list', [PivotEndstateController::class, 'list'])->name('pivotendstate.list');
-                Route::post('/', [PivotEndstateController::class, 'store'])->name('pivotendstate.store');
-            });
+        // Route Endstate
+        Route::group(['prefix' => 'endstate'], function () {
+            Route::get('/', [EndstateController::class, 'index'])->name('endstate.index');
+            Route::post('/list', [EndstateController::class, 'list'])->name('endstate.list');
+            Route::post('/', [EndstateController::class, 'store'])->name('endstate.store');
+            Route::get('/import', [EndstateController::class, 'import'])->name('endstate.import');
+            Route::post('/import-proses', [EndstateController::class, 'import_proses'])->name('endstate.import-proses');
+        });
 
-            // Route Endstate
-            Route::group(['prefix' => 'endstate'], function () {
-                Route::get('/', [EndstateController::class, 'index'])->name('endstate.index');
-                Route::post('/list', [EndstateController::class, 'list'])->name('endstate.list');
-                Route::post('/', [EndstateController::class, 'store'])->name('endstate.store');
-            });
+        // Route Pivot Endstate
+        Route::group(['prefix' => 'pivotendstate'], function () {
+            Route::get('/', [PivotEndstateController::class, 'index'])->name('pivotendstate.index');
+            Route::post('/list', [PivotEndstateController::class, 'list'])->name('pivotendstate.list');
+            Route::post('/', [PivotEndstateController::class, 'store'])->name('pivotendstate.store');
+        });
 
             // Route ProviManja
             Route::group(['prefix' => 'provimanja'], function () {
@@ -85,4 +87,3 @@ Route::group(['middleware' => ['auth']], function () {
             });
         });
     });
-});

@@ -59,9 +59,7 @@ class PivotEndstateDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id_wilayah'),
             Column::make('id_sektor'),
-            Column::make('id_endstate'),
             Column::make('created_at'),
             Column::make('updated_at'),
         ];

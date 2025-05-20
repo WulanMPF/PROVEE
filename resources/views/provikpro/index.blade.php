@@ -139,7 +139,7 @@
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        "url": "{{ url('provikpro/list') }}",
+                        "url": "{{ route('provikpro.list') }}",
                         "type": "POST",
                         "data": function(d) {
                             d.id_wilayah = $('#id_wilayah').val();

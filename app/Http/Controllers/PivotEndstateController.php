@@ -23,62 +23,19 @@ class PivotEndstateController extends Controller
     // Ambil data dalam bentuk json untuk datatables 
     public function list(Request $request)
     {
-        $pivotendstates = PivotEndstateModel::with('sektor', 'wilayah', 'endstate')
-            ->select('id_pivot_endstate', 'report_pivot_endstate.id_sektor', 'report_pivot_endstate.id_wilayah', 'report_pivot_endstate.id_endstate');
+        $pivotendstates = PivotEndstateModel::with('sektor')
+            ->select('id_pivot_endstate', 'report_pivot_endstate.id_sektor', 'pi_tot', 'ps_tot', 'cancel_tot', 'fallout_tot');
 
         return DataTables::of($pivotendstates)
             ->addIndexColumn()
             ->addColumn('ps_pi_tot', function ($row) {
-                $endstate = DB::table('endstate')
-                    ->where('id_endstate', $row->id_endstate)
-                    ->select('ps_tot', 'pi_tot')
-                    ->first();
-            
-                if ($endstate) {
-                    return $endstate->pi_tot != 0 
-                        ? round(($endstate->ps_tot / $endstate->pi_tot) * 100, 2) . '%'
-                        : 'N/A';
-                }
-            
-                return 'N/A';
+                return $row->pi_tot != 0 ? round(($row->ps_tot / $row->pi_tot) * 100, 2) . '%' : '100%';
             })
             ->addColumn('cancel_pi_tot', function ($row) {
-                $endstate = DB::table('report_pivot_endstate')
-                    ->where('id_endstate', $row->id_endstate)
-                    ->select('pi_tot', 'accomp')
-                    ->first();
-            
-                $pivotEndstate = DB::table('report_pivot_endstate')
-                    ->where('id_pivot_endstate', $row->id_pivot_endstate)
-                    ->select('cancel_tot')
-                    ->first();
-            
-                if ($endstate && $pivotEndstate) {
-                    return $endstate->pi_tot != 0
-                        ? round(($pivotEndstate->cancel_tot / $endstate->pi_tot) * 100, 2) . '%'
-                        : 'N/A';
-                }
-            
-                return 'N/A';
+                return $row->pi_tot != 0 ? round(($row->cancel_tot / $row->pi_tot) * 100, 2) . '%' : '100%';
             })
             ->addColumn('fallout_pi_tot', function ($row) {
-                $endstate = DB::table('report_pivot_endstate')
-                    ->where('id_endstate', $row->id_endstate)
-                    ->select('pi_tot', 'accomp')
-                    ->first();
-            
-                $pivotEndstate = DB::table('report_pivot_endstate')
-                    ->where('id_pivot_endstate', $row->id_pivot_endstate)
-                    ->select('fallout_tot')
-                    ->first();
-            
-                if ($endstate && $pivotEndstate) {
-                    return $endstate->pi_tot != 0
-                        ? round(($pivotEndstate->fallout_tot / $endstate->pi_tot) * 100, 2) . '%'
-                        : 'N/A';
-                }
-            
-                return 'N/A';
+                return $row->pi_tot != 0 ? round(($row->fallout_tot / $row->pi_tot) * 100, 2) . '%' : '100%';
             })
             ->make(true);
     }

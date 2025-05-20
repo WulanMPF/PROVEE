@@ -45,7 +45,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/user/profile') }}" class="nav-link {{ $activeMenu == 'profile' ? 'active' : '' }}">
+                <a href="{{ url('/user/profile/{id}') }}" class="nav-link {{ $activeMenu == 'profile' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_Profile.png') }}" alt="Profile Icon" class="nav-icon">
                     <p>Profile</p>
                 </a>

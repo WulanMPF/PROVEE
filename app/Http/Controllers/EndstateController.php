@@ -7,6 +7,8 @@ use App\Models\EndstateModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
+use App\Imports\EndstateImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EndstateController extends Controller
 {
@@ -30,15 +32,23 @@ class EndstateController extends Controller
         return DataTables::of($endstates)
             ->addIndexColumn()
             ->addColumn('ps_pi_hi', function ($row) {
-                return $row->pi_hi != 0 ? round(($row->ps_hi / $row->pi_hi) * 100, 2) . '%' : 'N/A';
+                return $row->pi_hi != 0 ? round(($row->ps_hi / $row->pi_hi) * 100, 2) . '%' : '100%';
             })
             ->addColumn('ps_pi_tot', function ($row) {
-                return $row->pi_tot != 0 ? round(($row->ps_tot / $row->pi_tot) * 100, 2) . '%' : 'N/A';
+                return $row->pi_tot != 0 ? round(($row->ps_tot / $row->pi_tot) * 100, 2) . '%' : '100%';
             })
             ->make(true);
     }
 
-    // METHOD STORE BELUM
-    // STORE UNTUK SIMPAN FILE UPLOAD DAN MENGOLAH FILTERNYA
-    // LALU HASIL STORE DIMASUKKAN KE TABEL REPORT
+    public function import(Request $request)
+    {
+        return view('endstate.index');
+    }
+
+    public function import_proses(Request $request)
+    {
+        // dd($request->all());
+        Excel::import(new EndstateImport(), $request->file('file'));
+        return redirect()->back();
+    }
 }
