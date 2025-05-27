@@ -3,43 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserModel;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-
-        $user = Auth::user();
-
-        $breadcrumb = (object) [
-            'title' => 'Profile',
-        ];
-
-        $activeMenu = 'profile';
-
-        return view('profile', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu], compact('user'));
+        $this->middleware('auth');
     }
 
-    // RESET PASSWORD GAISO
+    public function index()
+    {
+        $user = Auth::user();
+        $breadcrumb = (object) ['title' => 'Profile'];
+        $activeMenu = 'profile';
+
+        return view('profile', compact('breadcrumb', 'activeMenu', 'user'));
+    }
+
     public function reset_password(Request $request)
     {
+        // Log::info('Reset password method called');
+        // Validasi input
         $request->validate([
             'old_password' => 'required',
-            'new_password' => 'required|min:6',
-            'confirm_new_password' => 'required|same:new_password',
+            'new_password' => 'required|min:6|confirmed',
         ]);
 
-        $user = Auth::user();
-        dd(get_class($user));
+        $user = UserModel::find(Auth::id());
 
-        if (!Hash::check($request->old_password, $user->password)) {
+        // Cek apakah user ditemukan dan password lama sesuai
+        if (!$user || !Hash::check($request->old_password, $user->password)) {
             return back()->with('error', 'Password lama tidak sesuai.');
         }
 
+        // Update password baru
         $user->password = Hash::make($request->new_password);
         $user->save();
 
