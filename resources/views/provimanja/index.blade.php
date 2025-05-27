@@ -13,24 +13,26 @@
             </form>
 
             <h2 class="pivot-title">Pivot Table</h2>
-            <table class="table table-bordered table-hover table-sm" id="tabel_provimanja">
-                <thead>
-                    <tr>
-                        <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
-                            REPORT PROVI MANJA PERIODE {{ date('d/m/Y') }}
-                        </th>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <th style="vertical-align: middle;">SEKTOR</th>
-                        <th style="vertical-align: middle;">MANJA EXPIRED <br> H-1</th>
-                        <th style="vertical-align: middle;">MANJA <br> HI</th>
-                        <th style="vertical-align: middle;">SALDO MANJA <br> H+1</th>
-                        <th style="vertical-align: middle;">SALDO MANJA <br> H+2</th>
-                        <th style="vertical-align: middle;">SALDO MANJA <br> H>2</th>
-                        <th style="vertical-align: middle;">TOTAL</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="table-responsive-wrapper">
+                <table class="table table-bordered table-hover table-sm" id="tabel_provimanja">
+                    <thead>
+                        <tr>
+                            <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
+                                REPORT PROVI MANJA PERIODE {{ date('d/m/Y') }}
+                            </th>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <th style="vertical-align: middle;">SEKTOR</th>
+                            <th style="vertical-align: middle;">MANJA EXPIRED <br> H-1</th>
+                            <th style="vertical-align: middle;">MANJA <br> HI</th>
+                            <th style="vertical-align: middle;">SALDO MANJA <br> H+1</th>
+                            <th style="vertical-align: middle;">SALDO MANJA <br> H+2</th>
+                            <th style="vertical-align: middle;">SALDO MANJA <br> H>2</th>
+                            <th style="vertical-align: middle;">TOTAL</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 @endsection
@@ -86,6 +88,12 @@
         /* Hilangkan informasi jumlah data */
         .dataTables_info {
             display: none;
+        }
+
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         #tabel_provimanja {
