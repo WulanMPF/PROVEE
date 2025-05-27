@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function index(string $id)
     {
 
-        $user = Auth::user();
+        $user = UserModel::find($id);
 
         $breadcrumb = (object) [
             'title' => 'Profile',
@@ -21,28 +21,20 @@ class ProfileController extends Controller
 
         $activeMenu = 'profile';
 
-        return view('profile', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu], compact('user'));
+        return view('profile', ['breadcrumb' => $breadcrumb, 'user' => $user, 'activeMenu' => $activeMenu]);
     }
 
-    // RESET PASSWORD GAISO
-    public function reset_password(Request $request)
+    public function reset(Request $request, string $id)
     {
         $request->validate([
-            'old_password' => 'required',
-            'new_password' => 'required|min:6',
+            'password' => 'required',
             'confirm_new_password' => 'required|same:new_password',
         ]);
 
-        $user = Auth::user();
-        dd(get_class($user));
-
-        if (!Hash::check($request->old_password, $user->password)) {
-            return back()->with('error', 'Password lama tidak sesuai.');
-        }
-
-        $user->password = Hash::make($request->new_password);
-        $user->save();
-
+        UserModel::find($id)->update([
+            'password'  => $request->password ? bcrypt($request->password) : UserModel::find($id)->password,
+            'confirm_new_password'  => $request->password ? bcrypt($request->password) : UserModel::find($id)->password,
+        ]);
         return back()->with('success', 'Password berhasil diubah.');
     }
 }

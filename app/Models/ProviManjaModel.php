@@ -22,6 +22,7 @@ class ProviManjaModel extends Authenticatable
         'manja_hi',
         'saldo_manja_h+1',
         'saldo_manja_h+2',
+        'saldo_manja_h>2',
         'total',
     ];
 

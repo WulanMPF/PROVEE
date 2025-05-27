@@ -55,11 +55,7 @@ class XproController extends Controller
     public function import_proses(Request $request)
     {
         // dd($request->all());
-
         Excel::import(new XproImport(), $request->file('file'));
+        return redirect()->back();
     }
-
-    // METHOD STORE BELUM
-    // STORE UNTUK SIMPAN FILE UPLOAD DAN MENGOLAH FILTERNYA
-    // LALU HASIL STORE DIMASUKKAN KE TABEL REPORT
 }
