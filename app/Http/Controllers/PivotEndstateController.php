@@ -39,8 +39,4 @@ class PivotEndstateController extends Controller
             })
             ->make(true);
     }
-
-    // METHOD STORE BELUM
-    // STORE UNTUK SIMPAN FILE UPLOAD DAN MENGOLAH FILTERNYA
-    // LALU HASIL STORE DIMASUKKAN KE TABEL REPORT
 }

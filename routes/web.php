@@ -66,12 +66,14 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             Route::post('/', [PivotEndstateController::class, 'store'])->name('pivotendstate.store');
         });
 
-            // Route ProviManja
-            Route::group(['prefix' => 'provimanja'], function () {
-                Route::get('/', [ProviManjaController::class, 'index'])->name('provimanja.index');
-                Route::post('/list', [ProviManjaController::class, 'list'])->name('provimanja.list');
-                Route::post('/', [ProviManjaController::class, 'store'])->name('provimanja.store');
-            });
+        // Route ProviManja
+        Route::group(['prefix' => 'provimanja'], function () {
+            Route::get('/', [ProviManjaController::class, 'index'])->name('provimanja.index');
+            Route::post('/list', [ProviManjaController::class, 'list'])->name('provimanja.list');
+            Route::post('/', [ProviManjaController::class, 'store'])->name('provimanja.store');
+            Route::get('/import', [ProviManjaController::class, 'import'])->name('provimanja.import');
+            Route::post('/import-proses', [ProviManjaController::class, 'import_proses'])->name('provimanja.import-proses');
+        });
 
             // Route ProviKpro
             Route::group(['prefix' => 'provikpro'], function () {

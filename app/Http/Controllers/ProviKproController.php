@@ -35,34 +35,30 @@ class ProviKproController extends Controller
                     ->where('id_endstate', $row->id_endstate)
                     ->select('ps_tot', 'accomp')
                     ->first();
-            
+
                 if ($endstate) {
-                    return $endstate->accomp != 0 
-                        ? round(($endstate->ps_tot / $endstate->accomp), 2) 
+                    return $endstate->accomp != 0
+                        ? round(($endstate->ps_tot / $endstate->accomp), 2)
                         : 'N/A';
                 }
-            
+
                 return 'N/A';
             })
             ->addColumn('ps_pi_tot', function ($row) {
                 $endstate = DB::table('report_endstate')
-                    ->where('id_endstate', $row->id_endstate) 
+                    ->where('id_endstate', $row->id_endstate)
                     ->select('ps_tot', 'pi_tot')
                     ->first();
-            
+
                 if ($endstate) {
-                    return $endstate->pi_tot != 0 
-                        ? round(($endstate->ps_tot / $endstate->pi_tot) * 100, 2) . '%' 
+                    return $endstate->pi_tot != 0
+                        ? round(($endstate->ps_tot / $endstate->pi_tot) * 100, 2) . '%'
                         : 'N/A';
                 }
-            
+
                 return 'N/A';
             })
-             
+
             ->make(true);
     }
-
-    // METHOD STORE BELUM
-    // STORE UNTUK SIMPAN FILE UPLOAD DAN MENGOLAH FILTERNYA
-    // LALU HASIL STORE DIMASUKKAN KE TABEL REPORT
 }
