@@ -15,26 +15,28 @@
             </form>
 
             <h2 class="pivot-title">Pivot Table</h2>
-            <table class="table table-bordered table-hover table-sm" id="tabel_endstate">
-                <thead>
-                    <tr>
-                        <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
-                            REPORT INDIHOME PERIODE {{ date('d/m/Y') }}
-                        </th>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <th style="vertical-align: middle;">WILAYAH</th>
-                        <th style="vertical-align: middle;">PI HI</th>
-                        <th style="vertical-align: middle;">PS HI</th>
-                        <th style="vertical-align: middle;">ACCOMP</th>
-                        <th style="vertical-align: middle;">PS/PI HI</th>
-                        <th style="vertical-align: middle;">PI TOT</th>
-                        <th style="vertical-align: middle;">PS TOT</th>
-                        <th style="vertical-align: middle;">TARGET TOT</th>
-                        <th style="vertical-align: middle;">PS/PI TOT</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="table-responsive-wrapper">
+                <table class="table table-bordered table-hover table-sm" id="tabel_endstate">
+                    <thead>
+                        <tr>
+                            <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
+                                REPORT INDIHOME PERIODE {{ date('d/m/Y') }}
+                            </th>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <th style="vertical-align: middle;">WILAYAH</th>
+                            <th style="vertical-align: middle;">PI HI</th>
+                            <th style="vertical-align: middle;">PS HI</th>
+                            <th style="vertical-align: middle;">ACCOMP</th>
+                            <th style="vertical-align: middle;">PS/PI HI</th>
+                            <th style="vertical-align: middle;">PI TOT</th>
+                            <th style="vertical-align: middle;">PS TOT</th>
+                            <th style="vertical-align: middle;">TARGET TOT</th>
+                            <th style="vertical-align: middle;">PS/PI TOT</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 @endsection
@@ -90,6 +92,12 @@
         /* Hilangkan informasi jumlah data */
         .dataTables_info {
             display: none;
+        }
+
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         #tabel_endstate {

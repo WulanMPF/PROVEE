@@ -15,24 +15,26 @@
             </form>
 
             <h2 class="pivot-title">Pivot Table</h2>
-            <table class="table table-bordered table-hover table-sm" id="tabel_orbit">
-                <thead>
-                    <tr>
-                        <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
-                            REPORT ORBIT PERIODE {{ date('d/m/Y') }}
-                        </th>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <th style="vertical-align: middle;">WILAYAH</th>
-                        <th style="vertical-align: middle;">PI HI</th>
-                        <th style="vertical-align: middle;">PS HI</th>
-                        <th style="vertical-align: middle;">PS/PI HI</th>
-                        <th style="vertical-align: middle;">PI TOT</th>
-                        <th style="vertical-align: middle;">PS TOT</th>
-                        <th style="vertical-align: middle;">PS/PI TOT</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="table-responsive-wrapper">
+                <table class="table table-bordered table-hover table-sm" id="tabel_orbit">
+                    <thead>
+                        <tr>
+                            <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
+                                REPORT ORBIT PERIODE {{ date('d/m/Y') }}
+                            </th>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <th style="vertical-align: middle;">WILAYAH</th>
+                            <th style="vertical-align: middle;">PI HI</th>
+                            <th style="vertical-align: middle;">PS HI</th>
+                            <th style="vertical-align: middle;">PS/PI HI</th>
+                            <th style="vertical-align: middle;">PI TOT</th>
+                            <th style="vertical-align: middle;">PS TOT</th>
+                            <th style="vertical-align: middle;">PS/PI TOT</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 @endsection
@@ -90,6 +92,12 @@
             display: none;
         }
 
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         #tabel_orbit {
             font-family: 'Poppins', sans-serif;
             text-align: center;
@@ -97,6 +105,7 @@
             border-spacing: 0;
             border-radius: 10px;
             overflow: hidden;
+            margin-right: 20px;
             /* Agar sudutnya ikut melengkung */
         }
 
