@@ -28,7 +28,9 @@ Route::post('/login-proses', [AuthController::class, 'proses_login'])->name('log
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // RESET PASSWORD GAISO
-Route::post('/reset-password', [ProfileController::class, 'reset_password'])->name('profile.reset-password');
+// Route::middleware(['auth'])->group(function () {
+//     Route::post('/reset-password', [ProfileController::class, 'reset_password'])->name('profile.reset-password');
+// });
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login']], function () {
@@ -73,17 +75,17 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             Route::post('/import-proses', [ProviManjaController::class, 'import_proses'])->name('provimanja.import-proses');
         });
 
-        // Route ProviKpro
-        Route::group(['prefix' => 'provikpro'], function () {
-            Route::get('/', [ProviKproController::class, 'index'])->name('provikpro.index');
-            Route::post('/list', [ProviKproController::class, 'list'])->name('provikpro.list');
-            Route::post('/', [ProviKproController::class, 'store'])->name('provikpro.store');
-        });
+            // Route ProviKpro
+            Route::group(['prefix' => 'provikpro'], function () {
+                Route::get('/', [ProviKproController::class, 'index'])->name('provikpro.index');
+                Route::post('/list', [ProviKproController::class, 'list'])->name('provikpro.list');
+                Route::post('/', [ProviKproController::class, 'store'])->name('provikpro.store');
+            });
 
-        // Route Profile
-        Route::group(['prefix' => 'profile'], function () {
-            Route::get('/{id}', [ProfileController::class, 'index'])->name('profile.index');
-            Route::put('/reset/{id}', [ProfileController::class, 'reset'])->name('profile.reset');
+            // Route Profile
+            Route::group(['prefix' => 'profile'], function () {
+                Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+                Route::post('/reset-password', [ProfileController::class, 'reset_password'])->name('profile.reset-password');
+            });
         });
     });
-});

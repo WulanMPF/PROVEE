@@ -3,6 +3,19 @@
 @section('content')
     <div style="flex: 1; padding: 10px;">
 
+        {{-- Alert Success/Error --}}
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <!-- Container Isi Profil -->
         <div
             style="
@@ -20,7 +33,7 @@
             padding: 20px;
             display: flex;
             align-items: center;">
-                <img src="{{ asset('assets/Icon_Profile.png') }}" alt="Profile Picture"
+                <img src="{{ asset('assets/Avatar_Profile.png') }}" alt="Profile Picture"
                     style="width: 150px; height: 150px; border-radius: 50%; border: 2px solid #EBEBEB;">
 
                 <div style="margin-left: 20px;">
@@ -62,24 +75,37 @@
             <!-- Modal Reset Password -->
             <div id="resetPasswordModal" class="modal"
                 style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
-                <div style="background: #fff; padding: 20px; border-radius: 10px; width: 400px;">
-                    <h3 style="margin-bottom: 15px;">Reset Password</h3>
-                    <form action="{{ route('profile.reset', ['id' => $user->id_user]) }}" method="POST">
+                <div style="background: #fff; padding: 40px; border-radius: 15px; width: 400px; text-align: center;">
+                    <h2 style="font-size: 24px; font-weight: bold; color: #881A14; margin-bottom: 20px;">Reset Password</h2>
+                    <form id="resetPasswordForm" action="{{ route('profile.reset-password') }}" method="POST">
                         @csrf
-                        {!! method_field('PUT') !!}
-                        <label>Masukkan Password Baru</label>
-                        <input type="text" name="password" required
-                            style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
-
-                        <label>Konfirmasi Password Baru</label>
-                        <input type="password" name="confirm_new_password" required
-                            style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
-
-                        <div style="display: flex; justify-content: space-between;">
+                        <div style="text-align: left; margin-bottom: 10px;">
+                            <label style="display: block; font-weight: 500; color: #84858C;">Password Lama</label>
+                            <input type="password" name="old_password" placeholder="Masukkan Password Lama" required
+                                style="width: 100%; padding: 10px; border-radius: 7px; background-color: #F5F5F6; outline: none; border: none;"
+                                onfocus="this.style.border='2px solid #C8170D'" onblur="this.style.border='none'">
+                        </div>
+                        <div style="text-align: left; margin-bottom: 10px;">
+                            <label style="display: block; font-weight: 500; color: #84858C;">Password Baru</label>
+                            <input type="password" name="new_password" placeholder="Masukkan Password Baru" required
+                                style="width: 100%; padding: 10px; border-radius: 7px; background-color: #F5F5F6; outline: none; border: none;"
+                                onfocus="this.style.border='2px solid #C8170D'" onblur="this.style.border='none'">
+                        </div>
+                        <div style="text-align: left; margin-bottom: 10px;">
+                            <label style="display: block; font-weight: 500; color: #84858C;">Konfirmasi Password Baru</label>
+                            <input type="password" name="new_password_confirmation" placeholder="Konfirmasi Password Baru" required
+                                style="width: 100%; padding: 10px; border-radius: 7px; background-color: #F5F5F6; outline: none; border: none;"
+                                onfocus="this.style.border='2px solid #C8170D'" onblur="this.style.border='none'">
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
                             <button type="button" onclick="closeModal()"
-                                style="background: gray; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Cancel</button>
+                                style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 7px; background-color: white; cursor: pointer;">
+                                Cancel
+                            </button>
                             <button type="submit"
-                                style="background: #C8170D; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Save</button>
+                                style="flex: 1; padding: 10px; border-radius: 7px; background-color: #C8170D; color: white; border: none; cursor: pointer; margin-left: 10px;">
+                                Save
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -87,14 +113,14 @@
 
             {{-- RESET PASSWORD GAISO --}}
             <script>
-                document.getElementById("resetPassword").addEventListener("click", function() {
+                document.getElementById("resetPassword").addEventListener("click", function () {
                     document.getElementById("resetPasswordModal").style.display = "flex";
                 });
-
+            
                 function closeModal() {
                     document.getElementById("resetPasswordModal").style.display = "none";
                 }
-            </script>
+            </script>                        
 
         </div>
 
