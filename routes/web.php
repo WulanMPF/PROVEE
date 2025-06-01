@@ -85,12 +85,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
         // Route Profile
         Route::group(['prefix' => 'profile'], function () {
             Route::get('/{id}', [ProfileController::class, 'index'])->name('profile.index');
-            Route::post('/reset-password', [ProfileController::class, 'reset_password'])->name('profile.reset-password');
-        });
-
-        // Route Profile
-        Route::group(['prefix' => 'profile'], function () {
-            Route::get('/{id}', [ProfileController::class, 'index'])->name('profile.index');
             Route::post('/reset/{id}', [ProfileController::class, 'reset'])->name('profile.reset');
         });
     });
