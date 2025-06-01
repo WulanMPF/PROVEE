@@ -7,14 +7,15 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\FileModel;
 
 class UserModel extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, HasFactory;
 
-    protected $table = 'user'; // Sesuai dengan tabel pada database
+    protected $table = 'user'; // Sesuai dengan tabel database
     protected $primaryKey = 'id_user';
-    public $timestamps = false;
+    public $timestamps = false; // Nonaktifkan timestamps jika tidak ada di database
 
     protected $fillable = [
         'nama',
@@ -30,6 +31,6 @@ class UserModel extends Authenticatable
 
     public function file(): HasMany
     {
-        return $this->hasMany(FileModel::class, 'id_user', 'id_user');
+        return $this->hasMany(FileModel::class, 'id_user');
     }
 }

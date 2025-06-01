@@ -24,25 +24,20 @@ class ProfileController extends Controller
         return view('profile', compact('breadcrumb', 'activeMenu', 'user'));
     }
 
-    public function reset_password(Request $request)
+    public function reset_password(Request $request, $id)
     {
-        // Log::info('Reset password method called');
-        // Validasi input
         $request->validate([
-            'old_password' => 'required',
-            'new_password' => 'required|min:6|confirmed',
+            'old_password' => 'required|string',
+            'new_password' => 'required|string|min:8|confirmed',
         ]);
 
-        $user = UserModel::find(Auth::id());
+        $user = UserModel::findOrFail($id);
 
-        // Cek apakah user ditemukan dan password lama sesuai
-        if (!$user || !Hash::check($request->old_password, $user->password)) {
+        if (!Hash::check($request->old_password, $user->password)) {
             return back()->with('error', 'Password lama tidak sesuai.');
         }
 
-        // Update password baru
-        $user->password = Hash::make($request->new_password);
-        $user->save();
+        $user->update(['password' => Hash::make($request->new_password)]);
 
         return back()->with('success', 'Password berhasil diubah.');
     }

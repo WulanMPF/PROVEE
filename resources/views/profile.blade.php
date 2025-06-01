@@ -77,7 +77,7 @@
                 style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
                 <div style="background: #fff; padding: 40px; border-radius: 15px; width: 400px; text-align: center;">
                     <h2 style="font-size: 24px; font-weight: bold; color: #881A14; margin-bottom: 20px;">Reset Password</h2>
-                    <form id="resetPasswordForm" action="{{ route('profile.reset-password') }}" method="POST">
+                    <form id="resetPasswordForm" action="{{ route('profile.reset-password', $user->id_user) }}" method="POST">
                         @csrf
                         <div style="text-align: left; margin-bottom: 10px;">
                             <label style="display: block; font-weight: 500; color: #84858C;">Password Lama</label>
