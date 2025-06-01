@@ -48,6 +48,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             Route::post('/list', [OrbitController::class, 'list'])->name('orbit.list');
             Route::get('/import', [OrbitController::class, 'import'])->name('orbit.import');
             Route::post('/import-proses', [OrbitController::class, 'import_proses'])->name('orbit.import-proses');
+            Route::post('/send-to-telegram', [OrbitController::class, 'sendToTelegram'])->name('orbit.send-to-telegram');
         });
 
         // Route Endstate
@@ -85,7 +86,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             // Route Profile
             Route::group(['prefix' => 'profile'], function () {
                 Route::get('/{id}', [ProfileController::class, 'index'])->name('profile.index');
-                Route::post('/reset-password', [ProfileController::class, 'reset_password'])->name('profile.reset-password');
+                Route::post('/reset-password/{id}', [ProfileController::class, 'reset_password'])->name('profile.reset-password');
             });
         });
     });

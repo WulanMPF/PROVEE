@@ -5,7 +5,7 @@
         <div class="upload-container">
             <h2 class="upload-title">Upload File</h2>
             <div style="position: relative;">
-                <button type="submit" form="upload-form" class="btn send-button" id="send">Send</button>
+                <button type="button" class="btn send-button" id="send">Send</button>
             </div>
             <form id="upload-form" action="{{ route('orbit.import-proses') }}" method="POST" enctype="multipart/form-data"
                 class="upload-form">
@@ -167,14 +167,15 @@
     <script>
         $(document).ready(function() {
             if (!$.fn.DataTable.isDataTable('#tabel_orbit')) {
-                var dataUser = $('#tabel_orbit').DataTable({
+                $('#tabel_orbit').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: {
                         "url": "{{ route('orbit.list') }}",
                         "type": "POST",
                         "data": function(d) {
-                            d.id_wilayah = $('#id_wilayah').val();
+                            console.log(d); // Log data untuk debugging
+                            // d.id_wilayah = $('#id_wilayah').val();
                         }
                     },
                     columns: [{
@@ -215,18 +216,66 @@
                     ]
                 });
 
-                $('#id_wilayah').on('change', function() {
-                    dataWilayah.ajax.reload();
-                });
+                // $('#id_wilayah').on('change', function() {
+                //     dataWilayah.ajax.reload();
+                // });
             }
         });
-        $(document).ready(function() {
-            $('#example').DataTable({
-                "searching": false, // Hilangkan fitur Search
-                "paging": false, // Hilangkan pagination (Previous/Next)
-                "info": false, // Hilangkan informasi jumlah data
-                "lengthChange": false // Hilangkan Show Entries
+        // $(document).ready(function() {
+        //     $('#example').DataTable({
+        //         "searching": false, // Hilangkan fitur Search
+        //         "paging": false, // Hilangkan pagination (Previous/Next)
+        //         "info": false, // Hilangkan informasi jumlah data
+        //         "lengthChange": false // Hilangkan Show Entries
+        //     });
+        // });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("send").addEventListener("click", function(e) {
+                e.preventDefault();
+                console.log("Button clicked!");
+
+                const table = document.querySelector('#tabel_orbit');
+                if (!table) {
+                    alert("Tabel tidak ditemukan!");
+                    return; // Hentikan jika tabel tidak ada
+                }
+
+                html2canvas(table).then(function(canvas) {
+                    canvas.toBlob(function(blob) {
+                        const formData = new FormData();
+                        formData.append('screenshot', blob, 'screenshot.png');
+                        formData.append('_token', '{{ csrf_token() }}'); // Kirim CSRF token juga
+
+                        fetch('{{ route("orbit.send-to-telegram") }}', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert('Berhasil dikirim ke Telegram!');
+                                } else {
+                                    alert('Gagal mengirim ke Telegram:  ' + data.error);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('Terjadi kesalahan saat mengirim.');
+                            });
+                    });
+                });
             });
         });
+
+        // Event Listener untuk tombol Upload
+        document.getElementById("upload-form").addEventListener("submit", function(e) {
+            // Tidak ada kode tambahan di sini, biarkan form bekerja normal
+        });
     </script>
+
 @endpush
