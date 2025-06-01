@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserModel;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
-    public function index(string $id)
+    public function __construct()
     {
+        $this->middleware('auth');
+    }
 
-        $user = UserModel::find($id);
-
-        $breadcrumb = (object) [
-            'title' => 'Profile',
-        ];
-
+    public function index()
+    {
+        $user = Auth::user();
+        $breadcrumb = (object) ['title' => 'Profile'];
         $activeMenu = 'profile';
 
-        return view('profile', ['breadcrumb' => $breadcrumb, 'user' => $user, 'activeMenu' => $activeMenu]);
+        return view('profile', compact('breadcrumb', 'activeMenu', 'user'));
     }
 
     public function reset(Request $request, string $id)

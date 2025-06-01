@@ -8,19 +8,21 @@
                 <button type="submit" form="upload-form" class="btn send-button" id="send">Send</button>
             </div>
             <h2 class="upload-title">POSISI PUKUL {{ now()->format('H:i:s') }} <br><br></h2>
-            <table class="table table-bordered table-hover table-sm" id="tabel_provikpro">
-                <thead>
-                    <tr style="text-align: center;">
-                        <th style="vertical-align: middle;">NO</th>
-                        <th style="vertical-align: middle;">WILAYAH</th>
-                        <th style="vertical-align: middle;">PI TOTAL</th>
-                        <th style="vertical-align: middle;">ACCOMP TOTAL</th>
-                        <th style="vertical-align: middle;">PS + ACCOMP TOTAL</th>
-                        <th style="vertical-align: middle;">PS/PI TOTAL</th>
-                        <th style="vertical-align: middle;">SISA MANJA</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="table-responsive-wrapper">
+                <table class="table table-bordered table-hover table-sm" id="tabel_provikpro">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th style="vertical-align: middle;">NO</th>
+                            <th style="vertical-align: middle;">WILAYAH</th>
+                            <th style="vertical-align: middle;">PI TOTAL</th>
+                            <th style="vertical-align: middle;">ACCOMP TOTAL</th>
+                            <th style="vertical-align: middle;">PS + ACCOMP TOTAL</th>
+                            <th style="vertical-align: middle;">PS/PI TOTAL</th>
+                            <th style="vertical-align: middle;">SISA MANJA</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
             <h2 class="upload-title"><br><br></h2>
             <h2 class="upload-title">TARGET PS JATIM 3: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
             <h2 class="upload-title">PI/TARGET: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
@@ -87,6 +89,12 @@
             display: none;
         }
 
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
         #tabel_provikpro {
             font-family: 'Poppins', sans-serif;
             text-align: center;

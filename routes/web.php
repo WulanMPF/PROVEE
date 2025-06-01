@@ -79,7 +79,13 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
         Route::group(['prefix' => 'provikpro'], function () {
             Route::get('/', [ProviKproController::class, 'index'])->name('provikpro.index');
             Route::post('/list', [ProviKproController::class, 'list'])->name('provikpro.list');
-            // Route::post('/', [ProviKproController::class, 'store'])->name('provikpro.store');
+            Route::post('/', [ProviKproController::class, 'store'])->name('provikpro.store');
+        });
+
+        // Route Profile
+        Route::group(['prefix' => 'profile'], function () {
+            Route::get('/{id}', [ProfileController::class, 'index'])->name('profile.index');
+            Route::post('/reset-password', [ProfileController::class, 'reset_password'])->name('profile.reset-password');
         });
 
         // Route Profile
