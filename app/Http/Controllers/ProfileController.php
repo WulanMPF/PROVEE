@@ -24,20 +24,24 @@ class ProfileController extends Controller
         return view('profile', compact('breadcrumb', 'activeMenu', 'user'));
     }
 
-    public function reset_password(Request $request, $id)
+    public function reset(Request $request, string $id)
     {
         $request->validate([
-            'old_password' => 'required|string',
-            'new_password' => 'required|string|min:8|confirmed',
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'new_password_confirmation' => 'required|same:new_password',
         ]);
 
-        $user = UserModel::findOrFail($id);
+        $user = UserModel::find($id);
 
+        // Check if the old password is correct
         if (!Hash::check($request->old_password, $user->password)) {
-            return back()->with('error', 'Password lama tidak sesuai.');
+            return back()->with('error', 'Password lama salah.');
         }
 
-        $user->update(['password' => Hash::make($request->new_password)]);
+        $user->update([
+            'password' => bcrypt($request->new_password),
+        ]);
 
         return back()->with('success', 'Password berhasil diubah.');
     }
