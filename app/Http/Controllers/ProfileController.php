@@ -27,14 +27,22 @@ class ProfileController extends Controller
     public function reset(Request $request, string $id)
     {
         $request->validate([
-            'password' => 'required',
-            'confirm_new_password' => 'required|same:new_password',
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'new_password_confirmation' => 'required|same:new_password',
         ]);
 
-        UserModel::find($id)->update([
-            'password'  => $request->password ? bcrypt($request->password) : UserModel::find($id)->password,
-            'confirm_new_password'  => $request->password ? bcrypt($request->password) : UserModel::find($id)->password,
+        $user = UserModel::find($id);
+
+        // Check if the old password is correct
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->with('error', 'Password lama salah.');
+        }
+
+        $user->update([
+            'password' => bcrypt($request->new_password),
         ]);
+
         return back()->with('success', 'Password berhasil diubah.');
     }
 }

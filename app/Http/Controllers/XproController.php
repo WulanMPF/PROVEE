@@ -33,16 +33,16 @@ class XproController extends Controller
         return DataTables::of($xpros)
             ->addIndexColumn()
             ->addColumn('ps_re_hi', function ($row) {
-                return $row->re_hi != 0 ? round(($row->ps_hi / $row->re_hi) * 100, 2) . '%' : 'N/A';
+                return $row->re_hi != 0 ? round(($row->ps_hi / $row->re_hi) * 100, 2) . '%' : '100%';
             })
             ->addColumn('ps_pi_hi', function ($row) {
-                return $row->pi_hi != 0 ? round(($row->ps_hi / $row->pi_hi) * 100, 2) . '%' : 'N/A';
+                return $row->pi_hi != 0 ? round(($row->ps_hi / $row->pi_hi) * 100, 2) . '%' : '100%';
             })
             ->addColumn('ps_re_tot', function ($row) {
-                return $row->re_tot != 0 ? round(($row->ps_tot / $row->re_tot) * 100, 2) . '%' : 'N/A';
+                return $row->re_tot != 0 ? round(($row->ps_tot / $row->re_tot) * 100, 2) . '%' : '100%';
             })
             ->addColumn('ps_pi_tot', function ($row) {
-                return $row->pi_tot != 0 ? round(($row->ps_tot / $row->pi_tot) * 100, 2) . '%' : 'N/A';
+                return $row->pi_tot != 0 ? round(($row->ps_tot / $row->pi_tot) * 100, 2) . '%' : '100%';
             })
             ->make(true);
     }
@@ -58,4 +58,20 @@ class XproController extends Controller
         Excel::import(new XproImport(), $request->file('file'));
         return redirect()->back();
     }
+
+    // public function import_proses(Request $request)
+    // {
+    //     // Validate the uploaded file
+    //     $request->validate([
+    //         'file' => 'required|file|mimes:csv,txt',
+    //     ]);
+
+    //     // Get the uploaded file
+    //     $file = $request->file('file');
+
+    //     // Call the import method in your XproImport class
+    //     (new XproImport())->import($file->getRealPath());
+
+    //     return redirect()->back();
+    // }
 }

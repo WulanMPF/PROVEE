@@ -27,9 +27,4 @@ class UserModel extends Authenticatable
         'password',
         'remember_token',
     ];
-
-    public function file(): HasMany
-    {
-        return $this->hasMany(FileModel::class, 'id_user', 'id_user');
-    }
 }
