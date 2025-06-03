@@ -40,6 +40,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             Route::post('/list', [XproController::class, 'list'])->name('xpro.list');
             Route::get('/import', [XproController::class, 'import'])->name('xpro.import');
             Route::post('/import-proses', [XproController::class, 'import_proses'])->name('xpro.import-proses');
+            Route::post('/send-to-telegram', [XproController::class, 'sendToTelegram'])->name('xpro.send-to-telegram');
         });
 
         // Route Orbit
@@ -58,6 +59,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             Route::post('/', [EndstateController::class, 'store'])->name('endstate.store');
             Route::get('/import', [EndstateController::class, 'import'])->name('endstate.import');
             Route::post('/import-proses', [EndstateController::class, 'import_proses'])->name('endstate.import-proses');
+            Route::post('/send-to-telegram', [EndstateController::class, 'sendToTelegram'])->name('endstate.send-to-telegram');
         });
 
         // Route Pivot Endstate
@@ -65,6 +67,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             Route::get('/', [PivotEndstateController::class, 'index'])->name('pivotendstate.index');
             Route::post('/list', [PivotEndstateController::class, 'list'])->name('pivotendstate.list');
             Route::post('/', [PivotEndstateController::class, 'store'])->name('pivotendstate.store');
+            Route::post('/send-to-telegram', [PivotEndstateController::class, 'sendToTelegram'])->name('pivotendstate.send-to-telegram');
         });
 
         // Route ProviManja
@@ -74,6 +77,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             Route::post('/', [ProviManjaController::class, 'store'])->name('provimanja.store');
             Route::get('/import', [ProviManjaController::class, 'import'])->name('provimanja.import');
             Route::post('/import-proses', [ProviManjaController::class, 'import_proses'])->name('provimanja.import-proses');
+            Route::post('/send-to-telegram', [ProviManjaController::class, 'sendToTelegram'])->name('provimanja.send-to-telegram');
         });
 
         // Route ProviKpro

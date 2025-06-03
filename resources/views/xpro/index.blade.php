@@ -168,6 +168,8 @@
 @endpush
 
 @push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <script>
         $(document).ready(function() {
             if (!$.fn.DataTable.isDataTable('#tabel_xpro')) {
@@ -178,7 +180,8 @@
                         "url": "{{ route('xpro.list') }}",
                         "type": "POST",
                         "data": function(d) {
-                            d.id_wilayah = $('#id_wilayah').val();
+                            console.log(d); // Log data untuk debugging
+                            // d.id_wilayah = $('#id_wilayah').val();
                         }
                     },
                     columns: [{
@@ -244,13 +247,68 @@
                     ]
                 });
 
-                $('#id_wilayah').on('change', function() {
-                    dataWilayah.ajax.reload();
-                });
+                // $('#id_wilayah').on('change', function() {
+                //     dataWilayah.ajax.reload();
+                // });
             }
-        });
 
-        $(document).ready(function() {
+            // Pasang event listener tombol Send sekali saja
+            console.log("Memasang event listener tombol Send");
+            let isSending = false;
+
+            $('#send').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                if (isSending) {
+                    console.log("Proses pengiriman sedang berjalan, harap tunggu...");
+                    return;
+                }
+                isSending = true;
+
+                const table = document.querySelector('#tabel_xpro');
+                if (!table) {
+                    alert("Tabel tidak ditemukan!");
+                    isSending = false;
+                    return;
+                }
+
+                html2canvas(table).then(function(canvas) {
+                    canvas.toBlob(function(blob) {
+                        const formData = new FormData();
+                        formData.append('screenshot', blob, 'screenshot.png');
+                        formData.append('_token', '{{ csrf_token() }}');
+
+                        fetch('{{ route("xpro.send-to-telegram") }}', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Berhasil dikirim ke Telegram!');
+                            } else {
+                                alert('Gagal mengirim ke Telegram: ' + data.error);
+                            }
+                            isSending = false;
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Terjadi kesalahan saat mengirim.');
+                            isSending = false;
+                        });
+                    });
+                });
+            });
+
+            // Pasang event listener form upload
+            $('#upload-form').on('submit', function(e) {
+                
+            });
+        });
+    </script>
+@endpush
+
+        {{-- $(document).ready(function() {
             $('#example').DataTable({
                 "searching": false, // Hilangkan fitur Search
                 "paging": false, // Hilangkan pagination (Previous/Next)
@@ -266,6 +324,4 @@
             } else {
                 document.getElementById('upload-form').submit();
             }
-        });
-    </script>
-@endpush
+        }); --}}

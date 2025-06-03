@@ -58,7 +58,7 @@ class OrbitController extends Controller
         ]);
 
         $image = $request->file('screenshot');
-        $caption = "📢 Report Provisioning INDIBIZ Jatim-3\n📸 Potret pkl. " . now()->format('H.i') . "\n📅 " . now()->format('d/m/Y');
+        $caption = "📢 Report Provisioning ORBIT Jatim-3\n📸 Potret pkl. " . now()->format('H.i') . "\n📅 " . now()->format('d/m/Y');
 
         $botToken = env('TELEGRAM_BOT_TOKEN');
         $chatId = env('TELEGRAM_CHAT_ID');

@@ -164,6 +164,8 @@
 @endpush
 
 @push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <script>
         $(document).ready(function() {
             if (!$.fn.DataTable.isDataTable('#tabel_orbit')) {
@@ -220,28 +222,92 @@
                 //     dataWilayah.ajax.reload();
                 // });
             }
-        });
-        // $(document).ready(function() {
-        //     $('#example').DataTable({
-        //         "searching": false, // Hilangkan fitur Search
-        //         "paging": false, // Hilangkan pagination (Previous/Next)
-        //         "info": false, // Hilangkan informasi jumlah data
-        //         "lengthChange": false // Hilangkan Show Entries
-        //     });
-        // });
-    </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+            // Pasang event listener tombol Send sekali saja
+            console.log("Memasang event listener tombol Send");
+            let isSending = false;
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("send").addEventListener("click", function(e) {
+            $('#send').off('click').on('click', function(e) {
                 e.preventDefault();
-                console.log("Button clicked!");
+
+                if (isSending) {
+                    console.log("Proses pengiriman sedang berjalan, harap tunggu...");
+                    return;
+                }
+                isSending = true;
 
                 const table = document.querySelector('#tabel_orbit');
                 if (!table) {
                     alert("Tabel tidak ditemukan!");
+                    isSending = false;
+                    return;
+                }
+
+                html2canvas(table).then(function(canvas) {
+                    canvas.toBlob(function(blob) {
+                        const formData = new FormData();
+                        formData.append('screenshot', blob, 'screenshot.png');
+                        formData.append('_token', '{{ csrf_token() }}');
+
+                        fetch('{{ route("orbit.send-to-telegram") }}', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Berhasil dikirim ke Telegram!');
+                            } else {
+                                alert('Gagal mengirim ke Telegram: ' + data.error);
+                            }
+                            isSending = false;
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Terjadi kesalahan saat mengirim.');
+                            isSending = false;
+                        });
+                    });
+                });
+            });
+
+            // Pasang event listener form upload
+            $('#upload-form').on('submit', function(e) {
+                
+            });
+        });
+    </script>
+@endpush
+
+        {{-- $(document).ready(function() {
+            $('#example').DataTable({
+                "searching": false, // Hilangkan fitur Search
+                "paging": false, // Hilangkan pagination (Previous/Next)
+               "info": false, // Hilangkan informasi jumlah data
+               "lengthChange": false // Hilangkan Show Entries
+           });
+        }); --}}
+
+    {{-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Memasang event listener tombol Send"); // Debugging
+
+            let isSending = false; // Flag untuk mencegah duplikasi event
+            document.getElementById("send").addEventListener("click", function(e) {
+                e.preventDefault();
+                // console.log("Button clicked!");
+
+                if (isSending) {
+                    console.log("Already sending");
+                    return;
+                }
+
+                isSending = true; // Set flag menjadi true agar tidak bisa klik lagi
+
+                const table = document.querySelector('#tabel_orbit');
+                if (!table) {
+                    alert("Tabel tidak ditemukan!");
+                    isSending = false; // Reset flag
                     return; // Hentikan jika tabel tidak ada
                 }
 
@@ -262,10 +328,12 @@
                                 } else {
                                     alert('Gagal mengirim ke Telegram:  ' + data.error);
                                 }
+                                isSending = false; // Reset flag setelah selesai
                             })
                             .catch(error => {
                                 console.error('Error:', error);
                                 alert('Terjadi kesalahan saat mengirim.');
+                                isSending = false; // Reset flag jika gagal
                             });
                     });
                 });
@@ -276,6 +344,4 @@
         document.getElementById("upload-form").addEventListener("submit", function(e) {
             // Tidak ada kode tambahan di sini, biarkan form bekerja normal
         });
-    </script>
-
-@endpush
+    </script> --}}

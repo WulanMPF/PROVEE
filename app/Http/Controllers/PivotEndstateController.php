@@ -6,6 +6,7 @@ use App\Models\PivotEndstateModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Http;
 
 class PivotEndstateController extends Controller
 {
@@ -38,5 +39,36 @@ class PivotEndstateController extends Controller
                 return $row->pi_tot != 0 ? round(($row->fallout_tot / $row->pi_tot) * 100, 2) . '%' : '100%';
             })
             ->make(true);
+    }
+
+    public function sendToTelegram(Request $request)
+    {
+        $request->validate([
+            'screenshot' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+        ]);
+
+        $image = $request->file('screenshot');
+        $caption = "📢 Report Provisioning INDIHOME Jatim-3\n📸 Potret pkl. " . now()->format('H.i') . "\n📅 " . now()->format('d/m/Y');
+
+        $botToken = env('TELEGRAM_BOT_TOKEN');
+        $chatId = env('TELEGRAM_CHAT_ID');
+
+        // Pastikan Anda memverifikasi token dan chat ID
+        if (empty($botToken) || empty($chatId)) {
+            return response()->json(['success' => false, 'error' => 'Bot token or chat ID not set']);
+        }
+
+        $response = Http::attach(
+            'photo', file_get_contents($image), 'screenshot.png'
+        )->post("https://api.telegram.org/bot{$botToken}/sendPhoto", [
+            'chat_id' => $chatId,
+            'caption' => $caption,
+        ]);
+
+        if ($response->successful()) {
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false, 'error' => $response->body()]);
+        }
     }
 }
