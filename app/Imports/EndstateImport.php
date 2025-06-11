@@ -571,7 +571,7 @@ class EndstateImport implements ToCollection
                         $pvt_fo_tot[24][$data['WONUM']] = true;
                     } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $pvt_fo_tot[37][$data['WONUM']] = true;
-                    } 
+                    }
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $pvt_fo_tot[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {

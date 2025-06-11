@@ -9,35 +9,84 @@
             </div>
             <h2 class="upload-title">POSISI PUKUL {{ now()->format('H:i:s') }} <br><br></h2>
 
-            <h2 class="upload-title">NO. WILAYAH : PI [TOT] | PS [TOT] | ACOMP [TOT] | PS + ACOMP [TOT] | % PS + ACOMP [TOT]/PI | SISA
-                MANJA</h2>
+            <h2 class="upload-title">NO. WILAYAH : PI [TOT] | PS [TOT] | ACOMP [TOT] | PS + ACOMP [TOT] | % PS + ACOMP
+                [TOT] / PI | SISA MANJA</h2>
 
-            @foreach ($regions as $name => $data)
-                @if ($data)
-                    @php
-                        $pi_tot = $data->pi_tot ?? 0;
-                        $ps_tot = $data->ps_tot ?? 0;
-                        $accomp_tot = $data->accomp ?? 0;
-                        $ps_accomp_tot = $ps_tot + $accomp_tot;
-                        $percentage_ps_pi = $pi_tot != 0 ? round(($ps_accomp_tot / $pi_tot) * 100, 2) . '%' : '0%';
-                    @endphp
-                    <h2 class="upload-title">{{ $loop->index + 1 }}. {{ $name }} : {{ $pi_tot }} |
-                        {{ $ps_tot }} | {{ $accomp_tot }} | {{ $ps_accomp_tot }} | {{ $percentage_ps_pi }} | SISA
-                        MANJA</h2>
-                @else
-                    <h2 class="upload-title">{{ $loop->index + 1 }}. {{ $name }} : Data tidak tersedia</h2>
-                @endif
+            @php
+                // Initialize totals for JATIM BARAT
+                $total_pi_tot = 0;
+                $total_ps_tot = 0;
+                $total_accomp_tot = 0;
+                $total_ps_accomp_tot = 0;
+                $total_sisa_manja = 0;
+
+                $total_target_ps = 0;
+                $today = \Carbon\Carbon::now()->day;
+                $days_in_month = \Carbon\Carbon::now()->daysInMonth;
+
+                $total_ps_hi = 0;
+            @endphp
+
+            @foreach ($data as $key => $item)
+                @php
+                    $region = $item['region'];
+                    $sector = $item['sector'];
+
+                    $pi_tot = $region->pi_tot ?? 0;
+                    $ps_tot = $region->ps_tot ?? 0;
+                    $accomp_tot = $region->accomp ?? 0;
+                    $ps_accomp_tot = $ps_tot + $accomp_tot;
+                    $percentage_ps_pi = $pi_tot != 0 ? round(($ps_accomp_tot / $pi_tot) * 100, 2) . '%' : '0%';
+                    $sisa_manja = $sector->total ?? 0;
+
+                    $target_ps = $region->target_tot ?? 0;
+                    $ps_hi = $region->ps_hi ?? 0;
+
+                    // Accumulate totals for JATIM BARAT
+                    $total_pi_tot += $pi_tot;
+                    $total_ps_tot += $ps_tot;
+                    $total_accomp_tot += $accomp_tot;
+                    $total_ps_accomp_tot += $ps_accomp_tot;
+                    $total_sisa_manja += $sisa_manja;
+
+                    $total_target_ps += $target_ps;
+                    $total_pi_target = $total_target_ps != 0 ? round(($total_pi_tot / $total_target_ps) * 100, 2) . '%' : '0%';
+                    $total_ps_target = $total_target_ps != 0 ? round(($total_ps_tot / $total_target_ps) * 100, 2) . '%' : '0%';
+                    $run_rate_ps = $today != 0 ? floor($total_ps_tot / $today) : 0;
+                    $estimasi_ps = $run_rate_ps * $days_in_month;
+                    $estimasi_ps_target = $total_target_ps != 0 ? round(($estimasi_ps / $total_target_ps) * 100, 2) . '%' : '0%';
+
+                    $cc4 = $days_in_month - $today + 1;
+                    $deviasi_target = $total_target_ps - $total_ps_tot;
+                    $target_in_day = $cc4 != 0 ? ceil($deviasi_target / $cc4) : 0;
+                    $total_ps_hi += $ps_hi;
+                    $estimasi_hari_ini = $total_ps_hi + $total_accomp_tot;
+                    $deviasi = $target_in_day - $total_ps_hi - $total_accomp_tot;
+                @endphp
+
+                <h2 class="upload-title">
+                    {{ $loop->index + 1 }}. {{ $key }} : {{ $pi_tot }} |
+                    {{ $ps_tot }} | {{ $accomp_tot }} | {{ $ps_accomp_tot }} | {{ $percentage_ps_pi }} |
+                    {{ $sisa_manja }}
+                </h2>
             @endforeach
 
+            {{-- Add JATIM BARAT totals --}}
+            <h2 class="upload-title">4. JATIM BARAT : {{ $total_pi_tot }} | {{ $total_ps_tot }} | {{ $total_accomp_tot }}
+                | {{ $total_ps_accomp_tot }} |
+                {{ $total_pi_tot != 0 ? round(($total_ps_accomp_tot / $total_pi_tot) * 100, 2) . '%' : '0%' }} |
+                {{ $total_sisa_manja }}</h2>
+
             <h2 class="upload-title"><br></h2>
-            <h2 class="upload-title">TARGET PS JATIM 3: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
-            <h2 class="upload-title">PI/TARGET: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
-            <h2 class="upload-title">RUN RATE PS: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
-            <h2 class="upload-title">ESTIMASI PS: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
-            <h2 class="upload-title">ESTIMASI PS/TARGET: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
-            <h2 class="upload-title"><br>KESIMPULAN: DIBUTUHKAN RUN RATE PS </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
-            <h2 class="upload-title">ESTIMASI PS HARI INI: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
-            <h2 class="upload-title">DEVIASI: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
+            <h2 class="upload-title">TARGET PS JATIM 3: {{ $total_target_ps }}</h2>
+            <h2 class="upload-title">PI/TARGET: {{ $total_pi_target }}</h2>
+            <h2 class="upload-title">PS/TARGET: {{ $total_ps_target }}</h2>
+            <h2 class="upload-title">RUN RATE PS: {{ $run_rate_ps }}</h2>
+            <h2 class="upload-title">ESTIMASI PS: {{ $estimasi_ps }}</h2>
+            <h2 class="upload-title">ESTIMASI PS/TARGET: {{ $estimasi_ps_target }}</h2>
+            <h2 class="upload-title"><br>KESIMPULAN: DIBUTUHKAN RUN RATE PS {{ $target_in_day }}</h2>
+            <h2 class="upload-title">ESTIMASI PS HARI INI: {{ $estimasi_hari_ini }}</h2>
+            <h2 class="upload-title">DEVIASI: {{ $deviasi }}</h2>
         </div>
     </div>
 @endsection
@@ -211,39 +260,40 @@
                 formData.append('text', textToSend);
                 formData.append('_token', '{{ csrf_token() }}');
 
-                fetch('{{ route("provikpro.send-to-telegram") }}', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil!',
-                            text: 'Laporan berhasil dikirim ke Telegram.',
-                            confirmButtonText: 'OK'
-                        });
-                    } else {
+                fetch('{{ route('provikpro.send-to-telegram') }}', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil!',
+                                text: 'Laporan berhasil dikirim ke Telegram.',
+                                confirmButtonText: 'OK'
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal mengirim!',
+                                text: data.error ||
+                                    'Terjadi kesalahan saat mengirim ke Telegram.',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                        isSending = false;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                         Swal.fire({
                             icon: 'error',
-                            title: 'Gagal mengirim!',
-                            text: data.error || 'Terjadi kesalahan saat mengirim ke Telegram.',
+                            title: 'Terjadi kesalahan',
+                            text: 'Gagal mengirim laporan ke Telegram.',
                             confirmButtonText: 'OK'
                         });
-                    }
-                    isSending = false;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Terjadi kesalahan',
-                        text: 'Gagal mengirim laporan ke Telegram.',
-                        confirmButtonText: 'OK'
+                        isSending = false;
                     });
-                    isSending = false;
-                });
             });
 
             // Pasang event listener form upload
@@ -253,8 +303,8 @@
         });
     </script>
 @endpush
-    
-    {{-- <script>
+
+{{-- <script>
         $(document).ready(function() {
             if (!$.fn.DataTable.isDataTable('#tabel_provikpro')) {
                 var dataUser = $('#tabel_provikpro').DataTable({
@@ -328,4 +378,3 @@
             });
         });
     </script> --}}
-

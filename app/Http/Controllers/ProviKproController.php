@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\ProviKproModel;
 use App\Models\EndstateModel;
+use App\Models\ProviManjaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,18 +22,25 @@ class ProviKproController extends Controller
 
         $activeMenu = 'provikpro';
 
-        // Fetch data for each region
-        $regions = [
-            'KDI' => EndstateModel::where('id_wilayah', 1)->first(), // Adjust ID accordingly
-            'MNZ' => EndstateModel::where('id_wilayah', 2)->first(),
-            'MLG' => EndstateModel::where('id_wilayah', 3)->first(),
-            'JATIM BARAT' => EndstateModel::where('id_wilayah', 4)->first(),
+        $data = [
+            'KDI' => [
+                'region' => EndstateModel::where('id_wilayah', 1)->first(),
+                'sector' => ProviManjaModel::where('id_sektor', 12)->first(),
+            ],
+            'MNZ' => [
+                'region' => EndstateModel::where('id_wilayah', 2)->first(),
+                'sector' => ProviManjaModel::where('id_sektor', 24)->first(),
+            ],
+            'MLG' => [
+                'region' => EndstateModel::where('id_wilayah', 3)->first(),
+                'sector' => ProviManjaModel::where('id_sektor', 37)->first(),
+            ],
         ];
 
         return view('provikpro.index', [
             'breadcrumb' => $breadcrumb,
             'activeMenu' => $activeMenu,
-            'regions' => $regions,
+            'data' => $data
         ]);
     }
 
@@ -144,4 +152,3 @@ class ProviKproController extends Controller
 
     //     //     ->make(true);
     // }
-
