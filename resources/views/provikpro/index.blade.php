@@ -8,28 +8,34 @@
                 <button type="submit" form="upload-form" class="btn send-button" id="send">Send</button>
             </div>
             <h2 class="upload-title">POSISI PUKUL {{ now()->format('H:i:s') }} <br><br></h2>
-            <div class="table-responsive-wrapper">
-                <table class="table table-bordered table-hover table-sm" id="tabel_provikpro">
-                    <thead>
-                        <tr style="text-align: center;">
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">NO</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">WILAYAH</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PI TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">ACCOMP TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS + ACCOMP TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS/PI TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">SISA MANJA</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            <h2 class="upload-title"><br><br></h2>
+
+            <h2 class="upload-title">NO. WILAYAH : PI [TOT] | PS [TOT] | ACOMP [TOT] | PS + ACOMP [TOT] | % PS/PI | SISA
+                MANJA</h2>
+
+            @foreach ($regions as $name => $data)
+                @if ($data)
+                    @php
+                        $pi_tot = $data->pi_tot ?? 0;
+                        $ps_tot = $data->ps_tot ?? 0;
+                        $accomp_tot = $data->accomp ?? 0;
+                        $ps_accomp_tot = $ps_tot + $accomp_tot;
+                        $percentage_ps_pi = $pi_tot != 0 ? round(($ps_tot / $pi_tot) * 100, 2) . '%' : '0%';
+                    @endphp
+                    <h2 class="upload-title">{{ $loop->index + 1 }}. {{ $name }} : {{ $pi_tot }} |
+                        {{ $ps_tot }} | {{ $accomp_tot }} | {{ $ps_accomp_tot }} | {{ $percentage_ps_pi }} | SISA
+                        MANJA</h2>
+                @else
+                    <h2 class="upload-title">{{ $loop->index + 1 }}. {{ $name }} : Data tidak tersedia</h2>
+                @endif
+            @endforeach
+
+            <h2 class="upload-title"><br></h2>
             <h2 class="upload-title">TARGET PS JATIM 3: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
             <h2 class="upload-title">PI/TARGET: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
             <h2 class="upload-title">RUN RATE PS: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
             <h2 class="upload-title">ESTIMASI PS: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
             <h2 class="upload-title">ESTIMASI PS/TARGET: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
-            <h2 class="upload-title"><br><br>KESIMPULAN: DIBUTUHKAN RUN RATE PS </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
+            <h2 class="upload-title"><br>KESIMPULAN: DIBUTUHKAN RUN RATE PS </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
             <h2 class="upload-title">ESTIMASI PS HARI INI: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
             <h2 class="upload-title">DEVIASI: </h2> {{-- BELUM TERHUBUNG DENGAN DATA --}}
         </div>
@@ -94,7 +100,7 @@
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
-        
+
         #tabel_provikpro {
             font-family: 'Poppins', sans-serif;
             text-align: center;
@@ -140,17 +146,17 @@
 @endpush
 
 @push('js')
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             if (!$.fn.DataTable.isDataTable('#tabel_provikpro')) {
                 var dataUser = $('#tabel_provikpro').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: {
-                        "url": "{{ route('provikpro.list') }}",
-                        "type": "POST",
-                        "data": function(d) {
-                            d.id_wilayah = $('#id_wilayah').val();
+                        url: "{{ route('provikpro.list') }}", // URL to fetch data
+                        type: "POST",
+                        data: function(d) {
+                            d.id_wilayah = $('#id_wilayah').val(); // Ensure these elements exist
                             d.id_endstate = $('#id_endstate').val();
                             d.id_provi_manja = $('#id_provi_manja').val();
                         }
@@ -160,7 +166,8 @@
                             className: "text-center",
                             orderable: false,
                             searchable: false
-                        }, {
+                        },
+                        {
                             data: "wilayah.nama_wilayah",
                             orderable: false,
                             searchable: false
@@ -198,16 +205,9 @@
                     ]
                 });
 
-                $('#id_sektor').on('change', function() {
-                    dataSektor.ajax.reload();
-                });
-
-                $('#id_endstate').on('change', function() {
-                    dataEndstate.ajax.reload();
-                });
-
-                $('#id_provi_manja').on('change', function() {
-                    dataProviManja.ajax.reload();
+                // Reload data when filters change
+                $('#id_wilayah, #id_endstate, #id_provi_manja').on('change', function() {
+                    dataUser.ajax.reload();
                 });
             }
         });
@@ -219,5 +219,5 @@
                 "lengthChange": false // Hilangkan Show Entries
             });
         });
-    </script>
+    </script> --}}
 @endpush

@@ -211,6 +211,7 @@ class EndstateImport implements ToCollection
         $current_month = Carbon::now()->format('m-Y'); // Month and year for comparison
 
         foreach ($collection as $row) {
+            // dd($row);
             if ($index > 1) {
                 $data['WONUM']          = !empty($row[1]) ? $row[1] : '';
                 $data['TGL_PI_AWAL']    = !empty($row[49]) ? Carbon::instance(Date::excelToDateTimeObject($row[49]))->format('m/d/Y') : '';
@@ -219,6 +220,8 @@ class EndstateImport implements ToCollection
                 $data['DISTRICT_LAMA']  = !empty($row[8]) ? $row[8] : '';
                 $data['STO']            = !empty($row[6]) ? $row[6] : '';
                 $data['CRMORDERTYPE']   = !empty($row[2]) ? $row[2] : '';
+
+                // dd($data);
 
                 // [ENDSTATE] Calculate PI_HI counts
                 if ($data['TGL_PI_AWAL'] === $today) {
