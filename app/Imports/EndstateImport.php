@@ -19,39 +19,45 @@ class EndstateImport implements ToCollection
         $index = 1;
         // [ENDSTATE] PI_HI
         $pi_hi_counts = [
-            1 => 0, // Malang
-            2 => 0, // Kediri
-            3 => 0  // Madiun
+            1 => 0, // Kediri
+            2 => 0,  // Madiun
+            3 => 0, // Malang
+            4 => 0 // Jatim Barat
         ];
         // [ENDSTATE] PS_HI
         $ps_hi_counts = [
-            1 => 0, // Malang
-            2 => 0, // Kediri
-            3 => 0  // Madiun
+            1 => 0, // Kediri
+            2 => 0,  // Madiun
+            3 => 0, // Malang
+            4 => 0 // Jatim Barat
         ];
         // [ENDSTATE] ACCOMP
         $accomp_counts = [
-            1 => 0, // Malang
-            2 => 0, // Kediri
-            3 => 0  // Madiun
+            1 => 0, // Kediri
+            2 => 0,  // Madiun
+            3 => 0, // Malang
+            4 => 0 // Jatim Barat
         ];
         // [ENDSTATE] PI_TOT
         $pi_tot_counts = [
-            1 => [], // Malang
-            2 => [], // Kediri
-            3 => []  // Madiun
+            1 => [], // Kediri
+            2 => [],  // Madiun
+            3 => [], // Malang
+            4 => [] // Jatim Barat
         ];
         // [ENDSTATE] PS_TOT
         $ps_tot_counts = [
-            1 => [], // Malang
-            2 => [], // Kediri
-            3 => []  // Madiun
+            1 => [], // Kediri
+            2 => [],  // Madiun
+            3 => [], // Malang
+            4 => [] // Jatim Barat
         ];
         // [ENDSTATE] TARGET_TOT
         $target_tot_counts = [
-            1 => [], // Malang
-            2 => [], // Kediri
-            3 => []  // Madiun
+            1 => 0, // Kediri
+            2 => 0, // Madiun
+            3 => 0, // Malang
+            4 => 0  // Jatim Barat
         ];
 
 
@@ -68,29 +74,32 @@ class EndstateImport implements ToCollection
             9 => [],   // Tulungagung
             10 => [],  // Warujayeng
             11 => [],  // Wlingi
-            12 => [],  // Bojonegoro
-            13 => [],  // Madiun 1
-            14 => [],  // Madiun 2
-            15 => [],  // Madiun 3
-            16 => [],  // Magetan
-            17 => [],  // Ngawi
-            18 => [],  // Pacitan
-            19 => [],  // Ponorogo 1
-            20 => [],  // Ponorogo 2
-            21 => [],  // Tuban 1
-            22 => [],  // Tuban 2
-            23 => [],  // Batu
-            24 => [],  // Blimbing
-            25 => [],  // Gadang
-            26 => [],  // Karang Ploso
-            27 => [],  // Kepanjen
-            28 => [],  // Klojen
-            29 => [],  // Malang
-            30 => [],  // Pakis
-            31 => [],  // Sawojajar
-            32 => [],  // Singosari
-            33 => [],  // Turen 1
-            34 => [],  // Turen 2
+            12 => [],  // WILAYAH KEDIRI
+            13 => [],  // Bojonegoro
+            14 => [],  // Madiun 1
+            15 => [],  // Madiun 2
+            16 => [],  // Madiun 3
+            17 => [],  // Magetan
+            18 => [],  // Ngawi
+            19 => [],  // Pacitan
+            20 => [],  // Ponorogo 1
+            21 => [],  // Ponorogo 2
+            22 => [],  // Tuban 1
+            23 => [],  // Tuban 2
+            24 => [],  // WILAYAH MADIUN
+            25 => [],  // Batu
+            26 => [],  // Blimbing
+            27 => [],  // Gadang
+            28 => [],  // Karang Ploso
+            29 => [],  // Kepanjen
+            30 => [],  // Klojen
+            31 => [],  // Malang
+            32 => [],  // Pakis
+            33 => [],  // Sawojajar
+            34 => [],  // Singosari
+            35 => [],  // Turen 1
+            36 => [],  // Turen 2
+            37 => [],  // WILAYAH MALANG
         ];
 
         // [PIVOT ENDSTATE] PS_TOT
@@ -106,29 +115,32 @@ class EndstateImport implements ToCollection
             9 => [],   // Tulungagung
             10 => [],  // Warujayeng
             11 => [],  // Wlingi
-            12 => [],  // Bojonegoro
-            13 => [],  // Madiun 1
-            14 => [],  // Madiun 2
-            15 => [],  // Madiun 3
-            16 => [],  // Magetan
-            17 => [],  // Ngawi
-            18 => [],  // Pacitan
-            19 => [],  // Ponorogo 1
-            20 => [],  // Ponorogo 2
-            21 => [],  // Tuban 1
-            22 => [],  // Tuban 2
-            23 => [],  // Batu
-            24 => [],  // Blimbing
-            25 => [],  // Gadang
-            26 => [],  // Karang Ploso
-            27 => [],  // Kepanjen
-            28 => [],  // Klojen
-            29 => [],  // Malang
-            30 => [],  // Pakis
-            31 => [],  // Sawojajar
-            32 => [],  // Singosari
-            33 => [],  // Turen 1
-            34 => [],  // Turen 2
+            12 => [],  // WILAYAH KEDIRI
+            13 => [],  // Bojonegoro
+            14 => [],  // Madiun 1
+            15 => [],  // Madiun 2
+            16 => [],  // Madiun 3
+            17 => [],  // Magetan
+            18 => [],  // Ngawi
+            19 => [],  // Pacitan
+            20 => [],  // Ponorogo 1
+            21 => [],  // Ponorogo 2
+            22 => [],  // Tuban 1
+            23 => [],  // Tuban 2
+            24 => [],  // WILAYAH MADIUN
+            25 => [],  // Batu
+            26 => [],  // Blimbing
+            27 => [],  // Gadang
+            28 => [],  // Karang Ploso
+            29 => [],  // Kepanjen
+            30 => [],  // Klojen
+            31 => [],  // Malang
+            32 => [],  // Pakis
+            33 => [],  // Sawojajar
+            34 => [],  // Singosari
+            35 => [],  // Turen 1
+            36 => [],  // Turen 2
+            37 => [],  // WILAYAH MALANG
         ];
 
         // [PIVOT ENDSTATE] CANCEL_TOT
@@ -144,29 +156,32 @@ class EndstateImport implements ToCollection
             9 => [],   // Tulungagung
             10 => [],  // Warujayeng
             11 => [],  // Wlingi
-            12 => [],  // Bojonegoro
-            13 => [],  // Madiun 1
-            14 => [],  // Madiun 2
-            15 => [],  // Madiun 3
-            16 => [],  // Magetan
-            17 => [],  // Ngawi
-            18 => [],  // Pacitan
-            19 => [],  // Ponorogo 1
-            20 => [],  // Ponorogo 2
-            21 => [],  // Tuban 1
-            22 => [],  // Tuban 2
-            23 => [],  // Batu
-            24 => [],  // Blimbing
-            25 => [],  // Gadang
-            26 => [],  // Karang Ploso
-            27 => [],  // Kepanjen
-            28 => [],  // Klojen
-            29 => [],  // Malang
-            30 => [],  // Pakis
-            31 => [],  // Sawojajar
-            32 => [],  // Singosari
-            33 => [],  // Turen 1
-            34 => [],  // Turen 2
+            12 => [],  // WILAYAH KEDIRI
+            13 => [],  // Bojonegoro
+            14 => [],  // Madiun 1
+            15 => [],  // Madiun 2
+            16 => [],  // Madiun 3
+            17 => [],  // Magetan
+            18 => [],  // Ngawi
+            19 => [],  // Pacitan
+            20 => [],  // Ponorogo 1
+            21 => [],  // Ponorogo 2
+            22 => [],  // Tuban 1
+            23 => [],  // Tuban 2
+            24 => [],  // WILAYAH MADIUN
+            25 => [],  // Batu
+            26 => [],  // Blimbing
+            27 => [],  // Gadang
+            28 => [],  // Karang Ploso
+            29 => [],  // Kepanjen
+            30 => [],  // Klojen
+            31 => [],  // Malang
+            32 => [],  // Pakis
+            33 => [],  // Sawojajar
+            34 => [],  // Singosari
+            35 => [],  // Turen 1
+            36 => [],  // Turen 2
+            37 => [],  // WILAYAH MALANG
         ];
 
         // [PIVOT ENDSTATE] FALLOUT_TOT
@@ -182,29 +197,32 @@ class EndstateImport implements ToCollection
             9 => [],   // Tulungagung
             10 => [],  // Warujayeng
             11 => [],  // Wlingi
-            12 => [],  // Bojonegoro
-            13 => [],  // Madiun 1
-            14 => [],  // Madiun 2
-            15 => [],  // Madiun 3
-            16 => [],  // Magetan
-            17 => [],  // Ngawi
-            18 => [],  // Pacitan
-            19 => [],  // Ponorogo 1
-            20 => [],  // Ponorogo 2
-            21 => [],  // Tuban 1
-            22 => [],  // Tuban 2
-            23 => [],  // Batu
-            24 => [],  // Blimbing
-            25 => [],  // Gadang
-            26 => [],  // Karang Ploso
-            27 => [],  // Kepanjen
-            28 => [],  // Klojen
-            29 => [],  // Malang
-            30 => [],  // Pakis
-            31 => [],  // Sawojajar
-            32 => [],  // Singosari
-            33 => [],  // Turen 1
-            34 => [],  // Turen 2
+            12 => [],  // WILAYAH KEDIRI
+            13 => [],  // Bojonegoro
+            14 => [],  // Madiun 1
+            15 => [],  // Madiun 2
+            16 => [],  // Madiun 3
+            17 => [],  // Magetan
+            18 => [],  // Ngawi
+            19 => [],  // Pacitan
+            20 => [],  // Ponorogo 1
+            21 => [],  // Ponorogo 2
+            22 => [],  // Tuban 1
+            23 => [],  // Tuban 2
+            24 => [],  // WILAYAH MADIUN
+            25 => [],  // Batu
+            26 => [],  // Blimbing
+            27 => [],  // Gadang
+            28 => [],  // Karang Ploso
+            29 => [],  // Kepanjen
+            30 => [],  // Klojen
+            31 => [],  // Malang
+            32 => [],  // Pakis
+            33 => [],  // Sawojajar
+            34 => [],  // Singosari
+            35 => [],  // Turen 1
+            36 => [],  // Turen 2
+            37 => [],  // WILAYAH MALANG
         ];
 
         $today = Carbon::now()->format('m/d/Y'); // Today's date in M/D/Y format
@@ -218,6 +236,7 @@ class EndstateImport implements ToCollection
                 $data['STATUS']         = !empty($row[32]) ? $row[32] : '';
                 $data['STATUSDATE']     = !empty($row[33]) ? Carbon::instance(Date::excelToDateTimeObject($row[33]))->format('m/d/Y') : '';
                 $data['DISTRICT_LAMA']  = !empty($row[8]) ? $row[8] : '';
+                $data['DISTRICT_BARU']  = !empty($row[4]) ? $row[4] : '';
                 $data['STO']            = !empty($row[6]) ? $row[6] : '';
                 $data['CRMORDERTYPE']   = !empty($row[2]) ? $row[2] : '';
 
@@ -225,33 +244,36 @@ class EndstateImport implements ToCollection
 
                 // [ENDSTATE] Calculate PI_HI counts
                 if ($data['TGL_PI_AWAL'] === $today) {
-                    if ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $pi_hi_counts[4]++;
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
                         $pi_hi_counts[1]++;
-                    } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                        $pi_hi_counts[2]++;
                     } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $pi_hi_counts[2]++;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $pi_hi_counts[3]++;
                     }
                 }
 
                 // [ENDSTATE] Calculate PS_HI counts
                 if ($data['STATUSDATE'] === $today && $data['STATUS'] === 'COMPWORK') {
-                    if ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $ps_hi_counts[4]++;
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
                         $ps_hi_counts[1]++;
-                    } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                        $ps_hi_counts[2]++;
                     } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $ps_hi_counts[2]++;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $ps_hi_counts[3]++;
                     }
                 }
 
                 // [ENDSTATE] Calculate ACCOMP counts
                 if ($data['STATUS'] === 'ACTCOMP') {
-                    if ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $accomp_counts[4]++;
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
                         $accomp_counts[1]++;
-                    } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                        $accomp_counts[2]++;
                     } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $accomp_counts[2]++;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $accomp_counts[3]++;
                     }
                 }
@@ -259,11 +281,12 @@ class EndstateImport implements ToCollection
                 // [ENDSTATE] Calculate PI_TOT counts
                 $status_created_month_year = Carbon::createFromFormat('m/d/Y', $data['STATUSDATE'])->format('m-Y');
                 if ($status_created_month_year === $current_month) {
-                    if ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $pi_tot_counts[4][$data['WONUM']] = true;
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
                         $pi_tot_counts[1][$data['WONUM']] = true;
-                    } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                        $pi_tot_counts[2][$data['WONUM']] = true;
                     } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $pi_tot_counts[2][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $pi_tot_counts[3][$data['WONUM']] = true;
                     }
                 }
@@ -271,27 +294,39 @@ class EndstateImport implements ToCollection
                 // [ENDSTATE] Calculate PS_TOT counts
                 $status_date_month_year = Carbon::createFromFormat('m/d/Y', $data['STATUSDATE'])->format('m-Y');
                 if ($status_date_month_year === $current_month && $data['STATUS'] === 'COMPWORK') {
-                    if ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $ps_tot_counts[4][$data['WONUM']] = true;
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
                         $ps_tot_counts[1][$data['WONUM']] = true;
-                    } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                        $ps_tot_counts[2][$data['WONUM']] = true;
                     } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $ps_tot_counts[2][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $ps_tot_counts[3][$data['WONUM']] = true;
                     }
                 }
 
                 // [ENDSTATE] Insert TARGET_TOT 
-                if ($data['DISTRICT_LAMA'] == 'MALANG') {
-                    $target_tot_counts[1] = 2908;
-                } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                    $target_tot_counts[2] = 1189;
+                if ($data['DISTRICT_BARU'] == 'JATIM BARAT') {
+                    $target_tot_counts[4] = 5578;
+                }
+                if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                    $target_tot_counts[1] = 1189;
                 } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
-                    $target_tot_counts[3] = 1481;
+                    $target_tot_counts[2] = 1481;
+                } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $target_tot_counts[3] = 2908;
                 }
 
                 // [PIVOT ENDSTATE] Calculate PI_TOT
-                $status_date_month_year = Carbon::createFromFormat('m/d/Y', $data['STATUSDATE'])->format('m-Y');
-                if ($data['CRMORDERTYPE'] === 'CREATE' && $status_date_month_year === $current_month) {
+                $status_date_pi = Carbon::createFromFormat('m/d/Y', $data['STATUSDATE'])->format('m-Y');
+                if ($data['CRMORDERTYPE'] === 'CREATE' && $status_date_pi === $current_month) {
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                        $pvt_pi_tot[12][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $pvt_pi_tot[24][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                        $pvt_pi_tot[37][$data['WONUM']] = true;
+                    }
+
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $pvt_pi_tot[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {
@@ -315,57 +350,65 @@ class EndstateImport implements ToCollection
                     } elseif ($data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT') {
                         $pvt_pi_tot[11][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ') {
-                        $pvt_pi_tot[12][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MNZ') {
                         $pvt_pi_tot[13][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'CRB') {
+                    } elseif ($data['STO'] == 'MNZ') {
                         $pvt_pi_tot[14][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
+                    } elseif ($data['STO'] == 'CRB') {
                         $pvt_pi_tot[15][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
+                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
                         $pvt_pi_tot[16][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
+                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
                         $pvt_pi_tot[17][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
+                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
                         $pvt_pi_tot[18][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
+                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
                         $pvt_pi_tot[19][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
+                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
                         $pvt_pi_tot[20][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
+                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
                         $pvt_pi_tot[21][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
+                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
                         $pvt_pi_tot[22][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
+                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
                         $pvt_pi_tot[23][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BLB') {
-                        $pvt_pi_tot[24][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GDG') {
+                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
                         $pvt_pi_tot[25][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KPO') {
+                    } elseif ($data['STO'] == 'BLB') {
                         $pvt_pi_tot[26][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
+                    } elseif ($data['STO'] == 'GDG') {
                         $pvt_pi_tot[27][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KLJ') {
+                    } elseif ($data['STO'] == 'KPO') {
                         $pvt_pi_tot[28][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MLG') {
+                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
                         $pvt_pi_tot[29][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
+                    } elseif ($data['STO'] == 'KLJ') {
                         $pvt_pi_tot[30][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
+                    } elseif ($data['STO'] == 'MLG') {
                         $pvt_pi_tot[31][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
+                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
                         $pvt_pi_tot[32][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
                         $pvt_pi_tot[33][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
                         $pvt_pi_tot[34][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                        $pvt_pi_tot[35][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                        $pvt_pi_tot[36][$data['WONUM']] = true;
                     }
                 }
 
                 // [PIVOT ENDSTATE] Calculate PS_TOT
-                $status_date_month_year = Carbon::createFromFormat('m/d/Y', $data['STATUSDATE'])->format('m-Y');
-                if ($data['CRMORDERTYPE'] === 'CREATE' && $data['STATUS'] === 'COMPWORK' && $status_date_month_year === $current_month) {
+                $status_date_ps = Carbon::createFromFormat('m/d/Y', $data['STATUSDATE'])->format('m-Y');
+                if ($data['CRMORDERTYPE'] === 'CREATE' && $data['STATUS'] === 'COMPWORK' && $status_date_ps === $current_month) {
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                        $pvt_ps_tot[12][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $pvt_ps_tot[24][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                        $pvt_ps_tot[37][$data['WONUM']] = true;
+                    }
+
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $pvt_ps_tot[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {
@@ -389,57 +432,65 @@ class EndstateImport implements ToCollection
                     } elseif ($data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT') {
                         $pvt_ps_tot[11][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ') {
-                        $pvt_ps_tot[12][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MNZ') {
                         $pvt_ps_tot[13][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'CRB') {
+                    } elseif ($data['STO'] == 'MNZ') {
                         $pvt_ps_tot[14][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
+                    } elseif ($data['STO'] == 'CRB') {
                         $pvt_ps_tot[15][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
+                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
                         $pvt_ps_tot[16][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
+                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
                         $pvt_ps_tot[17][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
+                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
                         $pvt_ps_tot[18][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
+                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
                         $pvt_ps_tot[19][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
+                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
                         $pvt_ps_tot[20][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
+                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
                         $pvt_ps_tot[21][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
+                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
                         $pvt_ps_tot[22][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
+                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
                         $pvt_ps_tot[23][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BLB') {
-                        $pvt_ps_tot[24][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GDG') {
+                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
                         $pvt_ps_tot[25][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KPO') {
+                    } elseif ($data['STO'] == 'BLB') {
                         $pvt_ps_tot[26][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'GDG') {
+                        $pvt_ps_tot[27][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'KPO') {
+                        $pvt_ps_tot[28][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
-                        $pvt_pS_tot[27][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KLJ') {
-                        $pvt_pS_tot[28][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MLG') {
                         $pvt_ps_tot[29][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
+                    } elseif ($data['STO'] == 'KLJ') {
                         $pvt_ps_tot[30][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
+                    } elseif ($data['STO'] == 'MLG') {
                         $pvt_ps_tot[31][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
+                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
                         $pvt_ps_tot[32][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
                         $pvt_ps_tot[33][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
                         $pvt_ps_tot[34][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                        $pvt_ps_tot[35][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                        $pvt_ps_tot[36][$data['WONUM']] = true;
                     }
                 }
 
                 // [PIVOT ENDSTATE] Calculate CANCEL_TOT
                 $status_date_month_year = Carbon::createFromFormat('m/d/Y', $data['STATUSDATE'])->format('m-Y');
                 if ($data['CRMORDERTYPE'] === 'CREATE' && $data['STATUS'] === 'CANCLWORK' && $status_date_month_year === $current_month) {
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                        $pvt_cncl_tot[12][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $pvt_cncl_tot[24][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                        $pvt_cncl_tot[37][$data['WONUM']] = true;
+                    }
+
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $pvt_cncl_tot[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {
@@ -463,57 +514,64 @@ class EndstateImport implements ToCollection
                     } elseif ($data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT') {
                         $pvt_cncl_tot[11][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ') {
-                        $pvt_cncl_tot[12][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MNZ') {
                         $pvt_cncl_tot[13][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'CRB') {
+                    } elseif ($data['STO'] == 'MNZ') {
                         $pvt_cncl_tot[14][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
+                    } elseif ($data['STO'] == 'CRB') {
                         $pvt_cncl_tot[15][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
+                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
                         $pvt_cncl_tot[16][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
+                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
                         $pvt_cncl_tot[17][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
+                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
                         $pvt_cncl_tot[18][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
+                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
                         $pvt_cncl_tot[19][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
+                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
                         $pvt_cncl_tot[20][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
+                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
                         $pvt_cncl_tot[21][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
+                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
                         $pvt_cncl_tot[22][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
+                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
                         $pvt_cncl_tot[23][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BLB') {
-                        $pvt_cncl_tot[24][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GDG') {
+                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
                         $pvt_cncl_tot[25][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KPO') {
+                    } elseif ($data['STO'] == 'BLB') {
                         $pvt_cncl_tot[26][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
+                    } elseif ($data['STO'] == 'GDG') {
                         $pvt_cncl_tot[27][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KLJ') {
+                    } elseif ($data['STO'] == 'KPO') {
                         $pvt_cncl_tot[28][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MLG') {
+                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
                         $pvt_cncl_tot[29][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
+                    } elseif ($data['STO'] == 'KLJ') {
                         $pvt_cncl_tot[30][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
+                    } elseif ($data['STO'] == 'MLG') {
                         $pvt_cncl_tot[31][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
+                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
                         $pvt_cncl_tot[32][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
                         $pvt_cncl_tot[33][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
                         $pvt_cncl_tot[34][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                        $pvt_cncl_tot[35][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                        $pvt_cncl_tot[36][$data['WONUM']] = true;
                     }
                 }
 
                 // [PIVOT ENDSTATE] Calculate FALLOUT_TOT
                 $status_date_month_year = Carbon::createFromFormat('m/d/Y', $data['STATUSDATE'])->format('m-Y');
                 if ($data['CRMORDERTYPE'] === 'CREATE' && $data['STATUS'] === 'WORKFAIL' && $status_date_month_year === $current_month) {
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                        $pvt_fo_tot[12][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $pvt_fo_tot[24][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                        $pvt_fo_tot[37][$data['WONUM']] = true;
+                    } 
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $pvt_fo_tot[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {
@@ -537,51 +595,51 @@ class EndstateImport implements ToCollection
                     } elseif ($data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT') {
                         $pvt_fo_tot[11][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ') {
-                        $pvt_fo_tot[12][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MNZ') {
                         $pvt_fo_tot[13][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'CRB') {
+                    } elseif ($data['STO'] == 'MNZ') {
                         $pvt_fo_tot[14][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
+                    } elseif ($data['STO'] == 'CRB') {
                         $pvt_fo_tot[15][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
+                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
                         $pvt_fo_tot[16][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
+                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
                         $pvt_fo_tot[17][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
+                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
                         $pvt_fo_tot[18][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
+                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
                         $pvt_fo_tot[19][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
+                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
                         $pvt_fo_tot[20][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
+                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
                         $pvt_fo_tot[21][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
+                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
                         $pvt_fo_tot[22][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
+                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
                         $pvt_fo_tot[23][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BLB') {
-                        $pvt_fo_tot[24][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GDG') {
+                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
                         $pvt_fo_tot[25][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KPO') {
+                    } elseif ($data['STO'] == 'BLB') {
                         $pvt_fo_tot[26][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
+                    } elseif ($data['STO'] == 'GDG') {
                         $pvt_fo_tot[27][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KLJ') {
+                    } elseif ($data['STO'] == 'KPO') {
                         $pvt_fo_tot[28][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MLG') {
+                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
                         $pvt_fo_tot[29][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
+                    } elseif ($data['STO'] == 'KLJ') {
                         $pvt_fo_tot[30][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
+                    } elseif ($data['STO'] == 'MLG') {
                         $pvt_fo_tot[31][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
+                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
                         $pvt_fo_tot[32][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
                         $pvt_fo_tot[33][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
                         $pvt_fo_tot[34][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                        $pvt_fo_tot[35][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                        $pvt_fo_tot[36][$data['WONUM']] = true;
                     }
                 }
             }

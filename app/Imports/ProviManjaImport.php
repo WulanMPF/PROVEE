@@ -29,29 +29,32 @@ class ProviManjaImport implements ToCollection
             9 => [],   // Tulungagung
             10 => [],  // Warujayeng
             11 => [],  // Wlingi
-            12 => [],  // Bojonegoro
-            13 => [],  // Madiun 1
-            14 => [],  // Madiun 2
-            15 => [],  // Madiun 3
-            16 => [],  // Magetan
-            17 => [],  // Ngawi
-            18 => [],  // Pacitan
-            19 => [],  // Ponorogo 1
-            20 => [],  // Ponorogo 2
-            21 => [],  // Tuban 1
-            22 => [],  // Tuban 2
-            23 => [],  // Batu
-            24 => [],  // Blimbing
-            25 => [],  // Gadang
-            26 => [],  // Karang Ploso
-            27 => [],  // Kepanjen
-            28 => [],  // Klojen
-            29 => [],  // Malang
-            30 => [],  // Pakis
-            31 => [],  // Sawojajar
-            32 => [],  // Singosari
-            33 => [],  // Turen 1
-            34 => [],  // Turen 2
+            12 => [],  // WILAYAH KEDIRI
+            13 => [],  // Bojonegoro
+            14 => [],  // Madiun 1
+            15 => [],  // Madiun 2
+            16 => [],  // Madiun 3
+            17 => [],  // Magetan
+            18 => [],  // Ngawi
+            19 => [],  // Pacitan
+            20 => [],  // Ponorogo 1
+            21 => [],  // Ponorogo 2
+            22 => [],  // Tuban 1
+            23 => [],  // Tuban 2
+            24 => [],  // WILAYAH MADIUN
+            25 => [],  // Batu
+            26 => [],  // Blimbing
+            27 => [],  // Gadang
+            28 => [],  // Karang Ploso
+            29 => [],  // Kepanjen
+            30 => [],  // Klojen
+            31 => [],  // Malang
+            32 => [],  // Pakis
+            33 => [],  // Sawojajar
+            34 => [],  // Singosari
+            35 => [],  // Turen 1
+            36 => [],  // Turen 2
+            37 => [],  // WILAYAH MALANG
         ];
 
         // MANJA_HI
@@ -67,29 +70,32 @@ class ProviManjaImport implements ToCollection
             9 => [],   // Tulungagung
             10 => [],  // Warujayeng
             11 => [],  // Wlingi
-            12 => [],  // Bojonegoro
-            13 => [],  // Madiun 1
-            14 => [],  // Madiun 2
-            15 => [],  // Madiun 3
-            16 => [],  // Magetan
-            17 => [],  // Ngawi
-            18 => [],  // Pacitan
-            19 => [],  // Ponorogo 1
-            20 => [],  // Ponorogo 2
-            21 => [],  // Tuban 1
-            22 => [],  // Tuban 2
-            23 => [],  // Batu
-            24 => [],  // Blimbing
-            25 => [],  // Gadang
-            26 => [],  // Karang Ploso
-            27 => [],  // Kepanjen
-            28 => [],  // Klojen
-            29 => [],  // Malang
-            30 => [],  // Pakis
-            31 => [],  // Sawojajar
-            32 => [],  // Singosari
-            33 => [],  // Turen 1
-            34 => [],  // Turen 2
+            12 => [],  // WILAYAH KEDIRI
+            13 => [],  // Bojonegoro
+            14 => [],  // Madiun 1
+            15 => [],  // Madiun 2
+            16 => [],  // Madiun 3
+            17 => [],  // Magetan
+            18 => [],  // Ngawi
+            19 => [],  // Pacitan
+            20 => [],  // Ponorogo 1
+            21 => [],  // Ponorogo 2
+            22 => [],  // Tuban 1
+            23 => [],  // Tuban 2
+            24 => [],  // WILAYAH MADIUN
+            25 => [],  // Batu
+            26 => [],  // Blimbing
+            27 => [],  // Gadang
+            28 => [],  // Karang Ploso
+            29 => [],  // Kepanjen
+            30 => [],  // Klojen
+            31 => [],  // Malang
+            32 => [],  // Pakis
+            33 => [],  // Sawojajar
+            34 => [],  // Singosari
+            35 => [],  // Turen 1
+            36 => [],  // Turen 2
+            37 => [],  // WILAYAH MALANG
         ];
 
         // SALDO_MANJA_H+1
@@ -105,29 +111,32 @@ class ProviManjaImport implements ToCollection
             9 => [],   // Tulungagung
             10 => [],  // Warujayeng
             11 => [],  // Wlingi
-            12 => [],  // Bojonegoro
-            13 => [],  // Madiun 1
-            14 => [],  // Madiun 2
-            15 => [],  // Madiun 3
-            16 => [],  // Magetan
-            17 => [],  // Ngawi
-            18 => [],  // Pacitan
-            19 => [],  // Ponorogo 1
-            20 => [],  // Ponorogo 2
-            21 => [],  // Tuban 1
-            22 => [],  // Tuban 2
-            23 => [],  // Batu
-            24 => [],  // Blimbing
-            25 => [],  // Gadang
-            26 => [],  // Karang Ploso
-            27 => [],  // Kepanjen
-            28 => [],  // Klojen
-            29 => [],  // Malang
-            30 => [],  // Pakis
-            31 => [],  // Sawojajar
-            32 => [],  // Singosari
-            33 => [],  // Turen 1
-            34 => [],  // Turen 2
+            12 => [],  // WILAYAH KEDIRI
+            13 => [],  // Bojonegoro
+            14 => [],  // Madiun 1
+            15 => [],  // Madiun 2
+            16 => [],  // Madiun 3
+            17 => [],  // Magetan
+            18 => [],  // Ngawi
+            19 => [],  // Pacitan
+            20 => [],  // Ponorogo 1
+            21 => [],  // Ponorogo 2
+            22 => [],  // Tuban 1
+            23 => [],  // Tuban 2
+            24 => [],  // WILAYAH MADIUN
+            25 => [],  // Batu
+            26 => [],  // Blimbing
+            27 => [],  // Gadang
+            28 => [],  // Karang Ploso
+            29 => [],  // Kepanjen
+            30 => [],  // Klojen
+            31 => [],  // Malang
+            32 => [],  // Pakis
+            33 => [],  // Sawojajar
+            34 => [],  // Singosari
+            35 => [],  // Turen 1
+            36 => [],  // Turen 2
+            37 => [],  // WILAYAH MALANG
         ];
 
         // SALDO_MANJA_H+2
@@ -143,29 +152,32 @@ class ProviManjaImport implements ToCollection
             9 => [],   // Tulungagung
             10 => [],  // Warujayeng
             11 => [],  // Wlingi
-            12 => [],  // Bojonegoro
-            13 => [],  // Madiun 1
-            14 => [],  // Madiun 2
-            15 => [],  // Madiun 3
-            16 => [],  // Magetan
-            17 => [],  // Ngawi
-            18 => [],  // Pacitan
-            19 => [],  // Ponorogo 1
-            20 => [],  // Ponorogo 2
-            21 => [],  // Tuban 1
-            22 => [],  // Tuban 2
-            23 => [],  // Batu
-            24 => [],  // Blimbing
-            25 => [],  // Gadang
-            26 => [],  // Karang Ploso
-            27 => [],  // Kepanjen
-            28 => [],  // Klojen
-            29 => [],  // Malang
-            30 => [],  // Pakis
-            31 => [],  // Sawojajar
-            32 => [],  // Singosari
-            33 => [],  // Turen 1
-            34 => [],  // Turen 2
+            12 => [],  // WILAYAH KEDIRI
+            13 => [],  // Bojonegoro
+            14 => [],  // Madiun 1
+            15 => [],  // Madiun 2
+            16 => [],  // Madiun 3
+            17 => [],  // Magetan
+            18 => [],  // Ngawi
+            19 => [],  // Pacitan
+            20 => [],  // Ponorogo 1
+            21 => [],  // Ponorogo 2
+            22 => [],  // Tuban 1
+            23 => [],  // Tuban 2
+            24 => [],  // WILAYAH MADIUN
+            25 => [],  // Batu
+            26 => [],  // Blimbing
+            27 => [],  // Gadang
+            28 => [],  // Karang Ploso
+            29 => [],  // Kepanjen
+            30 => [],  // Klojen
+            31 => [],  // Malang
+            32 => [],  // Pakis
+            33 => [],  // Sawojajar
+            34 => [],  // Singosari
+            35 => [],  // Turen 1
+            36 => [],  // Turen 2
+            37 => [],  // WILAYAH MALANG
         ];
 
         // SALDO_MANJA_H>2
@@ -181,29 +193,32 @@ class ProviManjaImport implements ToCollection
             9 => [],   // Tulungagung
             10 => [],  // Warujayeng
             11 => [],  // Wlingi
-            12 => [],  // Bojonegoro
-            13 => [],  // Madiun 1
-            14 => [],  // Madiun 2
-            15 => [],  // Madiun 3
-            16 => [],  // Magetan
-            17 => [],  // Ngawi
-            18 => [],  // Pacitan
-            19 => [],  // Ponorogo 1
-            20 => [],  // Ponorogo 2
-            21 => [],  // Tuban 1
-            22 => [],  // Tuban 2
-            23 => [],  // Batu
-            24 => [],  // Blimbing
-            25 => [],  // Gadang
-            26 => [],  // Karang Ploso
-            27 => [],  // Kepanjen
-            28 => [],  // Klojen
-            29 => [],  // Malang
-            30 => [],  // Pakis
-            31 => [],  // Sawojajar
-            32 => [],  // Singosari
-            33 => [],  // Turen 1
-            34 => [],  // Turen 2
+            12 => [],  // WILAYAH KEDIRI
+            13 => [],  // Bojonegoro
+            14 => [],  // Madiun 1
+            15 => [],  // Madiun 2
+            16 => [],  // Madiun 3
+            17 => [],  // Magetan
+            18 => [],  // Ngawi
+            19 => [],  // Pacitan
+            20 => [],  // Ponorogo 1
+            21 => [],  // Ponorogo 2
+            22 => [],  // Tuban 1
+            23 => [],  // Tuban 2
+            24 => [],  // WILAYAH MADIUN
+            25 => [],  // Batu
+            26 => [],  // Blimbing
+            27 => [],  // Gadang
+            28 => [],  // Karang Ploso
+            29 => [],  // Kepanjen
+            30 => [],  // Klojen
+            31 => [],  // Malang
+            32 => [],  // Pakis
+            33 => [],  // Sawojajar
+            34 => [],  // Singosari
+            35 => [],  // Turen 1
+            36 => [],  // Turen 2
+            37 => [],  // WILAYAH MALANG
         ];
 
         foreach ($collection as $row) {
@@ -211,6 +226,7 @@ class ProviManjaImport implements ToCollection
                 $data['WONUM']          = !empty($row[1]) ? $row[1] : '';
                 $data['TGL_MANJA']      = !empty($row[21]) ? Carbon::instance(Date::excelToDateTimeObject($row[21])) : null;
                 $data['STO']            = !empty($row[6]) ? $row[6] : '';
+                $data['DISTRICT_LAMA']  = !empty($row[8]) ? $row[8] : '';
 
                 // Extract only the date part
                 $tgl_man = $data['TGL_MANJA']->toDateString(); // Format: Y-m-d
@@ -222,6 +238,14 @@ class ProviManjaImport implements ToCollection
                 // Calculate MANJA
                 if ($umur > 0) {
                     // EXPIRED_MANJA_H-1
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                        $h1_count[12][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $h1_count[24][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                        $h1_count[37][$data['WONUM']] = true;
+                    }
+
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $h1_count[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {
@@ -245,54 +269,62 @@ class ProviManjaImport implements ToCollection
                     } elseif ($data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT') {
                         $h1_count[11][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ') {
-                        $h1_count[12][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MNZ') {
                         $h1_count[13][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'CRB') {
+                    } elseif ($data['STO'] == 'MNZ') {
                         $h1_count[14][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
+                    } elseif ($data['STO'] == 'CRB') {
                         $h1_count[15][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
+                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
                         $h1_count[16][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
+                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
                         $h1_count[17][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
+                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
                         $h1_count[18][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
+                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
                         $h1_count[19][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
+                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
                         $h1_count[20][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
+                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
                         $h1_count[21][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
+                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
                         $h1_count[22][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
+                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
                         $h1_count[23][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BLB') {
-                        $h1_count[24][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GDG') {
+                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
                         $h1_count[25][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KPO') {
+                    } elseif ($data['STO'] == 'BLB') {
                         $h1_count[26][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
+                    } elseif ($data['STO'] == 'GDG') {
                         $h1_count[27][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KLJ') {
+                    } elseif ($data['STO'] == 'KPO') {
                         $h1_count[28][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MLG') {
+                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
                         $h1_count[29][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
+                    } elseif ($data['STO'] == 'KLJ') {
                         $h1_count[30][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
+                    } elseif ($data['STO'] == 'MLG') {
                         $h1_count[31][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
+                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
                         $h1_count[32][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
                         $h1_count[33][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
                         $h1_count[34][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                        $h1_count[35][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                        $h1_count[36][$data['WONUM']] = true;
                     }
                 } elseif ($umur === 0) {
                     // MANJA_HI
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                        $hi_count[12][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $hi_count[24][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                        $hi_count[37][$data['WONUM']] = true;
+                    }
+
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $hi_count[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {
@@ -316,54 +348,62 @@ class ProviManjaImport implements ToCollection
                     } elseif ($data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT') {
                         $hi_count[11][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ') {
-                        $hi_count[12][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MNZ') {
                         $hi_count[13][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'CRB') {
+                    } elseif ($data['STO'] == 'MNZ') {
                         $hi_count[14][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
+                    } elseif ($data['STO'] == 'CRB') {
                         $hi_count[15][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
+                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
                         $hi_count[16][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
+                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
                         $hi_count[17][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
+                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
                         $hi_count[18][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
+                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
                         $hi_count[19][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
+                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
                         $hi_count[20][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
+                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
                         $hi_count[21][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
+                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
                         $hi_count[22][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
+                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
                         $hi_count[23][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BLB') {
-                        $hi_count[24][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GDG') {
+                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
                         $hi_count[25][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KPO') {
+                    } elseif ($data['STO'] == 'BLB') {
                         $hi_count[26][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
+                    } elseif ($data['STO'] == 'GDG') {
                         $hi_count[27][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KLJ') {
+                    } elseif ($data['STO'] == 'KPO') {
                         $hi_count[28][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MLG') {
+                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
                         $hi_count[29][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
+                    } elseif ($data['STO'] == 'KLJ') {
                         $hi_count[30][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
+                    } elseif ($data['STO'] == 'MLG') {
                         $hi_count[31][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
+                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
                         $hi_count[32][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
                         $hi_count[33][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
                         $hi_count[34][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                        $hi_count[35][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                        $hi_count[36][$data['WONUM']] = true;
                     }
                 } elseif ($umur === -1) {
                     // SALDO_MANJA_H+1
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                        $saldo_h1_count[12][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $saldo_h1_count[24][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                        $saldo_h1_count[37][$data['WONUM']] = true;
+                    }
+
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $saldo_h1_count[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {
@@ -387,54 +427,62 @@ class ProviManjaImport implements ToCollection
                     } elseif ($data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT') {
                         $saldo_h1_count[11][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ') {
-                        $saldo_h1_count[12][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MNZ') {
                         $saldo_h1_count[13][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'CRB') {
+                    } elseif ($data['STO'] == 'MNZ') {
                         $saldo_h1_count[14][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
+                    } elseif ($data['STO'] == 'CRB') {
                         $saldo_h1_count[15][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
+                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
                         $saldo_h1_count[16][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
+                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
                         $saldo_h1_count[17][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
+                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
                         $saldo_h1_count[18][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
+                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
                         $saldo_h1_count[19][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
+                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
                         $saldo_h1_count[20][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
+                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
                         $saldo_h1_count[21][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
+                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
                         $saldo_h1_count[22][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
+                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
                         $saldo_h1_count[23][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BLB') {
-                        $saldo_h1_count[24][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GDG') {
+                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
                         $saldo_h1_count[25][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KPO') {
+                    } elseif ($data['STO'] == 'BLB') {
                         $saldo_h1_count[26][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
+                    } elseif ($data['STO'] == 'GDG') {
                         $saldo_h1_count[27][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KLJ') {
+                    } elseif ($data['STO'] == 'KPO') {
                         $saldo_h1_count[28][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MLG') {
+                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
                         $saldo_h1_count[29][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
+                    } elseif ($data['STO'] == 'KLJ') {
                         $saldo_h1_count[30][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
+                    } elseif ($data['STO'] == 'MLG') {
                         $saldo_h1_count[31][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
+                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
                         $saldo_h1_count[32][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
                         $saldo_h1_count[33][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
                         $saldo_h1_count[34][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                        $saldo_h1_count[35][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                        $saldo_h1_count[36][$data['WONUM']] = true;
                     }
                 } elseif ($umur === -2) {
                     // SALDO_MANJA_H+2
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                        $saldo_h2_count[12][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $saldo_h2_count[24][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                        $saldo_h2_count[37][$data['WONUM']] = true;
+                    }
+
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $saldo_h2_count[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {
@@ -458,54 +506,62 @@ class ProviManjaImport implements ToCollection
                     } elseif ($data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT') {
                         $saldo_h2_count[11][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ') {
-                        $saldo_h2_count[12][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MNZ') {
                         $saldo_h2_count[13][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'CRB') {
+                    } elseif ($data['STO'] == 'MNZ') {
                         $saldo_h2_count[14][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
+                    } elseif ($data['STO'] == 'CRB') {
                         $saldo_h2_count[15][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
+                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
                         $saldo_h2_count[16][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
+                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
                         $saldo_h2_count[17][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
+                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
                         $saldo_h2_count[18][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
+                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
                         $saldo_h2_count[19][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
+                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
                         $saldo_h2_count[20][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
+                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
                         $saldo_h2_count[21][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
+                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
                         $saldo_h2_count[22][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
+                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
                         $saldo_h2_count[23][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BLB') {
-                        $saldo_h2_count[24][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GDG') {
+                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
                         $saldo_h2_count[25][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KPO') {
+                    } elseif ($data['STO'] == 'BLB') {
                         $saldo_h2_count[26][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
+                    } elseif ($data['STO'] == 'GDG') {
                         $saldo_h2_count[27][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KLJ') {
+                    } elseif ($data['STO'] == 'KPO') {
                         $saldo_h2_count[28][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MLG') {
+                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
                         $saldo_h2_count[29][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
+                    } elseif ($data['STO'] == 'KLJ') {
                         $saldo_h2_count[30][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
+                    } elseif ($data['STO'] == 'MLG') {
                         $saldo_h2_count[31][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
+                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
                         $saldo_h2_count[32][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
                         $saldo_h2_count[33][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
                         $saldo_h2_count[34][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                        $saldo_h2_count[35][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                        $saldo_h2_count[36][$data['WONUM']] = true;
                     }
                 } elseif ($umur < -2) {
                     // SALDO_MANJA_H>2
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
+                        $saldo_h3_count[12][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $saldo_h3_count[24][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
+                        $saldo_h3_count[37][$data['WONUM']] = true;
+                    }
+
                     if ($data['STO'] == 'BLR' || $data['STO'] == 'PAN') {
                         $saldo_h3_count[1][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'GUR' || $data['STO'] == 'WAT') {
@@ -529,51 +585,51 @@ class ProviManjaImport implements ToCollection
                     } elseif ($data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT') {
                         $saldo_h3_count[11][$data['WONUM']] = true;
                     } elseif ($data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ') {
-                        $saldo_h3_count[12][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MNZ') {
                         $saldo_h3_count[13][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'CRB') {
+                    } elseif ($data['STO'] == 'MNZ') {
                         $saldo_h3_count[14][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
+                    } elseif ($data['STO'] == 'CRB') {
                         $saldo_h3_count[15][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
+                    } elseif ($data['STO'] == 'MSP' || $data['STO'] == 'UTR') {
                         $saldo_h3_count[16][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
+                    } elseif ($data['STO'] == 'GGR' || $data['STO'] == 'MGT' || $data['STO'] == 'SAR') {
                         $saldo_h3_count[17][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
+                    } elseif ($data['STO'] == 'JGO' || $data['STO'] == 'KRJ' || $data['STO'] == 'NWI' || $data['STO'] == 'WKU') {
                         $saldo_h3_count[18][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
+                    } elseif ($data['STO'] == 'LOG' || $data['STO'] == 'PNG' || $data['STO'] == 'PNZ') {
                         $saldo_h3_count[19][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
+                    } elseif ($data['STO'] == 'PON' || $data['STO'] == 'SMO') {
                         $saldo_h3_count[20][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
+                    } elseif ($data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH') {
                         $saldo_h3_count[21][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
+                    } elseif ($data['STO'] == 'RGL' || $data['STO'] == 'TNZ') {
                         $saldo_h3_count[22][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
+                    } elseif ($data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR') {
                         $saldo_h3_count[23][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BLB') {
-                        $saldo_h3_count[24][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GDG') {
+                    } elseif ($data['STO'] == 'BTU' || $data['STO'] == 'NTG') {
                         $saldo_h3_count[25][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KPO') {
+                    } elseif ($data['STO'] == 'BLB') {
                         $saldo_h3_count[26][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
+                    } elseif ($data['STO'] == 'GDG') {
                         $saldo_h3_count[27][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'KLJ') {
+                    } elseif ($data['STO'] == 'KPO') {
                         $saldo_h3_count[28][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'MLG') {
+                    } elseif ($data['STO'] == 'GKW' || $data['STO'] == 'KEP' || $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP') {
                         $saldo_h3_count[29][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
+                    } elseif ($data['STO'] == 'KLJ') {
                         $saldo_h3_count[30][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
+                    } elseif ($data['STO'] == 'MLG') {
                         $saldo_h3_count[31][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
+                    } elseif ($data['STO'] == 'PKS' || $data['STO'] == 'TMP') {
                         $saldo_h3_count[32][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                    } elseif ($data['STO'] == 'BRG' || $data['STO'] == 'SWJ') {
                         $saldo_h3_count[33][$data['WONUM']] = true;
-                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                    } elseif ($data['STO'] == 'LWG' || $data['STO'] == 'SGS') {
                         $saldo_h3_count[34][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'DPT' || $data['STO'] == 'SBM') {
+                        $saldo_h3_count[35][$data['WONUM']] = true;
+                    } elseif ($data['STO'] == 'TUR' || $data['STO'] == 'BNR' || $data['STO'] == 'GDI') {
+                        $saldo_h3_count[36][$data['WONUM']] = true;
                     }
                 }
 
@@ -582,7 +638,10 @@ class ProviManjaImport implements ToCollection
 
             $index++;
         }
-        // Insert or update into the database
+        // Delete all record
+        ProviManjaModel::query()->delete();
+
+        // Insert into the database
         foreach ($h1_count as $id_sektor => $values) {
             $count_h1 = count($values);
             $count_hi = count($hi_count[$id_sektor]);

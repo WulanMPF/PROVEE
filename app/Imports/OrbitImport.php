@@ -14,24 +14,28 @@ class OrbitImport implements ToCollection
     {
         $index = 1;
         $pi_hi_counts = [
-            1 => 0, // Malang
-            2 => 0, // Kediri
-            3 => 0  // Madiun
+            1 => 0, // Kediri
+            2 => 0,  // Madiun
+            3 => 0, // Malang
+            4 => 0 // Jatim Barat
         ];
         $ps_hi_counts = [
-            1 => 0, // Malang
-            2 => 0, // Kediri
-            3 => 0  // Madiun
+            1 => 0, // Kediri
+            2 => 0,  // Madiun
+            3 => 0, // Malang
+            4 => 0 // Jatim Barat
         ];
         $pi_tot_counts = [
-            1 => [], // Malang
-            2 => [], // Kediri
-            3 => []  // Madiun
+            1 => [], // Kediri
+            2 => [],  // Madiun
+            3 => [], // Malang
+            4 => [] // Jatim Barat
         ];
         $ps_tot_counts = [
-            1 => [], // Malang
-            2 => [], // Kediri
-            3 => []  // Madiun
+            1 => [], // Kediri
+            2 => [],  // Madiun
+            3 => [], // Malang
+            4 => [] // Jatim Barat
         ];
 
         $today = Carbon::now()->format('m/d/Y'); // Today's date in M/D/Y format
@@ -48,22 +52,24 @@ class OrbitImport implements ToCollection
 
                 // Calculate PI_HI counts
                 if ($data['TGL_PI_AWAL'] === $today) {
-                    if ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $pi_hi_counts[4]++;
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
                         $pi_hi_counts[1]++;
-                    } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                        $pi_hi_counts[2]++;
                     } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $pi_hi_counts[2]++;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $pi_hi_counts[3]++;
                     }
                 }
 
                 // Calculate PS_HI counts
                 if ($data['STATUSDATE'] === $today && $data['STATUS'] === 'COMPWORK') {
-                    if ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $ps_hi_counts[4]++;
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
                         $ps_hi_counts[1]++;
-                    } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                        $ps_hi_counts[2]++;
                     } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $ps_hi_counts[2]++;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $ps_hi_counts[3]++;
                     }
                 }
@@ -71,11 +77,12 @@ class OrbitImport implements ToCollection
                 // Calculate PI_TOT counts
                 $date_created_month_year = Carbon::createFromFormat('m/d/Y', $data['DATECREATED'])->format('m-Y');
                 if ($date_created_month_year === $current_month) {
-                    if ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $pi_tot_counts[4][$data['WONUM']] = true;
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
                         $pi_tot_counts[1][$data['WONUM']] = true;
-                    } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                        $pi_tot_counts[2][$data['WONUM']] = true;
                     } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $pi_tot_counts[2][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $pi_tot_counts[3][$data['WONUM']] = true;
                     }
                 }
@@ -83,11 +90,12 @@ class OrbitImport implements ToCollection
                 // Calculate PS_TOT counts
                 $status_date_month_year = Carbon::createFromFormat('m/d/Y', $data['STATUSDATE'])->format('m-Y');
                 if ($status_date_month_year === $current_month && $data['STATUS'] === 'COMPWORK') {
-                    if ($data['DISTRICT_LAMA'] == 'MALANG') {
+                    $ps_tot_counts[4][$data['WONUM']] = true;
+                    if ($data['DISTRICT_LAMA'] == 'KEDIRI') {
                         $ps_tot_counts[1][$data['WONUM']] = true;
-                    } elseif ($data['DISTRICT_LAMA'] == 'KEDIRI') {
-                        $ps_tot_counts[2][$data['WONUM']] = true;
                     } elseif ($data['DISTRICT_LAMA'] == 'MADIUN') {
+                        $ps_tot_counts[2][$data['WONUM']] = true;
+                    } elseif ($data['DISTRICT_LAMA'] == 'MALANG') {
                         $ps_tot_counts[3][$data['WONUM']] = true;
                     }
                 }

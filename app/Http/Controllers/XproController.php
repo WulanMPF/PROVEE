@@ -37,7 +37,7 @@ class XproController extends Controller
                 return $row->re_hi != 0 ? round(($row->ps_hi / $row->re_hi) * 100, 2) . '%' : '100%';
             })
             ->addColumn('ps_pi_hi', function ($row) {
-                return $row->pi_hi != 0 ? round(($row->ps_hi / $row->pi_hi) * 100, 2) . '%' : '100%';
+                return $row->pi_hi != 0 ? round(($row->ps_hi / (($row->pi_hi) + ($row->accomp))) * 100, 2) . '%' : '100%';
             })
             ->addColumn('ps_re_tot', function ($row) {
                 return $row->re_tot != 0 ? round(($row->ps_tot / $row->re_tot) * 100, 2) . '%' : '100%';
@@ -94,7 +94,9 @@ class XproController extends Controller
         }
 
         $response = Http::attach(
-            'photo', file_get_contents($image), 'screenshot.png'
+            'photo',
+            file_get_contents($image),
+            'screenshot.png'
         )->post("https://api.telegram.org/bot{$botToken}/sendPhoto", [
             'chat_id' => $chatId,
             'caption' => $caption,

@@ -16,45 +16,52 @@ class XproImport implements ToCollection
 
         // RE_HI
         $re_hi_counts = [
-            1 => 0, // Malang
-            2 => 0, // Kediri
-            3 => 0  // Madiun
+            1 => 0, // Kediri
+            2 => 0,  // Madiun
+            3 => 0, // Malang
+            4 => 0 // Jatim Barat
         ];
         // PI_HI
         $pi_hi_counts = [
-            1 => 0, // Malang
-            2 => 0, // Kediri
-            3 => 0  // Madiun
+            1 => 0, // Kediri
+            2 => 0,  // Madiun
+            3 => 0, // Malang
+            4 => 0 // Jatim Barat
         ];
         // PS_HI
         $ps_hi_counts = [
-            1 => 0, // Malang
-            2 => 0, // Kediri
-            3 => 0  // Madiun
+            1 => 0, // Kediri
+            2 => 0,  // Madiun
+            3 => 0, // Malang
+            4 => 0 // Jatim Barat
         ];
         // ACCOMP
         $accomp_counts = [
-            1 => 0, // Malang
-            2 => 0, // Kediri
-            3 => 0  // Madiun
+            1 => 0, // Kediri
+            2 => 0,  // Madiun
+            3 => 0, // Malang
+            4 => 0 // Jatim Barat
         ];
         // RE_TOT
         $re_tot_counts = [
-            1 => [], // Malang
-            2 => [], // Kediri
-            3 => []  // Madiun
+            1 => [], // Kediri
+            2 => [],  // Madiun
+            3 => [], // Malang
+            4 => [] // Jatim Barat
         ];
         // PI_TOT
         $pi_tot_counts = [
-            1 => [], // Malang
-            2 => [], // Kediri
-            3 => []  // Madiun
+            1 => [], // Kediri
+            2 => [],  // Madiun
+            3 => [], // Malang
+            4 => [] // Jatim Barat
         ];
         // PS_TOT
         $ps_tot_counts = [
-            1 => [], // Malang
-            2 => [], // Kediri
-            3 => []  // Madiun
+            1 => [], // Kediri
+            2 => [],  // Madiun
+            3 => [], // Malang
+            4 => [] // Jatim Barat
         ];
 
         $today = Carbon::now()->format('m/d/Y'); // Today's date in M/D/Y format
@@ -72,6 +79,7 @@ class XproImport implements ToCollection
 
                 // Calculate RE_HI counts
                 if ($data['ORDER_DATE'] === $today) {
+                    $re_hi_counts[4]++;
                     if (
                         $data['STO'] == 'BTU' || $data['STO'] == 'NTG' || $data['STO'] == 'KPO' || $data['STO'] == 'GKW' || $data['STO'] == 'KEP' ||
                         $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP' || $data['STO'] == 'DPT' ||
@@ -79,7 +87,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'GDG' || $data['STO'] == 'KLJ' || $data['STO'] == 'MLG' || $data['STO'] == 'PKS' || $data['STO'] == 'TMP' ||
                         $data['STO'] == 'BRG' || $data['STO'] == 'SWJ' || $data['STO'] == 'LWG' || $data['STO'] == 'SGS'
                     ) {
-                        $re_hi_counts[1]++;
+                        $re_hi_counts[3]++;
                     } elseif (
                         $data['STO'] == 'KTS' || $data['STO'] == 'PRB' || $data['STO'] == 'WRJ' || $data['STO'] == 'GON' || $data['STO'] == 'NJK' ||
                         $data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT' ||
@@ -88,7 +96,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'PRI' || $data['STO'] == 'TRE' || $data['STO'] == 'KAA' || $data['STO'] == 'PAE' || $data['STO'] == 'PPR' ||
                         $data['STO'] == 'DRN' || $data['STO'] == 'GUR' || $data['STO'] == 'WAT'
                     ) {
-                        $re_hi_counts[2]++;
+                        $re_hi_counts[1]++;
                     } elseif (
                         $data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ' || $data['STO'] == 'MNZ' ||
                         $data['STO'] == 'CRB' || $data['STO'] == 'MSP' || $data['STO'] == 'UTR' || $data['STO'] == 'GGR' || $data['STO'] == 'MGT' ||
@@ -97,12 +105,13 @@ class XproImport implements ToCollection
                         $data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH' || $data['STO'] == 'RGL' ||
                         $data['STO'] == 'TNZ' || $data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR'
                     ) {
-                        $re_hi_counts[3]++;
+                        $re_hi_counts[2]++;
                     }
                 }
 
                 // Calculate PI_HI counts
                 if ($data['ORDER_DATE'] === $today && in_array($data['KELOMPOK_STATUS'], ['FO_WFM', 'PI', 'PS'])) {
+                    $pi_hi_counts[4]++;
                     if (
                         $data['STO'] == 'BTU' || $data['STO'] == 'NTG' || $data['STO'] == 'KPO' || $data['STO'] == 'GKW' || $data['STO'] == 'KEP' ||
                         $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP' || $data['STO'] == 'DPT' ||
@@ -110,7 +119,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'GDG' || $data['STO'] == 'KLJ' || $data['STO'] == 'MLG' || $data['STO'] == 'PKS' || $data['STO'] == 'TMP' ||
                         $data['STO'] == 'BRG' || $data['STO'] == 'SWJ' || $data['STO'] == 'LWG' || $data['STO'] == 'SGS'
                     ) {
-                        $pi_hi_counts[1]++;
+                        $pi_hi_counts[3]++;
                     } elseif (
                         $data['STO'] == 'KTS' || $data['STO'] == 'PRB' || $data['STO'] == 'WRJ' || $data['STO'] == 'GON' || $data['STO'] == 'NJK' ||
                         $data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT' ||
@@ -119,7 +128,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'PRI' || $data['STO'] == 'TRE' || $data['STO'] == 'KAA' || $data['STO'] == 'PAE' || $data['STO'] == 'PPR' ||
                         $data['STO'] == 'DRN' || $data['STO'] == 'GUR' || $data['STO'] == 'WAT'
                     ) {
-                        $pi_hi_counts[2]++;
+                        $pi_hi_counts[1]++;
                     } elseif (
                         $data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ' || $data['STO'] == 'MNZ' ||
                         $data['STO'] == 'CRB' || $data['STO'] == 'MSP' || $data['STO'] == 'UTR' || $data['STO'] == 'GGR' || $data['STO'] == 'MGT' ||
@@ -128,12 +137,13 @@ class XproImport implements ToCollection
                         $data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH' || $data['STO'] == 'RGL' ||
                         $data['STO'] == 'TNZ' || $data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR'
                     ) {
-                        $pi_hi_counts[3]++;
+                        $pi_hi_counts[2]++;
                     }
                 }
 
                 // Calculate PS_HI counts
                 if ($data['LAST_UPDATED_DATE'] === $today && $data['KELOMPOK_STATUS'] === 'PS') {
+                    $ps_hi_counts[4]++;
                     if (
                         $data['STO'] == 'BTU' || $data['STO'] == 'NTG' || $data['STO'] == 'KPO' || $data['STO'] == 'GKW' || $data['STO'] == 'KEP' ||
                         $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP' || $data['STO'] == 'DPT' ||
@@ -141,7 +151,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'GDG' || $data['STO'] == 'KLJ' || $data['STO'] == 'MLG' || $data['STO'] == 'PKS' || $data['STO'] == 'TMP' ||
                         $data['STO'] == 'BRG' || $data['STO'] == 'SWJ' || $data['STO'] == 'LWG' || $data['STO'] == 'SGS'
                     ) {
-                        $ps_hi_counts[1]++;
+                        $ps_hi_counts[3]++;
                     } elseif (
                         $data['STO'] == 'KTS' || $data['STO'] == 'PRB' || $data['STO'] == 'WRJ' || $data['STO'] == 'GON' || $data['STO'] == 'NJK' ||
                         $data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT' ||
@@ -150,7 +160,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'PRI' || $data['STO'] == 'TRE' || $data['STO'] == 'KAA' || $data['STO'] == 'PAE' || $data['STO'] == 'PPR' ||
                         $data['STO'] == 'DRN' || $data['STO'] == 'GUR' || $data['STO'] == 'WAT'
                     ) {
-                        $ps_hi_counts[2]++;
+                        $ps_hi_counts[1]++;
                     } elseif (
                         $data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ' || $data['STO'] == 'MNZ' ||
                         $data['STO'] == 'CRB' || $data['STO'] == 'MSP' || $data['STO'] == 'UTR' || $data['STO'] == 'GGR' || $data['STO'] == 'MGT' ||
@@ -159,12 +169,13 @@ class XproImport implements ToCollection
                         $data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH' || $data['STO'] == 'RGL' ||
                         $data['STO'] == 'TNZ' || $data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR'
                     ) {
-                        $ps_hi_counts[3]++;
+                        $ps_hi_counts[2]++;
                     }
                 }
 
                 // Calculate ACCOMP counts
-                if ($data['LAST_UPDATED_DATE'] === $today && $data['KELOMPOK_STATUS'] === 'ACT_COMP') {
+                if ($data['LAST_UPDATED_DATE'] === $today && $data['KELOMPOK_STATUS'] === 'ACT_COM') {
+                    $accomp_counts[4]++;
                     if (
                         $data['STO'] == 'BTU' || $data['STO'] == 'NTG' || $data['STO'] == 'KPO' || $data['STO'] == 'GKW' || $data['STO'] == 'KEP' ||
                         $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP' || $data['STO'] == 'DPT' ||
@@ -172,7 +183,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'GDG' || $data['STO'] == 'KLJ' || $data['STO'] == 'MLG' || $data['STO'] == 'PKS' || $data['STO'] == 'TMP' ||
                         $data['STO'] == 'BRG' || $data['STO'] == 'SWJ' || $data['STO'] == 'LWG' || $data['STO'] == 'SGS'
                     ) {
-                        $accomp_counts[1]++;
+                        $accomp_counts[3]++;
                     } elseif (
                         $data['STO'] == 'KTS' || $data['STO'] == 'PRB' || $data['STO'] == 'WRJ' || $data['STO'] == 'GON' || $data['STO'] == 'NJK' ||
                         $data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT' ||
@@ -181,7 +192,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'PRI' || $data['STO'] == 'TRE' || $data['STO'] == 'KAA' || $data['STO'] == 'PAE' || $data['STO'] == 'PPR' ||
                         $data['STO'] == 'DRN' || $data['STO'] == 'GUR' || $data['STO'] == 'WAT'
                     ) {
-                        $accomp_counts[2]++;
+                        $accomp_counts[1]++;
                     } elseif (
                         $data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ' || $data['STO'] == 'MNZ' ||
                         $data['STO'] == 'CRB' || $data['STO'] == 'MSP' || $data['STO'] == 'UTR' || $data['STO'] == 'GGR' || $data['STO'] == 'MGT' ||
@@ -190,12 +201,13 @@ class XproImport implements ToCollection
                         $data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH' || $data['STO'] == 'RGL' ||
                         $data['STO'] == 'TNZ' || $data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR'
                     ) {
-                        $accomp_counts[3]++;
+                        $accomp_counts[2]++;
                     }
                 }
 
                 // Calculate RE_TOT counts
                 if (in_array($data['KELOMPOK_STATUS'], ['CANCEL', 'FCC', 'INPROGRESS_SC', 'PI', 'PS', 'QC1', 'REJECT_FCC', 'REVOKE', 'SURVEY_NEW_MANJA', 'UNSC'])) {
+                    $re_tot_counts[4][$data['ORDER_ID']] = true;
                     if (
                         $data['STO'] == 'BTU' || $data['STO'] == 'NTG' || $data['STO'] == 'KPO' || $data['STO'] == 'GKW' || $data['STO'] == 'KEP' ||
                         $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP' || $data['STO'] == 'DPT' ||
@@ -203,7 +215,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'GDG' || $data['STO'] == 'KLJ' || $data['STO'] == 'MLG' || $data['STO'] == 'PKS' || $data['STO'] == 'TMP' ||
                         $data['STO'] == 'BRG' || $data['STO'] == 'SWJ' || $data['STO'] == 'LWG' || $data['STO'] == 'SGS'
                     ) {
-                        $re_tot_counts[1][$data['ORDER_ID']] = true;
+                        $re_tot_counts[3][$data['ORDER_ID']] = true;
                     } elseif (
                         $data['STO'] == 'KTS' || $data['STO'] == 'PRB' || $data['STO'] == 'WRJ' || $data['STO'] == 'GON' || $data['STO'] == 'NJK' ||
                         $data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT' ||
@@ -212,7 +224,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'PRI' || $data['STO'] == 'TRE' || $data['STO'] == 'KAA' || $data['STO'] == 'PAE' || $data['STO'] == 'PPR' ||
                         $data['STO'] == 'DRN' || $data['STO'] == 'GUR' || $data['STO'] == 'WAT'
                     ) {
-                        $re_tot_counts[2][$data['ORDER_ID']] = true;
+                        $re_tot_counts[1][$data['ORDER_ID']] = true;
                     } elseif (
                         $data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ' || $data['STO'] == 'MNZ' ||
                         $data['STO'] == 'CRB' || $data['STO'] == 'MSP' || $data['STO'] == 'UTR' || $data['STO'] == 'GGR' || $data['STO'] == 'MGT' ||
@@ -221,12 +233,13 @@ class XproImport implements ToCollection
                         $data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH' || $data['STO'] == 'RGL' ||
                         $data['STO'] == 'TNZ' || $data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR'
                     ) {
-                        $re_tot_counts[3][$data['ORDER_ID']] = true;
+                        $re_tot_counts[2][$data['ORDER_ID']] = true;
                     }
                 }
 
                 // Calculate PI_TOT counts
                 if (in_array($data['KELOMPOK_STATUS'], ['ACT_COM', 'FO_WFM', 'PI', 'PS'])) {
+                    $pi_tot_counts[4][$data['ORDER_ID']] = true;
                     if (
                         $data['STO'] == 'BTU' || $data['STO'] == 'NTG' || $data['STO'] == 'KPO' || $data['STO'] == 'GKW' || $data['STO'] == 'KEP' ||
                         $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP' || $data['STO'] == 'DPT' ||
@@ -234,7 +247,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'GDG' || $data['STO'] == 'KLJ' || $data['STO'] == 'MLG' || $data['STO'] == 'PKS' || $data['STO'] == 'TMP' ||
                         $data['STO'] == 'BRG' || $data['STO'] == 'SWJ' || $data['STO'] == 'LWG' || $data['STO'] == 'SGS'
                     ) {
-                        $pi_tot_counts[1][$data['ORDER_ID']] = true;
+                        $pi_tot_counts[3][$data['ORDER_ID']] = true;
                     } elseif (
                         $data['STO'] == 'KTS' || $data['STO'] == 'PRB' || $data['STO'] == 'WRJ' || $data['STO'] == 'GON' || $data['STO'] == 'NJK' ||
                         $data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT' ||
@@ -243,7 +256,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'PRI' || $data['STO'] == 'TRE' || $data['STO'] == 'KAA' || $data['STO'] == 'PAE' || $data['STO'] == 'PPR' ||
                         $data['STO'] == 'DRN' || $data['STO'] == 'GUR' || $data['STO'] == 'WAT'
                     ) {
-                        $pi_tot_counts[2][$data['ORDER_ID']] = true;
+                        $pi_tot_counts[1][$data['ORDER_ID']] = true;
                     } elseif (
                         $data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ' || $data['STO'] == 'MNZ' ||
                         $data['STO'] == 'CRB' || $data['STO'] == 'MSP' || $data['STO'] == 'UTR' || $data['STO'] == 'GGR' || $data['STO'] == 'MGT' ||
@@ -252,12 +265,13 @@ class XproImport implements ToCollection
                         $data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH' || $data['STO'] == 'RGL' ||
                         $data['STO'] == 'TNZ' || $data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR'
                     ) {
-                        $pi_tot_counts[3][$data['ORDER_ID']] = true;
+                        $pi_tot_counts[2][$data['ORDER_ID']] = true;
                     }
                 }
 
                 // Calculate PS_TOT counts
                 if ($data['KELOMPOK_STATUS'] === 'PS') {
+                    $ps_tot_counts[4][$data['ORDER_ID']] = true;
                     if (
                         $data['STO'] == 'BTU' || $data['STO'] == 'NTG' || $data['STO'] == 'KPO' || $data['STO'] == 'GKW' || $data['STO'] == 'KEP' ||
                         $data['STO'] == 'APG' || $data['STO'] == 'DNO' || $data['STO'] == 'PGK' || $data['STO'] == 'SBP' || $data['STO'] == 'DPT' ||
@@ -265,7 +279,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'GDG' || $data['STO'] == 'KLJ' || $data['STO'] == 'MLG' || $data['STO'] == 'PKS' || $data['STO'] == 'TMP' ||
                         $data['STO'] == 'BRG' || $data['STO'] == 'SWJ' || $data['STO'] == 'LWG' || $data['STO'] == 'SGS'
                     ) {
-                        $ps_tot_counts[1][$data['ORDER_ID']] = true;
+                        $ps_tot_counts[3][$data['ORDER_ID']] = true;
                     } elseif (
                         $data['STO'] == 'KTS' || $data['STO'] == 'PRB' || $data['STO'] == 'WRJ' || $data['STO'] == 'GON' || $data['STO'] == 'NJK' ||
                         $data['STO'] == 'BNU' || $data['STO'] == 'KBN' || $data['STO'] == 'LDY' || $data['STO'] == 'WGI' || $data['STO'] == 'SNT' ||
@@ -274,7 +288,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'PRI' || $data['STO'] == 'TRE' || $data['STO'] == 'KAA' || $data['STO'] == 'PAE' || $data['STO'] == 'PPR' ||
                         $data['STO'] == 'DRN' || $data['STO'] == 'GUR' || $data['STO'] == 'WAT'
                     ) {
-                        $ps_tot_counts[2][$data['ORDER_ID']] = true;
+                        $ps_tot_counts[1][$data['ORDER_ID']] = true;
                     } elseif (
                         $data['STO'] == 'BJN' || $data['STO'] == 'KDU' || $data['STO'] == 'PAD' || $data['STO'] == 'SMJ' || $data['STO'] == 'MNZ' ||
                         $data['STO'] == 'CRB' || $data['STO'] == 'MSP' || $data['STO'] == 'UTR' || $data['STO'] == 'GGR' || $data['STO'] == 'MGT' ||
@@ -283,7 +297,7 @@ class XproImport implements ToCollection
                         $data['STO'] == 'JEN' || $data['STO'] == 'PLG' || $data['STO'] == 'SAT' || $data['STO'] == 'SLH' || $data['STO'] == 'RGL' ||
                         $data['STO'] == 'TNZ' || $data['STO'] == 'BCR' || $data['STO'] == 'JTR' || $data['STO'] == 'KRK' || $data['STO'] == 'MRR'
                     ) {
-                        $ps_tot_counts[3][$data['ORDER_ID']] = true;
+                        $ps_tot_counts[2][$data['ORDER_ID']] = true;
                     }
                 }
             }

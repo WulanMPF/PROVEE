@@ -28,7 +28,7 @@
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">RE HI</th>
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">PI HI</th>
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">PS HI</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">ACCOMP</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">ACOMP</th>
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">PS/RE HI</th>
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">PS/PI HI</th>
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">RE TOT</th>
