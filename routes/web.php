@@ -85,6 +85,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             Route::get('/', [ProviKproController::class, 'index'])->name('provikpro.index');
             Route::post('/list', [ProviKproController::class, 'list'])->name('provikpro.list');
             Route::post('/', [ProviKproController::class, 'store'])->name('provikpro.store');
+            Route::post('/send-to-telegram', [ProviKproController::class, 'sendToTelegram'])->name('provikpro.send-to-telegram');
         });
 
         // Route Profile
