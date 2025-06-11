@@ -66,7 +66,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
         Route::group(['prefix' => 'pivotendstate'], function () {
             Route::get('/', [PivotEndstateController::class, 'index'])->name('pivotendstate.index');
             Route::post('/list', [PivotEndstateController::class, 'list'])->name('pivotendstate.list');
-            Route::post('/', [PivotEndstateController::class, 'store'])->name('pivotendstate.store');
+            // Route::post('/', [PivotEndstateController::class, 'store'])->name('pivotendstate.store');
             Route::post('/send-to-telegram', [PivotEndstateController::class, 'sendToTelegram'])->name('pivotendstate.send-to-telegram');
         });
 

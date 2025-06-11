@@ -113,6 +113,7 @@
         #tabel_endstate th,
         #tabel_endstate td {
             padding: 8px 15px;
+            border: 1px solid black;
         }
 
         #tabel_endstate tbody tr:last-child td:first-child {
