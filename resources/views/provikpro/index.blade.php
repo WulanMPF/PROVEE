@@ -12,13 +12,13 @@
                 <table class="table table-bordered table-hover table-sm" id="tabel_provikpro">
                     <thead>
                         <tr style="text-align: center;">
-                            <th style="vertical-align: middle;">NO</th>
-                            <th style="vertical-align: middle;">WILAYAH</th>
-                            <th style="vertical-align: middle;">PI TOTAL</th>
-                            <th style="vertical-align: middle;">ACCOMP TOTAL</th>
-                            <th style="vertical-align: middle;">PS + ACCOMP TOTAL</th>
-                            <th style="vertical-align: middle;">PS/PI TOTAL</th>
-                            <th style="vertical-align: middle;">SISA MANJA</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">NO</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">WILAYAH</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PI TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">ACCOMP TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS + ACCOMP TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS/PI TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">SISA MANJA</th>
                         </tr>
                     </thead>
                 </table>

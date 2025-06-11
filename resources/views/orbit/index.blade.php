@@ -24,13 +24,13 @@
                             </th>
                         </tr>
                         <tr style="text-align: center;">
-                            <th style="vertical-align: middle;">WILAYAH</th>
-                            <th style="vertical-align: middle;">PI HI</th>
-                            <th style="vertical-align: middle;">PS HI</th>
-                            <th style="vertical-align: middle;">PS/PI HI</th>
-                            <th style="vertical-align: middle;">PI TOT</th>
-                            <th style="vertical-align: middle;">PS TOT</th>
-                            <th style="vertical-align: middle;">PS/PI TOT</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">WILAYAH</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PI HI</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS HI</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS/PI HI</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PI TOT</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS TOT</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS/PI TOT</th>
                         </tr>
                     </thead>
                 </table>
@@ -165,6 +165,7 @@
 
 @push('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(document).ready(function() {
@@ -230,6 +231,20 @@
             $('#send').off('click').on('click', function(e) {
                 e.preventDefault();
 
+                // Cek apakah tabel sudah terisi
+                const dataTable = $('#tabel_orbit').DataTable();
+                const rowCount = dataTable.rows().count();
+
+                if (rowCount === 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Tabel kosong!',
+                        text: 'Silakan upload file dan pastikan data telah muncul di tabel sebelum mengirim!',
+                        confirmButtonText: 'OK'
+                    });
+                    return;
+                }
+
                 if (isSending) {
                     console.log("Proses pengiriman sedang berjalan, harap tunggu...");
                     return;
@@ -256,15 +271,30 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                alert('Berhasil dikirim ke Telegram!');
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil!',
+                                    text: 'Laporan berhasil dikirim ke Telegram.',
+                                    confirmButtonText: 'OK'
+                                });
                             } else {
-                                alert('Gagal mengirim ke Telegram: ' + data.error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal mengirim!',
+                                    text: data.error || 'Terjadi kesalahan saat mengirim ke Telegram.',
+                                    confirmButtonText: 'OK'
+                                });
                             }
                             isSending = false;
                         })
                         .catch(error => {
                             console.error('Error:', error);
-                            alert('Terjadi kesalahan saat mengirim.');
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Terjadi kesalahan',
+                                text: 'Gagal mengirim laporan ke Telegram.',
+                                confirmButtonText: 'OK'
+                            });
                             isSending = false;
                         });
                     });
