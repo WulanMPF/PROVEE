@@ -93,9 +93,10 @@
         }
 
         .table-responsive-wrapper {
-            width: 100%;
+            max-height: 500px;
+            overflow-y: auto;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            border: 1px solid #ccc;
         }
 
         #tabel_provimanja {
@@ -170,7 +171,7 @@
             if (!$.fn.DataTable.isDataTable('#tabel_provimanja')) {
                 $('#tabel_provimanja').DataTable({
                     processing: true,
-                    serverSide: true,
+                    serverSide: false,
                     ajax: {
                         "url": "{{ route('provimanja.list') }}",
                         "type": "POST",
@@ -179,6 +180,9 @@
                             // d.id_sektor = $('#id_sektor').val();
                         }
                     },
+                    paging: false, // Nonaktifkan pagination
+                    info: false, // Nonaktifkan informasi jumlah data
+                    searching: false, // Nonaktifkan fitur pencarian
                     columns: [{
                             data: "sektor.nama_sektor",
                             orderable: false,

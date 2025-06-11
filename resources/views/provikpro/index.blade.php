@@ -9,7 +9,7 @@
             </div>
             <h2 class="upload-title">POSISI PUKUL {{ now()->format('H:i:s') }} <br><br></h2>
 
-            <h2 class="upload-title">NO. WILAYAH : PI [TOT] | PS [TOT] | ACOMP [TOT] | PS + ACOMP [TOT] | % PS/PI | SISA
+            <h2 class="upload-title">NO. WILAYAH : PI [TOT] | PS [TOT] | ACOMP [TOT] | PS + ACOMP [TOT] | % PS + ACOMP [TOT]/PI | SISA
                 MANJA</h2>
 
             @foreach ($regions as $name => $data)
@@ -19,7 +19,7 @@
                         $ps_tot = $data->ps_tot ?? 0;
                         $accomp_tot = $data->accomp ?? 0;
                         $ps_accomp_tot = $ps_tot + $accomp_tot;
-                        $percentage_ps_pi = $pi_tot != 0 ? round(($ps_tot / $pi_tot) * 100, 2) . '%' : '0%';
+                        $percentage_ps_pi = $pi_tot != 0 ? round(($ps_accomp_tot / $pi_tot) * 100, 2) . '%' : '0%';
                     @endphp
                     <h2 class="upload-title">{{ $loop->index + 1 }}. {{ $name }} : {{ $pi_tot }} |
                         {{ $ps_tot }} | {{ $accomp_tot }} | {{ $ps_accomp_tot }} | {{ $percentage_ps_pi }} | SISA
@@ -146,6 +146,114 @@
 @endpush
 
 @push('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Pasang event listener tombol Send sekali saja
+            console.log("Memasang event listener tombol Send");
+            let isSending = false;
+
+            $('#send').off('click').on('click', function(e) {
+                e.preventDefault();
+
+                // Mengambil teks dari kontainer yang diinginkan
+                let rawHtml = $('.upload-container').html();
+
+                // Membuat elemen sementara untuk parsing
+                let tempDiv = document.createElement('div');
+                tempDiv.innerHTML = rawHtml;
+
+                // Mengambil semua elemen yang dianggap "baris"
+                let lines = [];
+
+                tempDiv.querySelectorAll('h2').forEach((el) => {
+                    let text = el.textContent.replace(/\s+/g, ' ').trim();
+                    if (!text) return;
+
+                    // Menambahkan newline di awal baris tertentu
+                    if (text.startsWith('NO. WILAYAH : ')) {
+                        lines.push('\n' + text);
+                    } else if (text.startsWith('NO. WILAYAH')) {
+                        lines.push('\n' + text);
+                    } else if (text.startsWith('TARGET PS JATIM 3:')) {
+                        lines.push('\n' + text);
+                        wilayahDone = true;
+                    } else if (text.startsWith('KESIMPULAN:')) {
+                        lines.push('\n' + text);
+                    } else if (/^\d+\.\s/.test(text)) {
+                        lines.push(text);
+                    } else {
+                        lines.push(text);
+                    }
+                });
+
+                // Menggabungkan dengan newline
+                let textToSend = lines.join('\n');
+
+                if (!textToSend) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Teks kosong!',
+                        text: 'Silakan pastikan ada data yang dapat dikirim!',
+                        confirmButtonText: 'OK'
+                    });
+                    return;
+                }
+
+                if (isSending) {
+                    console.log("Proses pengiriman sedang berjalan, harap tunggu...");
+                    return;
+                }
+                isSending = true;
+
+                const formData = new FormData();
+                formData.append('text', textToSend);
+                formData.append('_token', '{{ csrf_token() }}');
+
+                fetch('{{ route("provikpro.send-to-telegram") }}', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil!',
+                            text: 'Laporan berhasil dikirim ke Telegram.',
+                            confirmButtonText: 'OK'
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal mengirim!',
+                            text: data.error || 'Terjadi kesalahan saat mengirim ke Telegram.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                    isSending = false;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Terjadi kesalahan',
+                        text: 'Gagal mengirim laporan ke Telegram.',
+                        confirmButtonText: 'OK'
+                    });
+                    isSending = false;
+                });
+            });
+
+            // Pasang event listener form upload
+            $('#upload-form').on('submit', function(e) {
+                // Logic untuk upload jika diperlukan
+            });
+        });
+    </script>
+@endpush
+    
     {{-- <script>
         $(document).ready(function() {
             if (!$.fn.DataTable.isDataTable('#tabel_provikpro')) {
@@ -220,4 +328,4 @@
             });
         });
     </script> --}}
-@endpush
+

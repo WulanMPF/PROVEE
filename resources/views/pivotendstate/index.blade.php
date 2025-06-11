@@ -3,14 +3,14 @@
 @section('content')
     <div style="flex: 1; padding: 10px;">
         <div class="upload-container">
-            <h2 class="upload-title">Upload File</h2>
+            <div style="min-height: 40px;"></div>
             <div style="position: relative;">
                 <button type="submit" form="upload-form" class="btn send-button" id="send">Send</button>
             </div>
-            <form action="{{ route('pivotendstate.store') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+            {{-- <form action="{{ route('pivotendstate.store') }}" method="POST" enctype="multipart/form-data" class="upload-form">
                 @csrf
                 <input type="file" name="file" accept=".csv" required>
-            </form>
+            </form> --}}
 
             <h2 class="pivot-title">Pivot Table</h2>
             <div class="table-responsive-wrapper">
@@ -92,9 +92,10 @@
         }
 
         .table-responsive-wrapper {
-            width: 100%;
+            max-height: 500px;
+            overflow-y: auto;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            border: 1px solid #ccc;
         }
 
         #tabel_pivotendstate {
@@ -158,7 +159,7 @@
             if (!$.fn.DataTable.isDataTable('#tabel_pivotendstate')) {
                 $('#tabel_pivotendstate').DataTable({
                     processing: true,
-                    serverSide: true,
+                    serverSide: false,
                     ajax: {
                         "url": "{{ route('pivotendstate.list') }}",
                         "type": "POST",
@@ -167,6 +168,9 @@
                             // d.id_sektor = $('#id_sektor').val();
                         }
                     },
+                    paging: false, // Nonaktifkan pagination
+                    info: false, // Nonaktifkan informasi jumlah data
+                    searching: false, // Nonaktifkan fitur pencarian
                     columns: [{
                             data: "sektor.nama_sektor",
                             orderable: false,
