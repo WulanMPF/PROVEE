@@ -29,7 +29,8 @@
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">FALLOUT TOTAL</th>
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">PS/PI TOTAL</th>
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">CANCEL/PI TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">FALLOUT/PI TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #0563c1; color: white">FALLOUT/PI TOTAL
+                            </th>
                         </tr>
                     </thead>
                 </table>
@@ -159,7 +160,7 @@
             if (!$.fn.DataTable.isDataTable('#tabel_pivotendstate')) {
                 $('#tabel_pivotendstate').DataTable({
                     processing: true,
-                    serverSide: false,
+                    serverSide: true,
                     ajax: {
                         "url": "{{ route('pivotendstate.list') }}",
                         "type": "POST",
@@ -259,52 +260,53 @@
                         formData.append('screenshot', blob, 'screenshot.png');
                         formData.append('_token', '{{ csrf_token() }}');
 
-                        fetch('{{ route("pivotendstate.send-to-telegram") }}', {
-                            method: 'POST',
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Berhasil!',
-                                    text: 'Laporan berhasil dikirim ke Telegram.',
-                                    confirmButtonText: 'OK'
-                                });
-                            } else {
+                        fetch('{{ route('pivotendstate.send-to-telegram') }}', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Berhasil!',
+                                        text: 'Laporan berhasil dikirim ke Telegram.',
+                                        confirmButtonText: 'OK'
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Gagal mengirim!',
+                                        text: data.error ||
+                                            'Terjadi kesalahan saat mengirim ke Telegram.',
+                                        confirmButtonText: 'OK'
+                                    });
+                                }
+                                isSending = false;
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Gagal mengirim!',
-                                    text: data.error || 'Terjadi kesalahan saat mengirim ke Telegram.',
+                                    title: 'Terjadi kesalahan',
+                                    text: 'Gagal mengirim laporan ke Telegram.',
                                     confirmButtonText: 'OK'
                                 });
-                            }
-                            isSending = false;
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Terjadi kesalahan',
-                                text: 'Gagal mengirim laporan ke Telegram.',
-                                confirmButtonText: 'OK'
+                                isSending = false;
                             });
-                            isSending = false;
-                        });
                     });
                 });
             });
 
             // Pasang event listener form upload
             $('#upload-form').on('submit', function(e) {
-                
+
             });
-        });   
+        });
     </script>
 @endpush
 
-        {{-- $(document).ready(function() {
+{{-- $(document).ready(function() {
             $('#example').DataTable({
                 "searching": false, // Hilangkan fitur Search
                 "paging": false, // Hilangkan pagination (Previous/Next)
