@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Http;
 
 class ProviKproController extends Controller
 {
@@ -34,6 +35,35 @@ class ProviKproController extends Controller
             'regions' => $regions,
         ]);
     }
+
+    public function sendToTelegram(Request $request)
+    {
+        $request->validate([
+            'text' => 'required|string|max:4096',
+        ]);
+
+        $text = $request->input('text');
+
+        $botToken = env('TELEGRAM_BOT_TOKEN');
+        $chatId = env('TELEGRAM_CHAT_ID');
+
+        // Pastikan Anda memverifikasi token dan chat ID
+        if (empty($botToken) || empty($chatId)) {
+            return response()->json(['success' => false, 'error' => 'Bot token or chat ID not set']);
+        }
+
+        $response = Http::post("https://api.telegram.org/bot{$botToken}/sendMessage", [
+            'chat_id' => $chatId,
+            'text' => $text,
+        ]);
+
+        if ($response->successful()) {
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false, 'error' => $response->body()]);
+        }
+    }
+}
 
     // Ambil data dalam bentuk json untuk datatables 
     // public function list(Request $request)
@@ -114,4 +144,4 @@ class ProviKproController extends Controller
 
     //     //     ->make(true);
     // }
-}
+
