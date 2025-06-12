@@ -330,6 +330,8 @@
                 }
                 isSending = true;
 
+                document.title = "Loading... ⏳";
+
                 const table = document.querySelector('#tabel_pivotendstate');
                 if (!table) {
                     alert("Tabel tidak ditemukan!");
@@ -366,6 +368,7 @@
                                     });
                                 }
                                 isSending = false;
+                                document.title = "PROVEE";
                             })
                             .catch(error => {
                                 console.error('Error:', error);
@@ -376,6 +379,7 @@
                                     confirmButtonText: 'OK'
                                 });
                                 isSending = false;
+                                document.title = "PROVEE";
                             });
                     });
                 });
