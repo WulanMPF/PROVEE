@@ -15,6 +15,12 @@
             </form>
 
             <h2 class="pivot-title">Pivot Table</h2>
+            {{-- ERROR UNDEFINED VARIABLE $ENDSTATE --}}
+            {{-- <div style="margin-bottom: 10px;">
+                <a href="{{ route('endstate.edit') }}" class="btn btn-warning">
+                    <i class="fas fa-edit"></i> Edit Target TOT
+                </a>
+            </div> --}}
             <div class="table-responsive-wrapper">
                 <table class="table table-bordered table-hover table-sm" id="tabel_endstate">
                     <thead>
@@ -237,7 +243,8 @@
                         }
                     ],
                     createdRow: function(row, data, dataIndex) {
-                        if (data.wilayah.nama_wilayah && data.wilayah.nama_wilayah.toUpperCase().includes("JATIM BARAT")) {
+                        if (data.wilayah.nama_wilayah && data.wilayah.nama_wilayah.toUpperCase()
+                            .includes("JATIM BARAT")) {
                             $(row).addClass('highlight-jatim');
                         }
                     }
@@ -275,6 +282,8 @@
                 }
                 isSending = true;
 
+                document.title = "Loading... ⏳";
+
                 const table = document.querySelector('#tabel_endstate');
                 if (!table) {
                     alert("Tabel tidak ditemukan!");
@@ -311,6 +320,7 @@
                                     });
                                 }
                                 isSending = false;
+                                document.title = "PROVEE";
                             })
                             .catch(error => {
                                 console.error('Error:', error);
@@ -321,6 +331,7 @@
                                     confirmButtonText: 'OK'
                                 });
                                 isSending = false;
+                                document.title = "PROVEE";
                             });
                     });
                 });

@@ -27,11 +27,6 @@ Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/login-proses', [AuthController::class, 'proses_login'])->name('login-proses');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// RESET PASSWORD GAISO
-// Route::middleware(['auth'])->group(function () {
-//     Route::post('/reset-password', [ProfileController::class, 'reset_password'])->name('profile.reset-password');
-// });
-
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login']], function () {
         // Route Xpro
@@ -57,6 +52,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             Route::get('/', [EndstateController::class, 'index'])->name('endstate.index');
             Route::post('/list', [EndstateController::class, 'list'])->name('endstate.list');
             Route::post('/', [EndstateController::class, 'store'])->name('endstate.store');
+            // ERROR UNDEFINED VARIABLE $ENDSTATE
+            // Route::get('/edit', [EndstateController::class, 'edit'])->name('endstate.edit');
+            // Route::put('/update/{id_endstate}', [EndstateController::class, 'update'])->name('endstate.update');
             Route::get('/import', [EndstateController::class, 'import'])->name('endstate.import');
             Route::post('/import-proses', [EndstateController::class, 'import_proses'])->name('endstate.import-proses');
             Route::post('/send-to-telegram', [EndstateController::class, 'sendToTelegram'])->name('endstate.send-to-telegram');
@@ -66,7 +64,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
         Route::group(['prefix' => 'pivotendstate'], function () {
             Route::get('/', [PivotEndstateController::class, 'index'])->name('pivotendstate.index');
             Route::post('/list', [PivotEndstateController::class, 'list'])->name('pivotendstate.list');
-            // Route::post('/', [PivotEndstateController::class, 'store'])->name('pivotendstate.store');
             Route::post('/send-to-telegram', [PivotEndstateController::class, 'sendToTelegram'])->name('pivotendstate.send-to-telegram');
         });
 

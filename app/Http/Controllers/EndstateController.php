@@ -71,7 +71,9 @@ class EndstateController extends Controller
         }
 
         $response = Http::attach(
-            'photo', file_get_contents($image), 'screenshot.png'
+            'photo',
+            file_get_contents($image),
+            'screenshot.png'
         )->post("https://api.telegram.org/bot{$botToken}/sendPhoto", [
             'chat_id' => $chatId,
             'caption' => $caption,
@@ -83,4 +85,30 @@ class EndstateController extends Controller
             return response()->json(['success' => false, 'error' => $response->body()]);
         }
     }
+
+    // ERROR UNDEFINED VARIABLE $ENDSTATE
+    // public function edit($id_endstate)
+    // {
+    //     $breadcrumb = (object) [
+    //         'title' => 'Edit END STATE',
+    //     ];
+
+    //     $activeMenu = 'endstate';
+
+    //     $endstates = EndstateModel::findOrFail($id_endstate);
+
+    //     return view('endstate.edit', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu, 'endstates' => $endstates]);
+    // }
+
+    // public function update(Request $request, $id_endstate)
+    // {
+    //     $request->validate([
+    //         'target_tot' => 'required|numeric',
+    //     ]);
+
+    //     $endstates = EndstateModel::findOrFail($id_endstate);
+    //     $endstates->update(['target_tot' => $request->target_tot]);
+
+    //     return redirect()->route('endstate.index')->with('success', 'Target total updated successfully!');
+    // }
 }
