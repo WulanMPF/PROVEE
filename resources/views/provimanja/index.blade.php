@@ -24,13 +24,13 @@
                             </th>
                         </tr>
                         <tr style="text-align: center;">
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">SEKTOR</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">MANJA EXPIRED <br> H-1</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">MANJA <br> HI</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">SALDO MANJA <br> H+1</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">SALDO MANJA <br> H+2</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">SALDO MANJA <br> H>2</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">SEKTOR</th>
+                            <th style="vertical-align: middle; background-color: #980000; color: white">MANJA EXPIRED <br> H-1</th>
+                            <th style="vertical-align: middle; background-color: #ffff00; color: Black">MANJA <br> HI</th>
+                            <th style="vertical-align: middle; background-color: #6aa84f; color: Black">SALDO MANJA <br> H+1</th>
+                            <th style="vertical-align: middle; background-color: #6aa84f; color: Black">SALDO MANJA <br> H+2</th>
+                            <th style="vertical-align: middle; background-color: #6aa84f; color: Black">SALDO MANJA <br> H>2</th>
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">TOTAL</th>
                         </tr>
                     </thead>
                 </table>
@@ -102,7 +102,7 @@
         #tabel_provimanja {
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            border-collapse: separate;
+            border-collapse: collapse;
             border-spacing: 0;
             border-radius: 10px;
             overflow: hidden;
@@ -111,6 +111,7 @@
         #tabel_provimanja th,
         #tabel_provimanja td {
             padding: 8px 15px;
+            border: 1px solid black;
         }
 
         #tabel_provimanja tbody tr:last-child td:first-child {
@@ -159,6 +160,12 @@
             color: #fff;
             cursor: pointer;
         }
+
+        .highlight-sektor {
+            font-weight: bold !important;
+            border-top: 4px solid black !important;
+            border-bottom: 4px solid black !important;
+        }
     </style>
 @endpush
 
@@ -171,7 +178,7 @@
             if (!$.fn.DataTable.isDataTable('#tabel_provimanja')) {
                 $('#tabel_provimanja').DataTable({
                     processing: true,
-                    serverSide: false,
+                    serverSide: true,
                     ajax: {
                         "url": "{{ route('provimanja.list') }}",
                         "type": "POST",
@@ -218,7 +225,32 @@
                             orderable: false,
                             searchable: false
                         }
-                    ]
+                    ],
+                    rowCallback: function(row, data) {
+                        const sektorNama = data?.sektor?.nama_sektor?.toUpperCase();
+                        if (["KEDIRI", "MADIUN", "MALANG"].includes(sektorNama)) {
+                            $(row).find('td').addClass('highlight-sektor'); // Tambahkan kelas untuk setiap td
+                        }
+
+                        // Pewarnaan berdasarkan isi data
+                        const manjaHi = data["manja_hi"];
+                        const saldoH1 = data["saldo_manja_h+1"];
+                        const saldoH2 = data["saldo_manja_h+2"];
+                        const saldoH2plus = data["saldo_manja_h>2"];
+
+                        if (manjaHi && manjaHi.toString().trim() !== "" && manjaHi != "0") {
+                            $('td:eq(2)', row).css('background-color', '#F08080');
+                        }
+                        if (saldoH1 && saldoH1.toString().trim() !== "" && saldoH1 != "0") {
+                            $('td:eq(3)', row).css('background-color', '#b7e1cd');
+                        }
+                        if (saldoH2 && saldoH2.toString().trim() !== "" && saldoH2 != "0") {
+                            $('td:eq(4)', row).css('background-color', '#b7e1cd');
+                        }
+                        if (saldoH2plus && saldoH2plus.toString().trim() !== "" && saldoH2plus != "0") {
+                            $('td:eq(5)', row).css('background-color', '#b7e1cd');
+                        }
+                    }
                 });
 
                 // $('#id_sektor').on('change', function() {

@@ -22,14 +22,14 @@
                             </th>
                         </tr>
                         <tr style="text-align: center;">
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">SEKTOR</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PI TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">CANCEL TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">FALLOUT TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">PS/PI TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">CANCEL/PI TOTAL</th>
-                            <th style="vertical-align: middle; background-color: #0563c1; color: white">FALLOUT/PI TOTAL
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">SEKTOR</th>
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">PI TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">PS TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">CANCEL TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">FALLOUT TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">PS/PI TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">CANCEL/PI TOTAL</th>
+                            <th style="vertical-align: middle; background-color: #d9ead3; color: Black">FALLOUT/PI TOTAL
                             </th>
                         </tr>
                     </thead>
@@ -102,7 +102,7 @@
         #tabel_pivotendstate {
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            border-collapse: separate;
+            border-collapse: collapse;
             border-spacing: 0;
             border-radius: 10px;
             overflow: hidden;
@@ -112,6 +112,7 @@
         #tabel_pivotendstate th,
         #tabel_pivotendstate td {
             padding: 8px 15px;
+            border: 1px solid black;
         }
 
         #tabel_pivotendstate tbody tr:last-child td:first-child {
@@ -148,12 +149,19 @@
             cursor: pointer;
             border-color: #afafaf;
         }
+
+        .highlight-sektor {
+            font-weight: bold !important;
+            border-top: 4px solid black !important;
+            border-bottom: 4px solid black !important;
+        }
     </style>
 @endpush
 
 @push('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -200,19 +208,94 @@
                         {
                             data: "ps_pi_tot",
                             orderable: false,
-                            searchable: false
+                            searchable: false,
+                            render: function(data) {
+                                const value = parseFloat(data) || 0; // Mengonversi data menjadi angka
+                                const displayPercentage = value.toFixed(2) + '%';
+                                const color = value < 85 ? 'Red' : 'Green';
+                                const sparklineWidth = (value / 100) * 100;
+
+                                console.log("Value:", value, "Percentage:", displayPercentage, "Width:", sparklineWidth);
+                                
+                                return `
+                                    <div style="display: flex; justify-content: center; align-items: center;">
+                                        <span style="margin-right: 5px; min-width: 50px; text-align: right;">${displayPercentage}</span>
+                                        <div style="width: 100px; height: 16px; background-color: #e0e0e0; border-radius: 3px; overflow: hidden;">
+                                            <div style="background-color: ${color}; width: ${sparklineWidth}%; height: 100%;"></div>
+                                        </div>
+                                    </div>
+                                `;
+                            }
                         },
                         {
                             data: "cancel_pi_tot",
                             orderable: false,
-                            searchable: false
+                            searchable: false,
+                            render: function(data) {
+                                const value = parseFloat(data) || 0;
+                                const displayPercentage = value.toFixed(2) + '%';
+                                let color = 'green';
+                                let sparklineWidth = 100;
+
+                                if (value > 0) {
+                                    color = 'red';
+                                    sparklineWidth = Math.min(value, 100);
+                                }
+                                return `
+                                    <div style="display: flex; justify-content: center; align-items: center;">
+                                        <span style="margin-right: 5px; min-width: 50px; text-align: right;">${displayPercentage}</span>
+                                        <div style="width: 100px; height: 16px; background-color: #e0e0e0; border-radius: 3px; overflow: hidden;">
+                                            <div style="background-color: ${color}; width: ${sparklineWidth}%; height: 100%;"></div>
+                                        </div>
+                                    </div>
+                                `;
+                            }
                         },
                         {
                             data: "fallout_pi_tot",
                             orderable: false,
-                            searchable: false
+                            searchable: false,
+                            render: function(data) {
+                                const value = parseFloat(data) || 0;
+                                const displayPercentage = value.toFixed(2) + '%';
+                                let color = 'green';
+                                let sparklineWidth = 100;
+
+                                if (value > 0) {
+                                    color = 'red';
+                                    sparklineWidth = Math.min(value, 100);
+                                }
+                                return `
+                                    <div style="display: flex; justify-content: center; align-items: center;">
+                                        <span style="margin-right: 5px; min-width: 50px; text-align: right;">${displayPercentage}</span>
+                                        <div style="width: 100px; height: 16px; background-color: #e0e0e0; border-radius: 3px; overflow: hidden;">
+                                            <div style="background-color: ${color}; width: ${sparklineWidth}%; height: 100%;"></div>
+                                        </div>
+                                    </div>
+                                `;
+                            }
                         },
-                    ]
+                    ],
+                     drawCallback: function(settings) {
+                        $('.sparkbar').each(function() {
+                            const value = parseFloat($(this).data('value'));
+                            const color = $(this).data('color');
+                            $(this).sparkline([value], {
+                                type: 'bar',
+                                height: '20px',
+                                barColor: color,
+                                chartRangeMin: 0,
+                                chartRangeMax: 1,
+                                width: $(this).css('width')
+                            });
+                        });
+                    },
+                    rowCallback: function(row, data) {
+                        const sektorNama = data?.sektor?.nama_sektor?.toUpperCase();
+                        if (["KEDIRI", "MADIUN", "MALANG"].includes(sektorNama)) {
+                            $(row).find('td').addClass('highlight-sektor'); // Tambahkan kelas untuk setiap td
+                        }
+                    }
                 });
 
                 // $('#id_sektor').on('change', function() {
