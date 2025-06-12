@@ -21,6 +21,7 @@
                         <tr>
                             <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
                                 REPORT INDIHOME PERIODE {{ date('d/m/Y') }}
+                                <img src="{{ asset('assets/endstate.png') }}" alt="Logo" style="float: right; max-height: 60px;">
                             </th>
                         </tr>
                         <tr style="text-align: center;">
@@ -48,7 +49,7 @@
             padding: 20px;
             border-radius: 19px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            min-height: auto;
+            height: auto;
             margin-top: -40px;
         }
 
@@ -162,6 +163,12 @@
             color: #fff;
             cursor: pointer;
         }
+
+        .highlight-jatim td {
+            font-weight: bold !important;
+            border-top: 4px solid black !important;
+            border-bottom: 4px solid black !important;
+        }
     </style>
 @endpush
 
@@ -228,7 +235,12 @@
                             orderable: false,
                             searchable: false
                         }
-                    ]
+                    ],
+                    createdRow: function(row, data, dataIndex) {
+                        if (data.wilayah.nama_wilayah && data.wilayah.nama_wilayah.toUpperCase().includes("JATIM BARAT")) {
+                            $(row).addClass('highlight-jatim');
+                        }
+                    }
                 });
 
                 // $('#id_wilayah').on('change', function() {

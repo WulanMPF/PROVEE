@@ -21,6 +21,7 @@
                         <tr>
                             <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
                                 REPORT INDIBIZ PERIODE {{ date('d/m/Y') }}
+                                <img src="{{ asset('assets/indibiz.png') }}" alt="Logo" style="float: right; max-height: 60px;">
                             </th>
                         </tr>
                         <tr style="text-align: center;">
@@ -51,7 +52,7 @@
             padding: 20px;
             border-radius: 19px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            height: 500px;
+            height: auto;
             margin-top: -40px;
         }
 
@@ -100,6 +101,7 @@
         .table-responsive-wrapper {
             width: 100%;
             overflow-x: auto;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
 
@@ -116,6 +118,7 @@
         #tabel_xpro th,
         #tabel_xpro td {
             padding: 8px 15px;
+            border: 1px solid black;
         }
 
         #tabel_xpro tbody tr:last-child td:first-child {
@@ -163,6 +166,12 @@
             background-color: #C8170D;
             color: #fff;
             cursor: pointer;
+        }
+
+        .highlight-jatim td {
+            font-weight: bold !important;
+            border-top: 4px solid black !important;
+            border-bottom: 4px solid black !important;
         }
     </style>
 @endpush
@@ -245,7 +254,12 @@
                             orderable: false,
                             searchable: false
                         }
-                    ]
+                    ],
+                    createdRow: function(row, data, dataIndex) {
+                        if (data.wilayah.nama_wilayah && data.wilayah.nama_wilayah.toUpperCase().includes("JATIM BARAT")) {
+                            $(row).addClass('highlight-jatim');
+                        }
+                    }
                 });
 
                 // $('#id_wilayah').on('change', function() {
