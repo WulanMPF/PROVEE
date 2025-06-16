@@ -256,6 +256,8 @@
                 }
                 isSending = true;
 
+                document.title = "Loading... ⏳";
+
                 const formData = new FormData();
                 formData.append('text', textToSend);
                 formData.append('_token', '{{ csrf_token() }}');
@@ -283,6 +285,7 @@
                             });
                         }
                         isSending = false;
+                        document.title = "PROVEE";
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -293,6 +296,7 @@
                             confirmButtonText: 'OK'
                         });
                         isSending = false;
+                        document.title = "PROVEE";
                     });
             });
 
