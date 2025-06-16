@@ -24,12 +24,12 @@
             <div class="table-responsive-wrapper">
                 <table class="table table-bordered table-hover table-sm" id="tabel_endstate">
                     <thead>
-                        <tr>
-                            <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
-                                REPORT INDIHOME PERIODE {{ date('d/m/Y') }}
+                        <th colspan="12" style="background-color: #EBEBEB; padding: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; height: 100%; font-size: 20px;">
+                                <span style="font-weight: 1000;">REPORT INDIHOME PERIODE {{ date('d/m/Y') }}</span>
                                 <img src="{{ asset('assets/endstate.png') }}" alt="Logo" style="float: right; max-height: 60px;">
-                            </th>
-                        </tr>
+                            </div>
+                        </th>
                         <tr style="text-align: center;">
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">WILAYAH</th>
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">PI HI</th>

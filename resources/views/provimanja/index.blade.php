@@ -18,11 +18,11 @@
             <div class="table-responsive-wrapper">
                 <table class="table table-bordered table-hover table-sm" id="tabel_provimanja">
                     <thead>
-                        <tr>
-                            <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
-                                REPORT PROVI MANJA PERIODE {{ date('d/m/Y') }}
-                            </th>
-                        </tr>
+                        <th colspan="12" style="background-color: #EBEBEB; padding: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; height: 100%; font-size: 20px;">
+                                <span style="font-weight: 1000;">REPORT PROVI MANJA PERIODE {{ date('d/m/Y') }} {{ date('d/m/Y') }}</span>
+                            </div>
+                        </th>
                         <tr style="text-align: center;">
                             <th style="vertical-align: middle; background-color: #d9ead3; color: Black">SEKTOR</th>
                             <th style="vertical-align: middle; background-color: #980000; color: white">MANJA EXPIRED <br> H-1</th>

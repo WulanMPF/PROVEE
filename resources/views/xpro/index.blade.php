@@ -18,12 +18,13 @@
             <div class="table-responsive-wrapper">
                 <table class="table table-bordered table-hover table-sm" id="tabel_xpro">
                     <thead>
-                        <tr>
-                            <th colspan="12" style="text-align: left; background-color: #EBEBEB; font-weight: 500;">
-                                REPORT INDIBIZ PERIODE {{ date('d/m/Y') }}
-                                <img src="{{ asset('assets/indibiz.png') }}" alt="Logo" style="float: right; max-height: 60px;">
-                            </th>
-                        </tr>
+                        <th colspan="12" style="background-color: #EBEBEB; padding: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; height: 100%; font-size: 20px;">
+                                <span style="font-weight: 1000;">REPORT INDIBIZ PERIODE {{ date('d/m/Y') }}</span>
+                                <img src="{{ asset('assets/indibiz.png') }}" alt="Logo" style="max-height: 60px;">
+                            </div>
+                        </th>
+
                         <tr style="text-align: center;">
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">WILAYAH</th>
                             <th style="vertical-align: middle; background-color: #0563c1; color: white">RE HI</th>
@@ -256,7 +257,8 @@
                         }
                     ],
                     createdRow: function(row, data, dataIndex) {
-                        if (data.wilayah.nama_wilayah && data.wilayah.nama_wilayah.toUpperCase().includes("JATIM BARAT")) {
+                        if (data.wilayah.nama_wilayah && data.wilayah.nama_wilayah.toUpperCase()
+                            .includes("JATIM BARAT")) {
                             $(row).addClass('highlight-jatim');
                         }
                     }
@@ -309,54 +311,55 @@
                         formData.append('screenshot', blob, 'screenshot.png');
                         formData.append('_token', '{{ csrf_token() }}');
 
-                        fetch('{{ route("xpro.send-to-telegram") }}', {
-                            method: 'POST',
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Berhasil!',
-                                    text: 'Laporan berhasil dikirim ke Telegram.',
-                                    confirmButtonText: 'OK'
-                                });
-                            } else {
+                        fetch('{{ route('xpro.send-to-telegram') }}', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Berhasil!',
+                                        text: 'Laporan berhasil dikirim ke Telegram.',
+                                        confirmButtonText: 'OK'
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Gagal mengirim!',
+                                        text: data.error ||
+                                            'Terjadi kesalahan saat mengirim ke Telegram.',
+                                        confirmButtonText: 'OK'
+                                    });
+                                }
+                                isSending = false;
+                                document.title = "PROVEE";
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Gagal mengirim!',
-                                    text: data.error || 'Terjadi kesalahan saat mengirim ke Telegram.',
+                                    title: 'Terjadi kesalahan',
+                                    text: 'Gagal mengirim laporan ke Telegram.',
                                     confirmButtonText: 'OK'
                                 });
-                            }
-                            isSending = false;
-                            document.title = "PROVEE";
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Terjadi kesalahan',
-                                text: 'Gagal mengirim laporan ke Telegram.',
-                                confirmButtonText: 'OK'
+                                isSending = false;
+                                document.title = "PROVEE";
                             });
-                            isSending = false;
-                            document.title = "PROVEE";
-                        });
                     });
                 });
             });
 
             // Pasang event listener form upload
             $('#upload-form').on('submit', function(e) {
-                
+
             });
         });
     </script>
 @endpush
 
-        {{-- $(document).ready(function() {
+{{-- $(document).ready(function() {
             $('#example').DataTable({
                 "searching": false, // Hilangkan fitur Search
                 "paging": false, // Hilangkan pagination (Previous/Next)
