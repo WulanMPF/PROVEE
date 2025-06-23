@@ -13,7 +13,7 @@ class PivotEndstateController extends Controller
     public function index()
     {
         $breadcrumb = (object) [
-            'title' => 'Report PIVOT ENDSTATE',
+            'title' => 'Report PIVOT END STATE',
         ];
 
         $activeMenu = 'pivotendstate';
