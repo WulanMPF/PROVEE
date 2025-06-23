@@ -20,7 +20,7 @@
                     <thead>
                         <th colspan="12" style="background-color: #EBEBEB; padding: 10px;">
                             <div style="display: flex; justify-content: space-between; align-items: center; height: 100%; font-size: 20px;">
-                                <span style="font-weight: 1000;">REPORT PROVI MANJA PERIODE {{ date('d/m/Y') }} {{ date('d/m/Y') }}</span>
+                                <span style="font-weight: 1000;">REPORT PROVI MANJA PERIODE {{ date('d/m/Y') }}</span>
                             </div>
                         </th>
                         <tr style="text-align: center;">

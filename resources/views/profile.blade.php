@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-    <div style="flex: 1; padding: 10px;">
+    <div style="flex: 1; padding: 10px; font-family: 'Poppins', sans-serif;">
 
         <!-- Container Isi Profil -->
         <div
@@ -112,53 +112,79 @@
                 </div>
             </div>
 
-            <script>
-                document.getElementById("resetPassword").addEventListener("click", function() {
-                    document.getElementById("resetPasswordModal").style.display = "flex";
-                });
-
-                function closeModal() {
-                    document.getElementById("resetPasswordModal").style.display = "none";
-                }
-
-                function togglePassword(id, element) {
-                    const input = document.getElementById(id);
-                    const eyeIcon = element.querySelector('img');
-
-                    if (input.type === "password") {
-                        input.type = "text";
-                        eyeIcon.src = "{{ asset('assets/eye-open.png') }}"; // Change to eye open icon
-
-                    } else {
-                        input.type = "password";
-                        eyeIcon.src = "{{ asset('assets/eye-closed.png') }}"; // Change to eye closed icon
-                    }
-                }
-            </script>
-
-            @push('js')
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                <script>
-                    @if (session('success'))
-                        Swal.fire({
-                            title: 'Success!',
-                            text: '{{ session('success') }}',
-                            icon: 'success',
-                            confirmButtonText: 'OK'
-                        });
-                    @endif
-
-                    @if (session('error'))
-                        Swal.fire({
-                            title: 'Error!',
-                            text: '{{ session('error') }}',
-                            icon: 'error',
-                            confirmButtonText: 'OK'
-                        });
-                    @endif
-                </script>
-            @endpush
         </div>
-
     </div>
 @endsection
+
+@push('css')
+    <style>
+        .custom-ok-button {
+            background-color: #C8170D !important;
+            color: white !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            border-radius: 6px !important;
+            padding: 8px 16px !important;
+            border: none !important;
+        }
+
+        .custom-ok-button:hover {
+            background-color: #C8170D !important;
+        }
+    </style>
+@endpush
+
+
+@push('js')
+    <script>
+        document.getElementById("resetPassword").addEventListener("click", function() {
+            document.getElementById("resetPasswordModal").style.display = "flex";
+        });
+
+        function closeModal() {
+            document.getElementById("resetPasswordModal").style.display = "none";
+        }
+
+        function togglePassword(id, element) {
+            const input = document.getElementById(id);
+            const eyeIcon = element.querySelector('img');
+
+            if (input.type === "password") {
+                input.type = "text";
+                eyeIcon.src = "{{ asset('assets/eye-open.png') }}"; // Change to eye open icon
+
+            } else {
+                input.type = "password";
+                eyeIcon.src = "{{ asset('assets/eye-closed.png') }}"; // Change to eye closed icon
+            }
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'custom-ok-button'
+                }
+            });
+        @endif
+
+        @if (session('error'))
+            Swal.fire({
+                title: 'Error!',
+                text: '{{ session('error') }}',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'custom-ok-button'
+                }
+            });
+        @endif
+    </script>
+@endpush

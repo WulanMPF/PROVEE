@@ -258,21 +258,21 @@
                 // Menggabungkan dengan newline
                 let textToSend = lines.join('\n');
 
-                if (
-                    !textToSend.includes('ENDSTATE') ||
-                    !textToSend.includes('PROVI MANJA')
-                ) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Tidak bisa mengirim!',
-                        text: 'Data dari End State dan Provi Manja belum lengkap. Silahkan lengkapi terlebih dahulu.',
-                        customClass: {
-                            confirmButton: 'my-confirm-button',
-                            popup: 'my-swal-popup'
-                        }
-                    });
-                    return;
-                }
+                // if (
+                //     !textToSend.includes('ENDSTATE') ||
+                //     !textToSend.includes('PROVI MANJA')
+                // ) {
+                //     Swal.fire({
+                //         icon: 'warning',
+                //         title: 'Tidak bisa mengirim!',
+                //         text: 'Data dari End State dan Provi Manja belum lengkap. Silahkan lengkapi terlebih dahulu.',
+                //         customClass: {
+                //             confirmButton: 'my-confirm-button',
+                //             popup: 'my-swal-popup'
+                //         }
+                //     });
+                //     return;
+                // }
 
                 if (isSending) {
                     console.log("Proses pengiriman sedang berjalan, harap tunggu...");
