@@ -166,6 +166,24 @@
             border-top: 4px solid black !important;
             border-bottom: 4px solid black !important;
         }
+
+        .my-swal-popup {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .my-confirm-button {
+            background-color: #C8170D !important;
+            color: white !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            border-radius: 6px;
+            padding: 8px 16px;
+            border: none;
+        }
+
+        .my-confirm-button:hover {
+            background-color: #C8170D !important;
+        }
     </style>
 @endpush
 
@@ -233,22 +251,26 @@
                         }
 
                         // Pewarnaan berdasarkan isi data
+                        const manjaExpired = data["manja_expired_h-1"]
                         const manjaHi = data["manja_hi"];
                         const saldoH1 = data["saldo_manja_h+1"];
                         const saldoH2 = data["saldo_manja_h+2"];
                         const saldoH2plus = data["saldo_manja_h>2"];
 
+                        if (manjaExpired && manjaExpired.toString().trim() !== "" && manjaExpired != "0") {
+                            $(row).find('td:eq(1)').css('background-color', '#F08080');
+                        }
                         if (manjaHi && manjaHi.toString().trim() !== "" && manjaHi != "0") {
-                            $('td:eq(2)', row).css('background-color', '#F08080');
+                            $(row).find('td:eq(2)').css('background-color', '#F08080');
                         }
                         if (saldoH1 && saldoH1.toString().trim() !== "" && saldoH1 != "0") {
-                            $('td:eq(3)', row).css('background-color', '#b7e1cd');
+                            $(row).find('td:eq(3)').css('background-color', '#b7e1cd');
                         }
                         if (saldoH2 && saldoH2.toString().trim() !== "" && saldoH2 != "0") {
-                            $('td:eq(4)', row).css('background-color', '#b7e1cd');
+                            $(row).find('td:eq(4)').css('background-color', '#b7e1cd');
                         }
                         if (saldoH2plus && saldoH2plus.toString().trim() !== "" && saldoH2plus != "0") {
-                            $('td:eq(5)', row).css('background-color', '#b7e1cd');
+                            $(row).find('td:eq(5)').css('background-color', '#b7e1cd');
                         }
                     }
                 });
@@ -274,7 +296,10 @@
                         icon: 'warning',
                         title: 'Tabel kosong!',
                         text: 'Silakan upload file dan pastikan data telah muncul di tabel sebelum mengirim!',
-                        confirmButtonText: 'OK'
+                        customClass: {
+                            confirmButton: 'my-confirm-button',
+                            popup: 'my-swal-popup'
+                        }
                     });
                     return;
                 }
@@ -311,14 +336,20 @@
                                     icon: 'success',
                                     title: 'Berhasil!',
                                     text: 'Laporan berhasil dikirim ke Telegram.',
-                                    confirmButtonText: 'OK'
+                                    customClass: {
+                                        confirmButton: 'my-confirm-button',
+                                        popup: 'my-swal-popup'
+                                    }
                                 });
                             } else {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Gagal mengirim!',
                                     text: data.error || 'Terjadi kesalahan saat mengirim ke Telegram.',
-                                    confirmButtonText: 'OK'
+                                    customClass: {
+                                        confirmButton: 'my-confirm-button',
+                                        popup: 'my-swal-popup'
+                                    }
                                 });
                             }
                             isSending = false;

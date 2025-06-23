@@ -174,6 +174,24 @@
             border-top: 4px solid black !important;
             border-bottom: 4px solid black !important;
         }
+
+        .my-swal-popup {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .my-confirm-button {
+            background-color: #C8170D !important;
+            color: white !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            border-radius: 6px;
+            padding: 8px 16px;
+            border: none;
+        }
+
+        .my-confirm-button:hover {
+            background-color: #C8170D !important;
+        }
     </style>
 @endpush
 
@@ -285,7 +303,10 @@
                         icon: 'warning',
                         title: 'Tabel kosong!',
                         text: 'Silakan upload file dan pastikan data telah muncul di tabel sebelum mengirim!',
-                        confirmButtonText: 'OK'
+                        customClass: {
+                            confirmButton: 'my-confirm-button',
+                            popup: 'my-swal-popup'
+                        }
                     });
                     return;
                 }
@@ -322,7 +343,10 @@
                                         icon: 'success',
                                         title: 'Berhasil!',
                                         text: 'Laporan berhasil dikirim ke Telegram.',
-                                        confirmButtonText: 'OK'
+                                        customClass: {
+                                            confirmButton: 'my-confirm-button',
+                                            popup: 'my-swal-popup'
+                                        }
                                     });
                                 } else {
                                     Swal.fire({
@@ -330,7 +354,10 @@
                                         title: 'Gagal mengirim!',
                                         text: data.error ||
                                             'Terjadi kesalahan saat mengirim ke Telegram.',
-                                        confirmButtonText: 'OK'
+                                        customClass: {
+                                            confirmButton: 'my-confirm-button',
+                                            popup: 'my-swal-popup'
+                                        }
                                     });
                                 }
                                 isSending = false;

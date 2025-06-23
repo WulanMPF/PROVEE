@@ -20,14 +20,14 @@
             <li class="nav-item">
                 <a href="{{ url('/user/endstate') }}" class="nav-link {{ $activeMenu == 'endstate' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_ENDSTATE.png') }}" alt="Endstate Icon" class="nav-icon">
-                    <p>Report Endstate</p>
+                    <p>Report End State</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ url('/user/pivotendstate') }}"
                     class="nav-link {{ $activeMenu == 'pivotendstate' ? 'active' : '' }}">
                     <img src="{{ asset('assets/Icon_PIVOTENDSTATE.png') }}" alt="Pivot Endstate Icon" class="nav-icon">
-                    <p>Report Pivot Endstate</p>
+                    <p>Report Pivot End State</p>
                 </a>
             </li>
             <li class="nav-item">

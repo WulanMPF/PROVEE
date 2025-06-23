@@ -11,6 +11,24 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
+
+        .my-swal-popup {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .my-confirm-button {
+            background-color: #e74c3c !important;
+            color: white !important;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 20px;
+        }
+
+        .my-confirm-button:hover {
+            background-color: #c0392b !important;
+        }
     </style>
 </head>
 
@@ -85,7 +103,11 @@
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Username atau Password Salah!"
+                text: "Username atau Password Salah!",
+                customClass: {
+                    confirmButton: 'my-confirm-button',
+                    popup: 'my-swal-popup'
+                }
             });
         </script>
     @endif

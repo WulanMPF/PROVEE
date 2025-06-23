@@ -18,7 +18,7 @@
                     <thead>
                         <th colspan="12" style="background-color: #EBEBEB; padding: 10px;">
                             <div style="display: flex; justify-content: space-between; align-items: center; height: 100%; font-size: 20px;">
-                                <span style="font-weight: 1000;">REPORT PIVOT ENDSTATE PERIODE {{ date('d/m/Y') }}</span>
+                                <span style="font-weight: 1000;">REPORT PIVOT END STATE PERIODE {{ date('d/m/Y') }}</span>
                             </div>
                         </th>
                         <tr style="text-align: center;">
@@ -154,6 +154,24 @@
             font-weight: bold !important;
             border-top: 4px solid black !important;
             border-bottom: 4px solid black !important;
+        }
+
+        .my-swal-popup {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .my-confirm-button {
+            background-color: #C8170D !important;
+            color: white !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            border-radius: 6px;
+            padding: 8px 16px;
+            border: none;
+        }
+
+        .my-confirm-button:hover {
+            background-color: #C8170D !important;
         }
     </style>
 @endpush
@@ -317,9 +335,12 @@
                 if (rowCount === 0) {
                     Swal.fire({
                         icon: 'warning',
-                        title: 'Tabel kosong!',
-                        text: 'Silakan upload file dan pastikan data telah muncul di tabel sebelum mengirim!',
-                        confirmButtonText: 'OK'
+                        title: 'Data tidak tersedia!',
+                        text: 'Silahkan upload file pada fitur End State terlebih dahulu sebelum mengirim.',
+                        customClass: {
+                            confirmButton: 'my-confirm-button',
+                            popup: 'my-swal-popup'
+                        }
                     });
                     return;
                 }
@@ -356,7 +377,10 @@
                                         icon: 'success',
                                         title: 'Berhasil!',
                                         text: 'Laporan berhasil dikirim ke Telegram.',
-                                        confirmButtonText: 'OK'
+                                        customClass: {
+                                            confirmButton: 'my-confirm-button',
+                                            popup: 'my-swal-popup'
+                                        }
                                     });
                                 } else {
                                     Swal.fire({
@@ -376,7 +400,10 @@
                                     icon: 'error',
                                     title: 'Terjadi kesalahan',
                                     text: 'Gagal mengirim laporan ke Telegram.',
-                                    confirmButtonText: 'OK'
+                                    customClass: {
+                                        confirmButton: 'my-confirm-button',
+                                        popup: 'my-swal-popup'
+                                    }
                                 });
                                 isSending = false;
                                 document.title = "PROVEE";

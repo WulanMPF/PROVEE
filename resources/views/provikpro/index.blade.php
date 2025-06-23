@@ -191,6 +191,24 @@
             cursor: pointer;
             border-color: #afafaf;
         }
+
+        .my-swal-popup {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .my-confirm-button {
+            background-color: #C8170D !important;
+            color: white !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            border-radius: 6px;
+            padding: 8px 16px;
+            border: none;
+        }
+
+        .my-confirm-button:hover {
+            background-color: #C8170D !important;
+        }
     </style>
 @endpush
 
@@ -240,12 +258,18 @@
                 // Menggabungkan dengan newline
                 let textToSend = lines.join('\n');
 
-                if (!textToSend) {
+                if (
+                    !textToSend.includes('ENDSTATE') ||
+                    !textToSend.includes('PROVI MANJA')
+                ) {
                     Swal.fire({
                         icon: 'warning',
-                        title: 'Teks kosong!',
-                        text: 'Silakan pastikan ada data yang dapat dikirim!',
-                        confirmButtonText: 'OK'
+                        title: 'Tidak bisa mengirim!',
+                        text: 'Data dari End State dan Provi Manja belum lengkap. Silahkan lengkapi terlebih dahulu.',
+                        customClass: {
+                            confirmButton: 'my-confirm-button',
+                            popup: 'my-swal-popup'
+                        }
                     });
                     return;
                 }
@@ -273,7 +297,10 @@
                                 icon: 'success',
                                 title: 'Berhasil!',
                                 text: 'Laporan berhasil dikirim ke Telegram.',
-                                confirmButtonText: 'OK'
+                                customClass: {
+                                    confirmButton: 'my-confirm-button',
+                                    popup: 'my-swal-popup'
+                                }
                             });
                         } else {
                             Swal.fire({
@@ -281,7 +308,10 @@
                                 title: 'Gagal mengirim!',
                                 text: data.error ||
                                     'Terjadi kesalahan saat mengirim ke Telegram.',
-                                confirmButtonText: 'OK'
+                                customClass: {
+                                    confirmButton: 'my-confirm-button',
+                                    popup: 'my-swal-popup'
+                                }
                             });
                         }
                         isSending = false;
@@ -293,7 +323,10 @@
                             icon: 'error',
                             title: 'Terjadi kesalahan',
                             text: 'Gagal mengirim laporan ke Telegram.',
-                            confirmButtonText: 'OK'
+                            customClass: {
+                                confirmButton: 'my-confirm-button',
+                                popup: 'my-swal-popup'
+                            }
                         });
                         isSending = false;
                         document.title = "PROVEE";
